@@ -1,0 +1,46 @@
+.thatsBrandName {
+    font-family: "Audiowide", sans-serif;
+}
+
+.NavbarInnerUl {
+    font-family: "Trirong", serif;
+}
+
+.myCardImage {
+    width: 100%;
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.korimen {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+.makingRoundedIcon {
+    height: 200px;
+    width: 200px;
+    border-radius: 500px;
+}
+
+.makeAround {
+    display: flex;
+    justify-content: space-around;
+}
+
+.xcv {
+    outline: 1px solid black;
+}
+
+
+.myChange:hover {
+    background: #000;
+}
+
+.flex-end-classes{
+    display: flex;
+    align-items: center ;
+    justify-content: flex-end;
+}
