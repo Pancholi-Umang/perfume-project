@@ -93,7 +93,7 @@ const Item = [
   {
     id: 7,
     name: "American-Jeans",
-    category: "Fragrance Gift Set",
+    category: "fragrance Gift Set",
     imag: american1,
     price:450,
     description: "Lorem ipsum dolor sit amet.",
@@ -101,7 +101,7 @@ const Item = [
   {
     id: 8,
     name: "calvin",
-    category: "Fragrance Gift Set",
+    category: "fragrance Gift Set",
     imag: calvin1,
     price:555,
     description: "Lorem ipsum dolor sit amet.",
@@ -133,7 +133,7 @@ const Item = [
   {
     id: 12,
     name: "onceLove",
-    category: "Fragrance Gift Set",
+    category: "fragrance Gift Set",
     imag: onceLove,
     price:575,
     description: "Lorem ipsum dolor sit amet.",
@@ -165,7 +165,7 @@ const Item = [
   {
     id: 16,
     name: "My Fanatic",
-    category: "Perfumes",
+    category: "perfumes",
     imag: MyFnatic1370,
     price:450,
     description: "Lorem ipsum dolor sit amet.",
@@ -173,7 +173,7 @@ const Item = [
   {
     id: 17,
     name: "Black-Snack",
-    category: "Perfumes",
+    category: "perfumes",
     imag: blacksnack,
     price:565,
     description: "Lorem ipsum dolor sit amet.",
@@ -181,7 +181,7 @@ const Item = [
   {
     id: 18,
     name: "banko",
-    category: "Perfumes",
+    category: "perfumes",
     imag: banko,
     price:650,
     description: "Lorem ipsum dolor sit amet.",
@@ -189,7 +189,7 @@ const Item = [
   {
     id: 19,
     name: "Black",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Black290,
     price:290,
     description: "Lorem ipsum dolor sit amet.",
@@ -197,7 +197,7 @@ const Item = [
   {
     id: 20,
     name: "Calvin",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Calvin,
     price:150,
     description: "Lorem ipsum dolor sit amet.",
@@ -205,7 +205,7 @@ const Item = [
   {
     id: 21,
     name: "Chrome",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Chrome,
     price:150,
     description: "Lorem ipsum dolor sit amet.",
@@ -213,7 +213,7 @@ const Item = [
   {
     id: 22,
     name: "meera3",
-    category: "Fragrance Gift Set",
+    category: "fragrance Gift Set",
     imag: meera3,
     price:350,
     description: "Lorem ipsum dolor sit amet.",
@@ -221,7 +221,7 @@ const Item = [
   {
     id: 23,
     name: "Editor",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Editor,
     price:550,
     description: "Lorem ipsum dolor sit amet.",
@@ -229,7 +229,7 @@ const Item = [
   {
     id: 24,
     name: "Meera",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Meewra12,
     price:1200,
     description: "Lorem ipsum dolor sit amet.",
@@ -237,7 +237,7 @@ const Item = [
   {
     id: 25,
     name: "Highness",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Highness,
     price:550,
     description: "Lorem ipsum dolor sit amet.",
@@ -245,7 +245,7 @@ const Item = [
   {
     id: 26,
     name: "Harmony",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Harmony,
     price:15,
     description: "Lorem ipsum dolor sit amet.",
@@ -269,7 +269,7 @@ const Item = [
   {
     id: 29,
     name: "Position",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Position,
     price:800,
     description: "Lorem ipsum dolor sit amet.",
@@ -277,7 +277,7 @@ const Item = [
   {
     id: 30,
     name: "attire",
-    category: "Perfumes",
+    category: "perfumes",
     imag: attire,
     price:750,
     description: "Lorem ipsum dolor sit amet.",
@@ -285,7 +285,7 @@ const Item = [
   {
     id: 31,
     name: "American-Jeans",
-    category: "Perfumes",
+    category: "perfumes",
     imag: americajeans,
     price:950,
     description: "Lorem ipsum dolor sit amet.",
@@ -301,7 +301,7 @@ const Item = [
   {
     id: 33,
     name: "Once Love",
-    category: "Perfumes",
+    category: "perfumes",
     imag: onceLoves,
     price:750,
     description: "Lorem ipsum dolor sit amet.",
@@ -317,7 +317,7 @@ const Item = [
   {
     id: 35,
     name: "Sandal",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Sandal,
     price:650,
     description: "Lorem ipsum dolor sit amet.",
@@ -325,7 +325,7 @@ const Item = [
   {
     id: 36,
     name: "Soir",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Soir900,
     price:900,
     description: "Lorem ipsum dolor sit amet.",
@@ -333,7 +333,7 @@ const Item = [
   {
     id: 37,
     name: "Style",
-    category: "Perfumes",
+    category: "perfumes",
     imag: Style1260,
     price:1260,
     description: "Lorem ipsum dolor sit amet.",
@@ -341,7 +341,7 @@ const Item = [
   {
     id: 38,
     name: "UKPound",
-    category: "Perfumes",
+    category: "perfumes",
     imag: UKPound290,
     price:290,
     description: "Lorem ipsum dolor sit amet.",

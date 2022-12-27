@@ -5,7 +5,7 @@ import './ReactStyle.css'
 function Header() {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3 mb-3">
                 <div className="container-fluid">
                     <Link className="navbar-brand thatsBrandName col-md-4 text-uppercase" to='/' >Shine Perfumes</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@ function Header() {
                             <li className="nav-item">
                                 <Link className="nav-link navbar-dark" to='login' aria-current="page">Login</Link>
                             </li>
-                            <li className="nav-item">  
+                            <li className="nav-item">
                                 <Link className="nav-link navbar-dark" to='about' aria-current="page">About</Link>
                             </li>
                         </ul>

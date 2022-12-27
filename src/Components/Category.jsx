@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import Item from "../Items/Items";
+import './ReactStyle.css'
 
 const allValues = [...new Set(Item.map((val) => val.category))];
 console.log(allValues);
 
 const Category = () => {
   const [data, setData] = useState([]);
-  // const [toggle , setToggle] = useState(false);
 
   const handleClick = (btnProps) => {
+    console.log(btnProps)
     if (!btnProps) {
       return setData([]);
     }
@@ -18,9 +19,6 @@ const Category = () => {
     setData(result);
   };
 
-  
-
-  console.log(data);
   return (
     <div className="container mt-5 ">
       <div className="row makeAround">
@@ -28,24 +26,26 @@ const Category = () => {
           return (
             <button
               key={index}
-              className="btn btn-secondary mx-2 makingRoundedIcon"
+              className="btn btn-warning mx-2 mb-3 makingRoundedIcon"
               onClick={() => handleClick(getVal)}
             >
-              {getVal}
+              {getVal.toUpperCase()}
             </button>
           );
         })}
       </div>
       <div className="row korimen">
-        {data.map((value, index) => {
+      {data.map((value, index) => {
           return (
-            <div className="col-md-3 card g-5 p-0" key={index}>
+            <div className=" mt-2 mx-1 col-md-3 myData p-1 card" key={index}>
               <img className="img myCardImage" src={value.imag} alt="Card image cap" />
               <div className="card-body">
-                <h5 className="card-title text-center">{value.name}</h5>
-                <p className="card-text">{value.description}</p>
-                <p className="card-text">{value.category}</p>
+                <h5 className="card-title text-center">{value.name.toUpperCase()}&nbsp;({value.category.toUpperCase()})</h5>
                 <p className="card-text text-center"><strong>{value.price}₹</strong></p>
+                <p className="card-text btnAround d-flex justify-content-around p-1">
+                  <button className="btn btn-secondary myChange ">BUY NOW</button>
+                  <button className="btn btn-secondary myChange">ADD CART</button>
+                </p>
               </div>
             </div>
           );
