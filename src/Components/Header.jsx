@@ -17,16 +17,19 @@ function Header() {
                                 <Link className="nav-link navbar-dark" to='/' aria-current="page">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='category' aria-current="page">Category</Link>
+                                <Link className="nav-link navbar-dark" to='/category' aria-current="page">Category</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='allproduct' aria-current="page">All Product</Link>
+                                <Link className="nav-link navbar-dark" to='/allproduct' aria-current="page">All Product</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='login' aria-current="page">Login</Link>
+                                <Link className="nav-link navbar-dark" to='/login' aria-current="page">Login</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='about' aria-current="page">About</Link>
+                                <Link className="nav-link navbar-dark" to='/about' aria-current="page">About</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link navbar-dark" to='cart' aria-current="page"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></Link>
                             </li>
                         </ul>
                     </div>
