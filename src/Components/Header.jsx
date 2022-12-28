@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './ReactStyle.css'
 
-function Header() {
+function Header({size}) {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3 mb-3">
@@ -29,7 +29,7 @@ function Header() {
                                 <Link className="nav-link navbar-dark" to='/about' aria-current="page">About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='cart' aria-current="page"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></Link>
+                                <Link className="nav-link navbar-dark relPos" to='/cart' aria-current="page"><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i><span className='CartSetting'>{size}</span></Link>
                             </li>
                         </ul>
                     </div>

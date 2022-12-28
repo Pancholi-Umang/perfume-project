@@ -26,7 +26,7 @@ function Login() {
           <button type="submit" className="btn btn-primary ">
             Submit
           </button>
-          <Link to="/reg" className="anchorRemove"> Create An Account</Link>
+          <Link to="/reg" className="mt-1 anchorRemove"> Create An Account</Link>
         </div>
       </form>
     </div>

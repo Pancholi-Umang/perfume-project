@@ -1,7 +1,8 @@
 import React from 'react'
+// import { Link } from 'react-router-dom';
 
-function Card({SetCart,value}) {
-    const {imag,name,category,price} = value;
+function Card({ SetCart, value, boolState }) {
+    const { imag, name, category, price } = value;
     return (
         <>
             <div className=" mt-2 mx-1 col-md-3 myData p-1 card">
@@ -20,3 +21,11 @@ function Card({SetCart,value}) {
 }
 
 export default Card
+
+// {
+//     boolState ? (
+//         <button className="btn btn-secondary myChange" onClick={() => SetCart(value)}>ADD CART</button>)
+//         : (
+//             <Link className="btn btn-secondary myChange" to='/cart' >GO TO CART</Link>
+//         )
+// }

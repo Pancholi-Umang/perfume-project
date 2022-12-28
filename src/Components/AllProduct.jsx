@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card';
 
-function AllProduct({changeHandler,data,SetCart}) {
+function AllProduct({changeHandler,data,SetCart,boolState}) {
   return (
     <>
       <div className="col-md-4 container px-1">
@@ -12,7 +12,7 @@ function AllProduct({changeHandler,data,SetCart}) {
         {data.map((value, index) => {
           
           return (
-            <Card key={index} SetCart={SetCart} value={value}/>
+            <Card key={index} SetCart={SetCart} boolState={boolState} value={value}/>
           );
         })}
       </div>

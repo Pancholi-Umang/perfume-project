@@ -47,3 +47,22 @@
     justify-content: flex-end;
 }
 
+
+.relPos{
+    position: relative;
+}
+
+.CartSetting{
+    position: absolute;
+    top:-1px;
+    right: -5px;
+    color: white;
+    height: 20px;
+    width: 20px;
+    background: #6c757d;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
