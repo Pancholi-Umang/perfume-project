@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 import './ReactStyle.css'
 
-const Category = ({Alldata,SetCart,boolState}) => {
+const Category = ({Alldata,SetCart,setBuyNow}) => {
   const [data, setData] = useState([]);
 
   const allValues = [...new Set(Alldata.map((val) => val.category))];
@@ -37,7 +37,7 @@ const Category = ({Alldata,SetCart,boolState}) => {
       <div className="row korimen">
         {data.map((value, index) => {
           return (
-            <Card key={index} boolState={boolState} SetCart={SetCart} value={value}/>
+            <Card key={index} setBuyNow={setBuyNow} SetCart={SetCart} value={value} />
           );
         })}
       </div>

@@ -25,7 +25,7 @@ const LocalStorageCartItem = () => {
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
-  const [boolState, setBoolState] = useState(true);
+  const [buyProduct, setBuyProduct] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -37,9 +37,11 @@ function App() {
 
   const SetCart = (CartItem) => {
     setAddToCart([...addToCart, CartItem]);
-    // setBoolState(false);
   };
-  
+  const setBuyNow = (BuyItem) => {
+    setBuyProduct([buyProduct, BuyItem]);
+  };
+  console.log(buyProduct)
   const changeHandler = (e) => {
     var search = e.target.value;
     const myFilter = Item.filter((es) => {
@@ -49,9 +51,9 @@ function App() {
   };
 
   const deleteItems = (index) => {
-        const DeleteCardData = addToCart.filter((element) => index !== element.id);
-        setAddToCart(DeleteCardData);
-      };
+    const DeleteCardData = addToCart.filter((element) => index !== element.id);
+    setAddToCart(DeleteCardData);
+  };
 
   return (
     <div className="container mt-2 mb-2">
@@ -59,8 +61,8 @@ function App() {
         <Header size={addToCart.length}/>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/category" element={<Category Alldata={data} boolState={boolState} SetCart={SetCart}/>} />
-          <Route exact path="/allproduct" element={<AllProduct data={data} boolState={boolState} SetCart={SetCart} changeHandler={changeHandler} />} />
+          <Route exact path="/category" element={<Category Alldata={data} setBuyNow={setBuyNow} SetCart={SetCart}/>} />
+          <Route exact path="/allproduct" element={<AllProduct data={data} setBuyNow={setBuyNow} SetCart={SetCart} changeHandler={changeHandler} />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/reg" element={<Registration />} />

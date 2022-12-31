@@ -29,7 +29,7 @@ function Header({size}) {
                                 <Link className="nav-link navbar-dark" to='/about' aria-current="page">About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link navbar-dark relPos" to='/cart' aria-current="page"><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i><span className='CartSetting'>{size}</span></Link>
+                                <Link className="nav-link navbar-dark relPos" to='/cart' aria-current="page"><i className="fa fa-shopping-cart fa-lg underbase" aria-hidden="true"></i><span className='CartSetting'>{size}</span></Link>
                             </li>
                         </ul>
                     </div>

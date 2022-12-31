@@ -50,12 +50,19 @@
 
 .relPos{
     position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
 }
 
 .CartSetting{
     position: absolute;
-    top:-1px;
-    right: -5px;
+    top:-2px;
+    right: 3px;
     color: white;
     height: 20px;
     width: 20px;
@@ -64,5 +71,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.underbase{
+    position: absolute;
+    left: 0;    
 }
 
