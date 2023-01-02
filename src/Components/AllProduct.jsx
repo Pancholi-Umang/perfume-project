@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card';
 
-function AllProduct({changeHandler,data,SetCart,setBuyNow}) {
+function AllProduct({ changeHandler, data, SetCart, ClickToAnotherPage}) {
   return (
     <>
       <div className="col-md-4 container px-1">
@@ -10,9 +10,9 @@ function AllProduct({changeHandler,data,SetCart,setBuyNow}) {
 
       <div className='row d-flex justify-content-around mt-2 px-2'>
         {data.map((value, index) => {
-          
+
           return (
-            <Card key={index} SetCart={SetCart} setBuyNow={setBuyNow} value={value}/>
+            <Card key={index} SetCart={SetCart} ClickToAnotherPage={ClickToAnotherPage} value={value} />
           );
         })}
       </div>

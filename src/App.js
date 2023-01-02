@@ -10,7 +10,7 @@ import About from "./Components/About";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./Login/Registration";
 import AddCart from "./Components/AddCart";
-import Item from './Items/Items'
+import Item from './Items/Items' 
 
 const LocalStorageCartItem = () => {
   let list = localStorage.getItem("ShowCartData");
@@ -25,7 +25,6 @@ const LocalStorageCartItem = () => {
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
-  const [buyProduct, setBuyProduct] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -38,10 +37,13 @@ function App() {
   const SetCart = (CartItem) => {
     setAddToCart([...addToCart, CartItem]);
   };
-  const setBuyNow = (BuyItem) => {
-    setBuyProduct([buyProduct, BuyItem]);
-  };
-  console.log(buyProduct)
+ 
+  const emptyCart = () => {
+    setAddToCart([])
+  }
+
+  
+
   const changeHandler = (e) => {
     var search = e.target.value;
     const myFilter = Item.filter((es) => {
@@ -55,18 +57,22 @@ function App() {
     setAddToCart(DeleteCardData);
   };
 
+  const ClickToAnotherPage = (e) => {
+    console.log("click",e)
+  }
+
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
         <Header size={addToCart.length}/>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/category" element={<Category Alldata={data} setBuyNow={setBuyNow} SetCart={SetCart}/>} />
-          <Route exact path="/allproduct" element={<AllProduct data={data} setBuyNow={setBuyNow} SetCart={SetCart} changeHandler={changeHandler} />} />
+          <Route exact path="/category" element={<Category Alldata={data} SetCart={SetCart}/>} />
+          <Route exact path="/allproduct" element={<AllProduct data={data} SetCart={SetCart} changeHandler={changeHandler} ClickToAnotherPage={ClickToAnotherPage} />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/reg" element={<Registration />} />
-          <Route exact path="/cart" element={<AddCart addToCart={addToCart} deleteItems={deleteItems}/>} />
+          <Route exact path="/cart" element={<AddCart addToCart={addToCart} size={addToCart.length} deleteItems={deleteItems} emptyCart={emptyCart}/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
