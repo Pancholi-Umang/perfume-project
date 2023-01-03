@@ -33,7 +33,8 @@
 }
 
 .xcv {
-    outline: 1px solid black;
+    outline: 1px solid rgb(31, 30, 30);
+
 }
 
 
@@ -57,10 +58,11 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-
+    
 }
 
 .CartSetting{
+    border: 1px solid white;
     position: absolute;
     top:-2px;
     right: 3px;
@@ -133,4 +135,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.clrCss{
+    color: #000;
+}
+
+.forFlexColumndir{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.clrWhite{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.clrWhite:hover{
+    color: yellow;
+    text-decoration: none;
+}
+
+.blackDarkerBg{
+    background-color: black;
+}
+
+.uponclass{
+    text-align: left;
+}
+
+.clrWhites{
+    color: white;
+}
+
+.ylowclr{
+    color: yellow;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card';
+import Footer from './Footer';
 
 function AllProduct({ changeHandler, data, SetCart, ClickToAnotherPage}) {
   return (
@@ -16,6 +17,7 @@ function AllProduct({ changeHandler, data, SetCart, ClickToAnotherPage}) {
           );
         })}
       </div>
+      <Footer />
     </>
   )
 }

@@ -6,7 +6,10 @@ import Home from "./Components/Home";
 import Category from "./Components/Category";
 import AllProduct from "./Components/AllProduct";
 import Login from "./Login/Login";
-import About from "./Components/About";
+import About from "./Section/About";
+import ContactUs from "./Section/ContactUs";
+import PrivacyPolicy from "./Section/PrPolicy";
+import TermsCondition from "./Section/T_and_C";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./Login/Registration";
 import AddCart from "./Components/AddCart";
@@ -70,11 +73,13 @@ function App() {
           <Route exact path="/category" element={<Category Alldata={data} SetCart={SetCart}/>} />
           <Route exact path="/allproduct" element={<AllProduct data={data} SetCart={SetCart} changeHandler={changeHandler} ClickToAnotherPage={ClickToAnotherPage} />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/about" element={<About />} />
           <Route exact path="/reg" element={<Registration />} />
           <Route exact path="/cart" element={<AddCart addToCart={addToCart} size={addToCart.length} deleteItems={deleteItems} emptyCart={emptyCart}/>} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contactus" element={<ContactUs />} />
+          <Route exact path="/policy" element={<PrivacyPolicy />} />
+          <Route exact path="/terms" element={<TermsCondition />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );

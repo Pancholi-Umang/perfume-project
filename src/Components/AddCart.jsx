@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import Footer from './Footer';
 import './ReactStyle.css'
 
-const AddCart = ({ addToCart, deleteItems, size,emptyCart }) => {
+const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
+    
     let cartTotal = 0;
     let prices = 0;
-    let total = [];
-    
+    let total = []; 
     return (
         <>
             <div className="col-md-12">
@@ -43,27 +44,25 @@ const AddCart = ({ addToCart, deleteItems, size,emptyCart }) => {
                     );
                 })}
             </div>
-            
             {
                 addToCart.map((data) => {
                     prices = Number(data.price);
                     total.push(prices)
                     cartTotal += prices;
 
-                }, [])
+                },[])
             }
 
             <hr />
             <div className="row">
                 <div className="col-md-6 text-center">
-                    <h3>Total Amount : {cartTotal}₹ </h3>
+                    <h3>Total Amount : {cartTotal}₹</h3>
                 </div>
                 <div className="col-md-6 text-center">
                     <button className='btn btn-primary col-md-4'>Pay Now</button>
                 </div>
             </div>
-
-
+        <Footer />
         </>
     )
 }

@@ -1,0 +1,65 @@
+import React from 'react'
+import Footer from '../Components/Footer'
+
+function T_and_C() {
+    return (
+        <div className='container'>
+            <div className="row">
+                <div className="col-md-12">
+                    <h1 className='text-center'>Terms & Conditions</h1>
+                </div>
+                <div className="col-md-12 p-5">
+                    <p>
+                        Please read the Terms of Use carefully before you start to use the Site. BY ACCESSING, BROWSING OR USING THE SITE (INCLUDING YOUR SUBMISSION OF INFORMATION TO THIS SITE), YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD AND AGREED TO BE BOUND BY THESE TERMS OF USE, INCLUDING THE PRIVACY POLICY (WHICH IS INCORPORATED HEREIN BY REFERENCE), AND TO COMPLY WITH ALL APPLICABLE INDIA LAWS AND REGULATIONS. BY USING THE SITE, YOU AGREE TO THESE TERMS OF USE; IF YOU DO NOT AGREE, DO NOT USE THE SITE. You agree that the Terms of Use, combined with your act of using the Site, have the same legal force and effect as a written contract with your written signature and satisfy any laws that require a writing or signature, including any applicable statute of frauds. You further agree that you shall not challenge the validity, enforceability or admissibility of the Terms of Use on the grounds that it was electronically transmitted or authorized. If you do not agree to be bound by these terms and conditions of use, you may not access or otherwise use this Site. We reserve the right to revise these terms and conditions from time to time. When we make changes, we will post them here. You may wish to check this section from time to time, because your use of the Site following any changes indicates your agreement to be bound by those modifications. This Site is offered and available to users who are 13 years of age or older. By using this Site, you represent and warrant that you meet the foregoing eligibility requirement. If you do not meet this requirement, you must not access or use the Site.
+                    </p>
+
+                    <strong>SITE USAGE POLICY</strong>
+                    <hr />
+                    <h6>(A) SECURITY</h6>
+                    <p>
+                        You are prohibited from violating or attempting to violate the security measures on the Site, including, without limitation: Using a false password or one belonging to another user or accessing data not intended for the user or logging into a server or account which such user is not authorized to access; Disclosing a password or permitting a third party to use a password or failing to notify us if a password is compromised; Attempting to probe, scan or test the vulnerability of the system or network or to breach security or authentication measures without proper authorization; Attempting to interfere with service to any user, host or network, including, without limitation, via means of overloading, "flooding", "mail bombing" or "crashing"; Sending unsolicited e-mail, including promotions and/or advertising of products or services; Forging any TCP/IP packet header or any part of the header information in any e-mail or newsgroup posting; or Hijacking all or any part of the Site content, deleting or changing any Site content, deploying pop-up messages or advertising, running or displaying this Site or any Site content in frames or through similar means on another Site, or linking to the Site or any page within the Site, without our specific written permission.
+                    </p>
+                    <h6>(B) GENERAL RULES</h6>
+                    <p>
+                        You agree to use the Site only for lawful purposes and only for your own personal, non- commercial use. You may not use the Site to transmit, post, download, distribute, copy, display publicly, store or destroy material (a) in violation of any applicable law or regulation, (b) in a manner that will infringe the copyright, patent, trademark, trade secret or other intellectual property rights of others or violate the privacy or publicity or other personal rights of others, or (c) that is libellous, obscene, offensive, threatening, defamatory, abusive or hateful
+                    </p>
+                    <h6>(C) VIOLATIONS</h6>
+                    <p>
+                        We have absolute discretion to determine if any use violates these rules, and to act as we deem appropriate in the event of any violation. Violations of system or network security may result in civil or criminal liability. We will investigate occurrences which may involve such violations and may involve, cooperate with, and make disclosures to, law enforcement authorities in identifying and prosecuting users who are involved in such violations.
+                        SITE CONTENTS
+                        Unless otherwise noted, all materials, including images, illustrations, designs, icons, photographs, audio, video clips, text, "look and feel", layout, graphics, messages, files, documents, and written and other materials that appear as part of the Site (collectively, the "Contents") whether publicly posted or privately transmitted, as well as all derivative works are property owned, controlled, licensed or used with permission by <strong>SHINE PERFUMES</strong> Perfumes, and/or its parents, subsidiaries and affiliates (collectively, "<strong>SHINE PERFUMES</strong> Group") or other parties that have licensed to or otherwise permitted their material to be used by <strong>SHINE PERFUMES</strong> Group. The Site as a whole and its Contents are protected by copyright, trademark, trade dress and other laws and all worldwide right, title and interest in and to the Site and its Contents are owned by <strong>SHINE PERFUMES</strong> Group or used with permission.</p>
+
+                    <h6>YOUR PRIVACY RIGHTS</h6>
+                    <p>
+                        If you elect to provide <strong>SHINE PERFUMES</strong> with your email address and check the box to receive marketing emails, You agree that <strong>SHINE PERFUMES</strong> may send electronic mail to you for the purpose of advising you of changes or additions to this Site, about any of SHINE PERFUMES’s products or services, or for such other purpose(s) as we deem appropriate. All information we collect on this Site is subject to ourPrivacy Policy. By using the Site, you consent to all actions taken by us with respect to your information in compliance with the Privacy Policy.
+                    </p>
+                    <h6>INDEMNIFICATION</h6>
+                    <p>
+                        You agree to defend, indemnify and hold <strong>SHINE PERFUMES</strong> Group harmless from and against any and all claims, damages, costs and expenses, including attorneys' fees, arising from: (i) your use of and access of the Site; (ii) your violation of any term of these Terms of Use; (iii) your violation of any third party right, including without limitation any copyright, property, or privacy right; or (iv) any claim that your use of the Site caused damage to a third party.
+                    </p>
+                    <h6>LINKS TO OTHER WEB SITES</h6>
+                    <p>
+                        To the extent that this Site contains links to outside services and resources, including other websites, the availability and content of which <strong>SHINE PERFUMES</strong> Group does not own, operate or control, any concerns regarding any such service or resource, or any link thereto, should be directed to the particular outside service, resource or website. Any such links are provided solely as a convenience to you. If you click on these links, you will leave this Site. <strong>SHINE PERFUMES</strong> makes no representations or warranties concerning and is not responsible for the content, information or other material on or accessed from any other websites that are not owned, operated or controlled by <strong>SHINE PERFUMES</strong> Group. Your linking to this Site, off-site pages or other sites is at your own risk and without the consent of <strong>SHINE PERFUMES</strong>.
+                    </p>
+                    <h6>DISCLAIMER</h6>
+                    <p>
+                        TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, <strong>SHINE PERFUMES</strong> ASSUMES NO RESPONSIBILITY FOR AND SHALL NOT BE LIABLE FOR ANY DAMAGES TO, INTERRUPTION OF SERVICE OR VIRUSES THAT MAY INFECT YOUR COMPUTER OR TELECOMMUNICATIONS EQUIPMENT ARISING FROM YOUR ACCESS TO OR USE OF THIS SITE AND ITS CONTENTS. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL <strong>SHINE PERFUMES</strong> OR ANY OF ITS AFFILIATED ENTITIES OR SUPPLIERS OR THEIR RESPECTIVE OFFICERS, DIRECTORS, ATTORNEYS, EMPLOYEES OR AGENTS BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES, SUCH AS LOSS OF INCOME OR REVENUE, LOSS OF BUSINESS OR PROFITS, LOSS OR CORRUPTION OF DATA, EVEN IF <strong>SHINE PERFUMES</strong> HAS BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, WHETHER IN AN ACTION UNDER CONTRACT, NEGLIGENCE OR ANY OTHER THEORY, ARISING OUT OF OR IN CONNECTION WITH THE USE, INABILITY TO USE OR PERFORMANCE OF THE INFORMATION AND SERVICE AVAILABLE FROM THE SITE. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OR THE EXISTENCE OF ANY LIMITED REMEDY. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, <strong>SHINE PERFUMES</strong> IS NOT RESPONSIBLE OR LIABLE WHATSOEVER IN ANY MANNER FOR ANY CONTENT POSTED ON OR AVAILABLE THROUGH THE SERVICES (INCLUDING CLAIMS OF INFRINGEMENT RELATING TO THAT CONTENT), FOR YOUR USE OF THE SERVICES, OR FOR THE CONDUCT OF THIRD PARTIES ON OR THROUGH THE SERVICES.
+                    </p>
+                    <h6>INACCURACY DISCLAIMER</h6>
+                    <p>
+                        From time to time there may be information on this Site that contains typographical errors, inaccuracies, or omissions, including those that may relate to product descriptions, pricing, availability, shipping, store locations and job postings. We reserve the right to correct any errors, inaccuracies or omissions and to change or update information at any time without prior notice. We apologize for any inconvenience this may cause you. <strong>SHINE PERFUMES</strong> will use commercially reasonable efforts to provide accurate and updated information. However, <strong>SHINE PERFUMES</strong> cannot and does not guarantee the accuracy of such information. Finally, through the Site, <strong>SHINE PERFUMES</strong> provides the capability for you to upload and download files from/to your computer. Although <strong>SHINE PERFUMES</strong> takes the security precautions outlined in the Terms of Use and Privacy Policy, there can be no guarantee that files you download from the Site will be corruption free, will not be intercepted by pirates, or will meet your needs and expectations.
+                    </p>
+                    <h6>TERMINATION</h6>
+                    <p>
+                        You may terminate these Terms of Use at any time by discontinuing use of the Site. <strong>SHINE PERFUMES</strong> also may terminate your use of this Site at any time, whether with or without prior notice, by cancelling your account or deny your access to the Site, if in SHINE PERFUMES’s sole discretion you fail to comply with any term or provision of these Terms of Use.
+                        EVENTS OUTSIDE OUR CONTROL
+                        We will not be liable or responsible for any failure to perform, or delay in performance of, any of our obligations under a purchase order or these Terms of Use that is caused by events outside our reasonable control ("Force Majeure Event"). A Force Majeure Event includes any act, event, non-happening, omission or accident beyond our reasonable control and includes in particular (without limitation) the following: Strikes, lock-outs or other industrial action; Civil commotion, riot, invasion, terrorist attack or threat of terrorist attack, war (whether declared or not) or threat or preparation for war; Fire, explosion, storm, flood, earthquake, subsidence, epidemic or other natural disaster; Impossibility of the use of railways, shipping, aircraft, motor transport or other means of public or private transport; Impossibility of the use of public or private telecommunications networks; The acts, decrees, legislation, regulations or restrictions of any government. Our performance under any purchase order or these Terms of Use is deemed to be suspended for the period that the Force Majeure Event continues, and we will have an extension of time for performance for the duration of that period. We will use our reasonable endeavours to bring the Force Majeure Event to a close or to find a solution by which our obligations may be performed despite the Force Majeure Event.
+                    </p>
+                </div>
+            </div>
+            <Footer />
+        </div>
+    )
+}
+
+export default T_and_C
