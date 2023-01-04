@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Footer from './Footer';
 import './ReactStyle.css'
 
@@ -15,7 +14,6 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                 <span>(<strong>{size}</strong> item in your cart)</span>
                 <button onClick={emptyCart} className='btn btn-secondary'>Empty Cart</button>
                 </div>
-                
             </div>
             <hr />
             <div className='row d-flex justify-content-around mt-2 px-2'>
@@ -32,7 +30,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                                     </div>
                                     <div className="titleFlex col-2">
                                         <div className='stringing h-50 '><strong>Price:</strong></div>
-                                        <div className='stringing h-50 '>{price}₹</div>
+                                        <div className='stringing h-50 '>₹{price}</div>
                                     </div>
                                     <div className="BtnFlex col-3">
                                         <div className='stringing h-50 '><button className='btn btn-success w-75 innerBtnCss'>BUY</button></div>
@@ -56,7 +54,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
             <hr />
             <div className="row">
                 <div className="col-md-6 text-center">
-                    <h3>Total Amount : {cartTotal}₹</h3>
+                    <h3>Total Amount :₹{cartTotal}</h3>
                 </div>
                 <div className="col-md-6 text-center">
                     <button className='btn btn-primary col-md-4'>Pay Now</button>

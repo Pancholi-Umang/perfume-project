@@ -48,7 +48,7 @@ const Item = [
     category: "deodrant",
     imag: Beauty,
     price:270,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "BEAUTY is a floral fragrance for women. Top notes features rose, citruses & green notes.",
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const Item = [
     category: "deodrant",
     imag: code,
     price:300,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The access of all codes Top notes are geranium, lavender, cinnamon & cedar.",
   },
   {
     id: 3,
@@ -64,7 +64,7 @@ const Item = [
     category: "deodrant",
     imag: fanatic2,
     price:315,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "MY FANATIC is a pure classic floral woody fragrance. Top notes are grapefruit, cardamom, rosemary & cedar leaf, mixed with the core of Mexican tuberose & ylang – ylang.",
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ const Item = [
     category: "deodrant",
     imag: soir1,
     price:195,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "SOIR is the best part of the day. SOIR is floral, lighter interpretation of the original. It is romantic, fresh, youthful & more energetic. It tells you to say ‘yes’ to simplicity, joy to life, dreams & independence. Top notes are cassis, rose & freesia.",
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const Item = [
     category: "frangrance-oil",
     imag: Gulab2,
     price:150,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings",
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const Item = [
     category: "frangrance-oil",
     imag: ratrani,
     price:120,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 7,
@@ -96,7 +96,7 @@ const Item = [
     category: "fragrance Gift Set",
     imag: american1,
     price:450,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "American Jeans by Editor is a fresh, sharp and masculine fragrance.",
   },
   {
     id: 8,
@@ -104,7 +104,7 @@ const Item = [
     category: "fragrance Gift Set",
     imag: calvin1,
     price:555,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "A romantic fragrance with a hint of marine scent. Calvin opens with camomile, apple, lychee, mandarine and plum. balanced by coriander and sandalwood.",
   },
   {
     id: 9,
@@ -112,7 +112,7 @@ const Item = [
     category: "frangrance-oil",
     imag: Levender4,
     price:155,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The colour of success. Top notes are bergamot, mandarin & lavender . The heart of the lily of the valley, rose, freesia & ylang-ylang.",
   },
   {
     id: 10,
@@ -120,7 +120,7 @@ const Item = [
     category: "frangrance-oil",
     imag: mogra,
     price:110,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The colour of success. Top notes are bergamot, mandarin & lavender . The heart of the lily of the valley, rose, freesia & ylang-ylang.",
   },
   {
     id: 11,
@@ -128,7 +128,7 @@ const Item = [
     category: "frangrance-oil",
     imag: jasmin,
     price:190,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The access of all codes Top notes are geranium, lavender, cinnamon & cedar.",
   },
   {
     id: 12,
@@ -136,7 +136,7 @@ const Item = [
     category: "fragrance Gift Set",
     imag: onceLove,
     price:575,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Enriched with the goodness of ocean extracts, Once Love by Editor keeps you fresh and smelling great throughout the day",
   },
   {
     id: 13,
@@ -144,7 +144,7 @@ const Item = [
     category: "frangrance-oil",
     imag: RajniGandha,
     price:150,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 14,
@@ -152,7 +152,7 @@ const Item = [
     category: "frangrance-oil",
     imag: Secreto,
     price:175,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings..",
   },
   {
     id: 15,
@@ -160,7 +160,7 @@ const Item = [
     category: "Fruity Fragrance Oil",
     imag: bigLove,
     price:210,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 16,
@@ -168,7 +168,7 @@ const Item = [
     category: "perfumes",
     imag: MyFnatic1370,
     price:450,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "MY FANATIC is a pure classic floral woody fragrance.",
   },
   {
     id: 17,
@@ -176,7 +176,7 @@ const Item = [
     category: "perfumes",
     imag: blacksnack,
     price:565,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Let your perfume mark your presence wherever you go with the astonishing fragrance of BLACK by Editor.",
   },
   {
     id: 18,
@@ -184,7 +184,7 @@ const Item = [
     category: "perfumes",
     imag: banko,
     price:650,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 19,
@@ -192,7 +192,7 @@ const Item = [
     category: "perfumes",
     imag: Black290,
     price:290,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Let your perfume mark your presence wherever you go with the astonishing fragrance of BLACK by Editor.",
   },
   {
     id: 20,
@@ -200,7 +200,7 @@ const Item = [
     category: "perfumes",
     imag: Calvin,
     price:150,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Calvin by Editor keeps you fresh and smelling great throughout the day.",
   },
   {
     id: 21,
@@ -208,7 +208,7 @@ const Item = [
     category: "perfumes",
     imag: Chrome,
     price:150,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Wherever you go bring the invigorating mist of Chrome by Editor for a fresh breeze. Top notes include rosemary, pineapple, neroli, bergamot and lemon",
   },
   {
     id: 22,
@@ -224,7 +224,7 @@ const Item = [
     category: "perfumes",
     imag: Editor,
     price:550,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Wherever you go bring the invigorating mist of Chrome by Editor for a fresh breeze. Top notes include rosemary, pineapple, neroli, bergamot and lemon.",
   },
   {
     id: 24,
@@ -232,7 +232,7 @@ const Item = [
     category: "perfumes",
     imag: Meewra12,
     price:1200,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Meera whips up your senses into a stormy whirl. It is an Aromatic fougere fragrance which contains the opening notes of rosemary, green mint, lavender & basil..",
   },
   {
     id: 25,
@@ -240,7 +240,7 @@ const Item = [
     category: "perfumes",
     imag: Highness,
     price:550,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Top note includes lemon, white floral & green leaves.",
   },
   {
     id: 26,
@@ -256,7 +256,7 @@ const Item = [
     category: "Fruity Fragrance Oil",
     imag: fawake,
     price:190,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Top note includes lemon, white floral & green leaves.",
   },
   {
     id: 28,
@@ -264,7 +264,7 @@ const Item = [
     category: "Fruity Fragrance Oil",
     imag: juicy,
     price:300,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Harmony is a perfectly blended fragrance with a dash of the heavenly aroma by Editor. The opening notes contains accords of basil, green mint, rosemary & lavender.",
   },
   {
     id: 29,
@@ -272,7 +272,7 @@ const Item = [
     category: "perfumes",
     imag: Position,
     price:800,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Wherever you go bring the invigorating mist of Chrome by Editor for a fresh breeze. Top notes include rosemary, pineapple, neroli, bergamot and lemon.",
   },
   {
     id: 30,
@@ -280,7 +280,7 @@ const Item = [
     category: "perfumes",
     imag: attire,
     price:750,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Never goes out of style. Attire perfume is definitely masculine. Citrusy notes in the heart, fruity notes in top & amber in base.",
   },
   {
     id: 31,
@@ -288,7 +288,7 @@ const Item = [
     category: "perfumes",
     imag: americajeans,
     price:950,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Never goes out of style. American perfume is definitely masculine. Citrusy notes in the heart, fruity notes in top & amber in base.",
   },
   {
     id: 32,
@@ -296,7 +296,7 @@ const Item = [
     category: "deodrant",
     imag: whiteLinen,
     price:580,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The purest aroma. Top notes are vanilla, cocoa, lavender, bergamot & patchouli.",
   },
   {
     id: 33,
@@ -304,7 +304,7 @@ const Item = [
     category: "perfumes",
     imag: onceLoves,
     price:750,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Enriched with the goodness of ocean extracts, Once Love by Editor keeps you fresh and smelling great throughout the day.",
   },
   {
     id: 34,
@@ -312,7 +312,7 @@ const Item = [
     category: "deodrant",
     imag: story1,
     price:540,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "The beginning never ends. Woody aromatic fragrance. Top notes are lavender, bergamot, cedar & vanilla.",
   },
   {
     id: 35,
@@ -320,7 +320,7 @@ const Item = [
     category: "perfumes",
     imag: Sandal,
     price:650,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Enriched with the goodness of ocean extracts, Sandal by Editor keeps you fresh and smelling great throughout the day.",
   },
   {
     id: 36,
@@ -328,7 +328,7 @@ const Item = [
     category: "perfumes",
     imag: Soir900,
     price:900,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "SOIR is the best part of the day. SOIR is floral, lighter interpretation of the original. It is romantic, fresh, youthful & more energetic. ",
   },
   {
     id: 37,
@@ -336,7 +336,7 @@ const Item = [
     category: "perfumes",
     imag: Style1260,
     price:1260,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "STYLE the way of living. Top note includes sexy blood orange, grapefruit, cinnamon, mint, rose, spices, light leather, white wood, patchouli & amber.",
   },
   {
     id: 38,
@@ -344,7 +344,7 @@ const Item = [
     category: "perfumes",
     imag: UKPound290,
     price:290,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 39,
@@ -352,7 +352,7 @@ const Item = [
     category: "deodrant",
     imag: m2,
     price:270,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 40,
@@ -360,7 +360,7 @@ const Item = [
     category: "deodrant",
     imag: PurePurple,
     price:700,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Product Colour May Slightly Vary Due to Photographic Lighting Sources or Your Monitor Settings.",
   },
   {
     id: 41,
@@ -368,7 +368,7 @@ const Item = [
     category: "deodrant",
     imag: juicy1,
     price:320,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Life is fresh fill it with surprises. Exotics fruits experience. Top notes are orchid, violet, watery notes, green notes, rose, peach, lotus, mango, passion fruit & lily of the valley.",
   },
   {
     id: 42,
@@ -376,7 +376,7 @@ const Item = [
     category: "deodrant",
     imag: Fressia,
     price:500,
-    description: "Lorem ipsum dolor sit amet.",
+    description: "Life is fresh fill it with surprises. Exotics fruits experience.",
   },
 ]
  export default Item;

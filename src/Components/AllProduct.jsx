@@ -11,7 +11,6 @@ function AllProduct({ changeHandler, data, SetCart, ClickToAnotherPage}) {
 
       <div className='row d-flex justify-content-around mt-2 px-2'>
         {data.map((value, index) => {
-
           return (
             <Card key={index} SetCart={SetCart} ClickToAnotherPage={ClickToAnotherPage} value={value} />
           );

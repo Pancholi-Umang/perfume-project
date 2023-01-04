@@ -1,7 +1,6 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import Category from "./Components/Category";
 import AllProduct from "./Components/AllProduct";
@@ -13,7 +12,8 @@ import TermsCondition from "./Section/T_and_C";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./Login/Registration";
 import AddCart from "./Components/AddCart";
-import Item from './Items/Items' 
+import Item from "./Items/Items";
+import Product from "./Components/Product";
 
 const LocalStorageCartItem = () => {
   let list = localStorage.getItem("ShowCartData");
@@ -28,6 +28,7 @@ const LocalStorageCartItem = () => {
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
+  const [showProductPage, setShowProductPage] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -40,12 +41,10 @@ function App() {
   const SetCart = (CartItem) => {
     setAddToCart([...addToCart, CartItem]);
   };
- 
-  const emptyCart = () => {
-    setAddToCart([])
-  }
 
-  
+  const emptyCart = () => {
+    setAddToCart([]);
+  };
 
   const changeHandler = (e) => {
     var search = e.target.value;
@@ -60,25 +59,59 @@ function App() {
     setAddToCart(DeleteCardData);
   };
 
-  const ClickToAnotherPage = (e) => {
-    console.log("click",e)
-  }
+  const ClickToAnotherPage = (DynamicRouting) => {
+    setShowProductPage([...showProductPage, DynamicRouting]);
+  };
 
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
-        <Header size={addToCart.length}/>
+        <Header size={addToCart.length} />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/category" element={<Category Alldata={data} SetCart={SetCart}/>} />
-          <Route exact path="/allproduct" element={<AllProduct data={data} SetCart={SetCart} changeHandler={changeHandler} ClickToAnotherPage={ClickToAnotherPage} />} />
+          <Route
+            exact
+            path="/category"
+            element={
+              <Category
+                Alldata={data}
+                SetCart={SetCart}
+                ClickToAnotherPage={ClickToAnotherPage}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/allproduct"
+            element={
+              <AllProduct
+                data={data}
+                SetCart={SetCart}
+                changeHandler={changeHandler}
+                ClickToAnotherPage={ClickToAnotherPage}
+              />
+            }
+          />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reg" element={<Registration />} />
-          <Route exact path="/cart" element={<AddCart addToCart={addToCart} size={addToCart.length} deleteItems={deleteItems} emptyCart={emptyCart}/>} />
+          <Route
+            exact
+            path="/cart"
+            element={
+              <AddCart
+                addToCart={addToCart}
+                size={addToCart.length}
+                deleteItems={deleteItems}
+                emptyCart={emptyCart}
+              />
+            }
+          />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/policy" element={<PrivacyPolicy />} />
           <Route exact path="/terms" element={<TermsCondition />} />
+          <Route exact path="/product" element={<Product showProductPage={showProductPage} SetCart={SetCart}/>} />
+          {/* <Route exact path="/product/:showProductPage" element={<Product/>}/> */}
         </Routes>
       </BrowserRouter>
     </div>
