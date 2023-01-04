@@ -7,12 +7,12 @@ function Login() {
     <div className="container">
       <div className=" mt-5 d-flex justify-content-center row">
 
-        <div className="bg-warning mt-3 col-md-12 d-flex justify-content-between">
+        {/* <div className="bg-warning mt-3 col-md-12 d-flex justify-content-between">
           <div className="col-md-8 mx-auto text-center">
             <h1>Welcome back to </h1>
             <h2 className="white">shineperfumes.com</h2>
           </div>
-        </div>
+        </div> */}
 
         <form className="col-lg-4 col-md-8">
           <h3 className="text-center mt-3 ">Sign In</h3>

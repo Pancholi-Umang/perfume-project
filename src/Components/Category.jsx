@@ -34,7 +34,7 @@ const Category = ({Alldata,SetCart,ClickToAnotherPage}) => {
           );
         })}
       </div>
-      <div className="row korimen">
+      <div className="row d-flex justify-content-around m-1">
         {data.map((value, index) => {
           return (
             <Card key={index} SetCart={SetCart} value={value} ClickToAnotherPage={ClickToAnotherPage} />

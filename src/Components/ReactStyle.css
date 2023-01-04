@@ -37,6 +37,9 @@
 
 }
 
+.myChange{
+    border: none;
+}
 
 .myChange:hover {
     background: #000;
@@ -179,4 +182,15 @@
     align-items: center;
     justify-content: space-evenly;
     /* flex-direction: column; */
+}
+
+.clor{
+    background-color: #c7dff7;
+    color: black;
+}
+
+/* lightblue bg */
+
+.card{
+    border-radius: 10px;
 }

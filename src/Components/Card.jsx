@@ -3,7 +3,7 @@ import './ReactStyle.css'
 import { Link } from 'react-router-dom';
 
 function Card({ SetCart, value, ClickToAnotherPage }) {
-    const {id, imag, name, category, price } = value;
+    const {imag, name, category, price } = value;
     return (
         <>
             <div className=" mt-2 mx-1 col-md-3 myData p-1 card">
@@ -11,9 +11,9 @@ function Card({ SetCart, value, ClickToAnotherPage }) {
                 <div className="card-body">
                     <h5 className="card-title text-center">{name.toUpperCase()}&nbsp;({category.toUpperCase()})</h5>
                     <p className="card-text text-center"><strong>₹{price}</strong></p>
-                    <p className="card-text btnAround d-flex justify-content-around">
-                        <button className="btn btn-warning myChange" onClick={() => SetCart(value)}>ADD CART</button>
-                        <Link className="btn btn-warning myChange" to="/product/" onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
+                    <p className="card-text btnAround d-flex justify-content-around p-1">
+                        <button className="btn clor myChange" onClick={() => SetCart(value)}>ADD CART</button>
+                        <Link className="btn btn-success myChange" to="/product" onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
                     </p>
                 </div>
             </div>
