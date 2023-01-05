@@ -59,8 +59,8 @@ function App() {
     setAddToCart(DeleteCardData);
   };
 
-  const ClickToAnotherPage = (DynamicRouting) => {
-    setShowProductPage([...showProductPage, DynamicRouting]);
+  const ClickToAnotherPage = (e) => {
+    setShowProductPage(e);
   };
 
   return (
@@ -110,8 +110,13 @@ function App() {
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/policy" element={<PrivacyPolicy />} />
           <Route exact path="/terms" element={<TermsCondition />} />
-          <Route exact path="/product" element={<Product showProductPage={showProductPage} SetCart={SetCart}/>} />
-          {/* <Route exact path="/product/:showProductPage" element={<Product/>}/> */}
+          <Route
+            exact
+            path={`/product/:Productname`}
+            element={
+              <Product showProductPage={showProductPage} SetCart={SetCart} />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

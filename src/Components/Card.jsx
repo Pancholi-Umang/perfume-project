@@ -13,7 +13,7 @@ function Card({ SetCart, value, ClickToAnotherPage }) {
                     <p className="card-text text-center"><strong>₹{price}</strong></p>
                     <p className="card-text btnAround d-flex justify-content-around p-1">
                         <button className="btn clor myChange" onClick={() => SetCart(value)}>ADD CART</button>
-                        <Link className="btn btn-success myChange" to="/product" onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
+                        <Link className="btn btn-success myChange" to={`/product/${name}`} onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
                     </p>
                 </div>
             </div>
