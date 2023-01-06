@@ -25,10 +25,22 @@ const LocalStorageCartItem = () => {
   }
 };
 
+// product details page it do not lost data after refresh ====>
+
+const ProductDetailsPage = () => {
+  let list = localStorage.getItem("ProductDetailsData");
+
+  if (list) {
+    return JSON.parse(localStorage.getItem("ProductDetailsData"));
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
-  const [showProductPage, setShowProductPage] = useState([]);
+  const [showProductPage, setShowProductPage] = useState(ProductDetailsPage());
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -40,6 +52,16 @@ function App() {
 
   const SetCart = (CartItem) => {
     setAddToCart([...addToCart, CartItem]);
+  };
+
+  // -------> product Details vala page nu chhe <------
+
+  useEffect(() => {
+    localStorage.setItem("ProductDetailsData", JSON.stringify(showProductPage));
+  }, [showProductPage]);
+
+  const ClickToAnotherPage = (e) => {
+    setShowProductPage(e);
   };
 
   const emptyCart = () => {
@@ -57,10 +79,6 @@ function App() {
   const deleteItems = (index) => {
     const DeleteCardData = addToCart.filter((element) => index !== element.id);
     setAddToCart(DeleteCardData);
-  };
-
-  const ClickToAnotherPage = (e) => {
-    setShowProductPage(e);
   };
 
   return (

@@ -33,7 +33,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                                         <div className='stringing h-50 '>₹{price}</div>
                                     </div>
                                     <div className="BtnFlex col-3">
-                                        <div className='stringing h-50 '><button className='btn btn-success w-75 innerBtnCss'>BUY</button></div>
+                                        <div className='stringing h-50 '><button className='btn btn-success w-75 innerBtnCss'>PAY</button></div>
                                         <div className='stringing h-50 '><button className='btn btn-danger w-75 innerBtnCss' onClick={() => deleteItems(id)} >REMOVE</button></div>
                                     </div>
                                 </div>
