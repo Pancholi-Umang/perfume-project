@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../Components/Footer'
+import './section.css'
 
 function T_and_C() {
     return (
@@ -8,7 +9,7 @@ function T_and_C() {
                 <div className="col-md-12">
                     <h1 className='text-center'>Terms & Conditions</h1>
                 </div>
-                <div className="col-md-12 p-5">
+                <div className="col-md-12 p-5 centerWalaText">
                     <p>
                         Please read the Terms of Use carefully before you start to use the Site. BY ACCESSING, BROWSING OR USING THE SITE (INCLUDING YOUR SUBMISSION OF INFORMATION TO THIS SITE), YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD AND AGREED TO BE BOUND BY THESE TERMS OF USE, INCLUDING THE PRIVACY POLICY (WHICH IS INCORPORATED HEREIN BY REFERENCE), AND TO COMPLY WITH ALL APPLICABLE INDIA LAWS AND REGULATIONS. BY USING THE SITE, YOU AGREE TO THESE TERMS OF USE; IF YOU DO NOT AGREE, DO NOT USE THE SITE. You agree that the Terms of Use, combined with your act of using the Site, have the same legal force and effect as a written contract with your written signature and satisfy any laws that require a writing or signature, including any applicable statute of frauds. You further agree that you shall not challenge the validity, enforceability or admissibility of the Terms of Use on the grounds that it was electronically transmitted or authorized. If you do not agree to be bound by these terms and conditions of use, you may not access or otherwise use this Site. We reserve the right to revise these terms and conditions from time to time. When we make changes, we will post them here. You may wish to check this section from time to time, because your use of the Site following any changes indicates your agreement to be bound by those modifications. This Site is offered and available to users who are 13 years of age or older. By using this Site, you represent and warrant that you meet the foregoing eligibility requirement. If you do not meet this requirement, you must not access or use the Site.
                     </p>

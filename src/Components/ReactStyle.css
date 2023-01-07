@@ -24,7 +24,7 @@
     border-radius: 500px;
     display: flex;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
 }
 
 .makeAround {
@@ -33,11 +33,11 @@
 }
 
 .xcv {
-    outline: 1px solid rgb(31, 30, 30);
+    outline: 1px solid rgb(123, 120, 120);
 
 }
 
-.myChange{
+.myChange {
     border: none;
 }
 
@@ -46,14 +46,14 @@
     color: white;
 }
 
-.flex-end-classes{
+.flex-end-classes {
     display: flex;
-    align-items: center ;
+    align-items: center;
     justify-content: flex-end;
 }
 
 
-.relPos{
+.relPos {
     position: relative;
     display: inline-block;
     width: 35px;
@@ -61,13 +61,13 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    
+
 }
 
-.CartSetting{
+.CartSetting {
     border: 1px solid white;
     position: absolute;
-    top:-2px;
+    top: -2px;
     right: 3px;
     color: white;
     height: 20px;
@@ -79,118 +79,289 @@
     justify-content: center;
 }
 
-.underbase{
+.underbase {
     position: absolute;
-    left: 0;    
+    left: 0;
 }
 
-.madeUpCartHeight{
+.madeUpCartHeight {
     min-height: 200px;
     max-height: 200px;
 }
 
-.AlignCneter{
+.AlignCneter {
     display: flex;
     align-items: center;
 }
 
-.setImageAtCart{
+.setImageAtCart {
     min-height: 150px;
     max-width: 150px;
 }
 
-.InCartInnerItem{
+.InCartInnerItem {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.titleFlex{
+.titleFlex {
     height: 150px;
     align-items: center;
     justify-content: center;
-    flex-direction:row;
+    flex-direction: row;
 }
 
-.BtnFlex{
+.BtnFlex {
     height: 150px;
     align-items: center;
     justify-content: center;
-    flex-direction:row;
+    flex-direction: row;
 }
 
-.stringing{
+.stringing {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.innerBtnCss{
+.innerBtnCss {
     display: flex;
     justify-content: center;
 }
 
-.span{
+.span {
     display: inline-block;
 }
 
-.flexContainer{
+.flexContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.clrCss{
+.clrCss {
     color: #000;
 }
 
-.forFlexColumndir{
+.centerStarmedia {
+    width: 70%;
+}
+
+.forFlexColumndir {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
 
-.clrWhite{
+.takeWidth {
+    width: 100%;
+}
+
+.clrWhite {
     color: aliceblue;
     text-decoration: none;
 }
 
-.clrWhite:hover{
+.clrWhite:hover {
     color: yellow;
     text-decoration: none;
 }
 
-.blackDarkerBg{
+.blackDarkerBg {
     background-color: black;
 }
 
-.uponclass{
+.uponclass {
     text-align: left;
 }
 
-.clrWhites{
+.clrWhites {
     color: white;
 }
 
-.ylowclr{
+.ylowclr {
     color: yellow;
 }
 
-.productFlexButton{
+.productFlexButton {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     /* flex-direction: column; */
 }
 
-.clor{
+.clor {
     background-color: #c7dff7;
     color: black;
 }
 
 /* lightblue bg */
 
-.card{
+.card {
     border-radius: 10px;
+}
+
+/* -------> quantity btn css */
+
+.counter {
+    background: lightblue;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+
+.counter input {
+    width: 30px;
+    border: 0;
+    line-height: 25px;
+    font-size: 15px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    appearance: none;
+    outline: 0;
+}
+
+.counter span {
+    line-height: 25px;
+    text-align: center;
+    font-size: 25px;
+    padding: 5px 5px 7px 5px;
+    cursor: pointer;
+    color: #000;
+    user-select: none;
+    border: none;
+    outline: none;
+}
+
+
+/* Responsive design to use Media Query */
+
+
+@media only screen and (max-width: 768px) {
+    .counter {
+        margin: auto;
+        margin-top: 10px;
+    }
+    body{
+        background-color: lightblue;
+    }
+
+    .centerMedia {
+        margin: auto;
+        margin-bottom: 7px;
+    }
+
+    .mediaQueryImage {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .madeRelative,
+    .YellowPartCenter {
+        text-align: center;
+    }
+
+    .helpinmedia {
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .innerBtnCss {
+        font-size: 13px;
+    }
+
+    .centerStarmedia {
+        width: 100%;
+        margin: auto;
+    }
+
+    .onmediaBgChange {
+        background-color: lightblue;
+        font-size: 25px;
+        color: black;
+        text-align: center;
+        width: 100%;
+    }
+
+    .forFlexColumndir {
+        text-align: center;
+    }
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .btnAround {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .myChange {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+    .centerStarmedia {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+
+@media only screen and (max-width: 395px) {
+    .helpinmedia {
+        margin-bottom: 10px;
+    }
+
+    .z-media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .thatsBrandName {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .clrWhites {
+        font-size: 10px;
+    }
+
+    .setInMediaUpDown {
+        text-align: center;
+    }
+
+    .onmediaBgChange {
+        background-color: lightblue;
+        font-size: 25px;
+        color: black;
+        text-align: center;
+        width: 100%;
+    }
+
+    .forFlexColumndir {
+        text-align: center;
+    }
+
+    .helpinmedia {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+::selection {
+    color: white;
+    background: black;
 }

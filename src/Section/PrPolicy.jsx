@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../Components/Footer'
+import './section.css'
 
 function PrPolicy() {
     return (
@@ -8,7 +9,7 @@ function PrPolicy() {
                 <div className="col-md-12 mb-3">
                     <h1 className='text-center'>Privacy Policy</h1>
                 </div>
-                <div className="col-md-12 p-5">
+                <div className="col-md-12 p-5 centerWalaText">
                     <p>
                         At SHINE PERFUMES, "we"; or “us”, we respect and protect your privacy rights. This Privacy Policy describes:
                     </p>
