@@ -14,7 +14,7 @@ const Product = ({ showProductPage, SetCart }) => {
         <>
             <div className='container'>
                 <div className="bg-warning mt-3 mb-3 row d-flex justify-content-start p-2 YellowPartCenter">
-                    <h1>{name.toUpperCase()} ({category.toUpperCase()})</h1>
+                    <h1 className='onMediaWidthChange'>{name.toUpperCase()} ({category.toUpperCase()})</h1>
                 </div>
                 <div className="row acjustmedia">
                 
@@ -27,7 +27,7 @@ const Product = ({ showProductPage, SetCart }) => {
                         <strong><h1 className="card-text">₹{price}</h1></strong>
 
                         <div className="d-flex align-items-center justify-content-start mt-1">
-                            {/* <QuantityBtn /> */}
+                            <QuantityBtn />
                         </div>
 
                         <hr className='mt-3' />

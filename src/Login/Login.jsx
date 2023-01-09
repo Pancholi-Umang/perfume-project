@@ -4,46 +4,43 @@ import Footer from "../Components/Footer";
 
 function Login() {
   return (
-    <div className="container">
-      <div className=" mt-5 d-flex justify-content-center row">
-
-        {/* <div className="bg-warning mt-3 col-md-12 d-flex justify-content-between">
-          <div className="col-md-8 mx-auto text-center">
-            <h1>Welcome back to </h1>
-            <h2 className="white">shineperfumes.com</h2>
-          </div>
-        </div> */}
-
-        <form className="col-lg-4 col-md-8">
-          <h3 className="text-center mt-3 ">Sign In</h3>
-          <div className="mb-3">
-            <label className="mb-1">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-            />
-          </div>
-          <div className="mb-3">
-            <label className="mb-1">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-            />
-          </div>
-          <div className="d-grid mb-3">
-            <button type="submit" className="btn btn-primary ">
-              Submit
-            </button>
-            <Link to="/reg" className="mt-1 anchorRemove"> Create An Account</Link>
+    <div>
+      <div className="Auth-form-container ">
+        <form className="Auth-form">
+          <div className="Auth-form-content">
+            <h3 className="Auth-form-title">Sign In</h3>
+            <div className="form-group mt-3">
+              <label>Email address</label>
+              <input
+                type="email"
+                className="form-control mt-1"
+                placeholder="Enter email"
+              />
+            </div>
+            <div className="form-group mt-3">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control mt-1"
+                placeholder="Enter password"
+              />
+            </div>
+            <div className="d-grid gap-2 mt-3">
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </div>
+            <p className="forgot-password text-right mt-2">
+              <Link to="/reg" className="mt-1 anchorRemove"> Create An Account</Link>
+            </p>
           </div>
         </form>
-
       </div>
       <Footer />
     </div>
   );
 }
 
-export default Login;
+export default Login
+
+

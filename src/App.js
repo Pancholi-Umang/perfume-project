@@ -54,7 +54,7 @@ function App() {
     setAddToCart([...addToCart, CartItem]);
   };
 
-  // -------> product Details vala page nu chhe <------
+  // ------> product Details vala page nu chhe <------
 
   useEffect(() => {
     localStorage.setItem("ProductDetailsData", JSON.stringify(showProductPage));

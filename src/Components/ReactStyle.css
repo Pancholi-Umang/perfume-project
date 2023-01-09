@@ -1,3 +1,7 @@
+body {
+    background: rgb(228, 238, 243);
+}
+
 .thatsBrandName {
     font-family: "Audiowide", sans-serif;
 }
@@ -17,6 +21,7 @@
     justify-content: space-between;
     position: relative;
 }
+
 
 .makingRoundedIcon {
     height: 200px;
@@ -205,7 +210,7 @@
 /* -------> quantity btn css */
 
 .counter {
-    background: lightblue;
+    background: rgb(202, 227, 236);
     margin-top: 5px;
     margin-bottom: 2px;
     width: 120px;
@@ -221,8 +226,8 @@
     line-height: 25px;
     font-size: 15px;
     text-align: center;
-    background: #fff;
-    color: #000;
+    background: #212529;
+    color: #fff;
     appearance: none;
     outline: 0;
 }
@@ -239,6 +244,12 @@
     outline: none;
 }
 
+.setWidthWithMedia {
+    width: 50%;
+    margin: auto;
+    border-radius: 15px;
+    padding-left: 20px;
+}
 
 /* Responsive design to use Media Query */
 
@@ -248,7 +259,9 @@
         margin: auto;
         margin-top: 10px;
     }
-    body{
+
+
+    body {
         background-color: lightblue;
     }
 
@@ -293,6 +306,34 @@
         text-align: center;
     }
 
+    .onMediaWidthChange {
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .gridSystemOnMedia {
+        display: flex;
+    }
+
+    .myData {
+        width: 40%;
+    }
+}
+
+
+@media only screen and (min-width: 510px) and (max-width: 768px) {
+    .myData {
+        width: 70%;
+    }
+
+    .setWidthWithMedia {
+        width: 70%;
+    }
 }
 
 
@@ -304,9 +345,17 @@
         flex-direction: column;
     }
 
+    body {
+        background-color: lightblue;
+    }
+
     .myChange {
         width: 100%;
         margin-top: 5px;
+    }
+
+    .setWidthWithMedia {
+        width: 80%;
     }
 }
 
@@ -364,4 +413,29 @@
 ::selection {
     color: white;
     background: black;
+}
+
+@media only screen and (min-width: 310px) and (max-width: 368px) {
+    .btnAround {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .btnAround .myChange {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+}
+
+@media only screen and (min-width: 345px) and (max-width: 510px) {
+    .myData {
+        width: 100%;
+    }
+
+    .setWidthWithMedia {
+        width: 100%;
+    }
 }
