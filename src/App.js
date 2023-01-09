@@ -81,6 +81,31 @@ function App() {
     setAddToCart(DeleteCardData);
   };
 
+  // =====> Quantity Button Valu Chhe
+  let [valueQuantity, setValQuantity] = useState(1);
+
+  useEffect(()=>{
+    return setValQuantity(1)
+  },[showProductPage])
+
+  function plusing() {
+    if (valueQuantity < 999) {
+      setValQuantity(valueQuantity + 1);
+    } else {
+      setValQuantity(999);
+    }
+  }
+
+  function minusing() {
+    if (valueQuantity > 1) {
+      setValQuantity(valueQuantity - 1);
+    } else {
+      setValQuantity(1);
+    }
+  }
+
+  // ====> End Quantity BUtton
+
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
@@ -132,7 +157,13 @@ function App() {
             exact
             path={`/product/:Productname`}
             element={
-              <Product showProductPage={showProductPage} SetCart={SetCart} />
+              <Product
+                showProductPage={showProductPage}
+                SetCart={SetCart}
+                valueQuantity={valueQuantity}
+                plusing={plusing}
+                minusing={minusing}
+              />
             }
           />
         </Routes>

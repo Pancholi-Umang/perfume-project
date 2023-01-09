@@ -4,12 +4,13 @@ import Footer from './Footer';
 import QuantityBtn from './QuantityBtn';
 import './ReactStyle.css'
 
-const Product = ({ showProductPage, SetCart }) => {
+const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing }) => {
 
     const { Productname } = useParams()
     console.log(Productname);
 
     const { imag, category, name, price, description } = showProductPage;
+    // let TotalPriceWithQuantity = ;
     return (
         <>
             <div className='container'>
@@ -17,7 +18,7 @@ const Product = ({ showProductPage, SetCart }) => {
                     <h1 className='onMediaWidthChange'>{name.toUpperCase()} ({category.toUpperCase()})</h1>
                 </div>
                 <div className="row acjustmedia">
-                
+
                     <div className="col bg-dark text-white d-flex justify-content-center">
                         <img src={imag} className="mediaQueryImage" alt="error" />
                     </div>
@@ -27,7 +28,11 @@ const Product = ({ showProductPage, SetCart }) => {
                         <strong><h1 className="card-text">₹{price}</h1></strong>
 
                         <div className="d-flex align-items-center justify-content-start mt-1">
-                            <QuantityBtn />
+                            <QuantityBtn 
+                                valueQuantity={valueQuantity}
+                                plusing={plusing}
+                                minusing={minusing} 
+                            />
                         </div>
 
                         <hr className='mt-3' />
@@ -36,7 +41,7 @@ const Product = ({ showProductPage, SetCart }) => {
                         <hr className='mt-5 shortDownHr' />
                         <div className='productFlexButton'>
                             <button className="btn btn-warning col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
-                            <button className="btn btn-success mx-auto mb-2 col-md-4 text-center">PAY NOW</button>
+                            <button className="btn btn-success mx-auto mb-2 col-md-4 text-center">PAY {price * valueQuantity}</button>
                         </div>
                     </div>
                 </div>
