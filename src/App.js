@@ -120,6 +120,7 @@ function App() {
                 Alldata={data}
                 SetCart={SetCart}
                 ClickToAnotherPage={ClickToAnotherPage}
+                Item={Item}
               />
             }
           />
@@ -128,9 +129,9 @@ function App() {
             path="/allproduct"
             element={
               <AllProduct
+                changeHandler={changeHandler}
                 data={data}
                 SetCart={SetCart}
-                changeHandler={changeHandler}
                 ClickToAnotherPage={ClickToAnotherPage}
               />
             }

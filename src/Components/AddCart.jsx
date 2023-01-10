@@ -1,9 +1,8 @@
-import React,{useState} from "react";
+import React from "react";
 import './ReactStyle.css'
 import Footer from './Footer';
 
 const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
-    const [CheckPrice , setCheckPrice] = useState(1)
     let cartTotal = 0;
     let prices = 0;
     let total = [];
@@ -24,7 +23,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                                     </p>
                                 </div>
                             </div>
-                            <span className="p-1">(<strong>{size}</strong> item in your cart)</span>
+                            <span className="mt-0 mb-0">(<strong>{size}</strong> item in your cart)</span>
                             <hr />
                             {addToCart.map((value, index) => {
                                 const { id, imag, name, price, category } = value;
@@ -33,7 +32,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                                         <div className="card-body p-4">
                                             <div className="row justify-content-between align-items-center">
                                                 <div className="col-md-2 col-lg-2 col-xl-2">
-                                                    <img className=" card-img rounded-3 container-fluid" src={imag} alt="Card image cap" />
+                                                    <img className=" card-img rounded-3" fluid src={imag} alt="Card image cap" />
 
                                                 </div>
                                                 <div className="col-md-2 col-lg-2 col-xl-2">
@@ -41,15 +40,13 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                                                     <p>{category.toUpperCase()}</p>
                                                 </div>
                                                 <div className="col-md-2 col-lg-2 col-xl-2 d-flex align-items-center justify-content-around">
-                                                    <button className="px-2 btn">-</button>
-                                                    <input                                                
-                                                        className="text-center rounded-5 form-control input-sm"
+                                                    <button className="px-2 btn">+</button>
+                                                    <input
+                                                        className="text-center RemoveSpinner form-control input-sm"
                                                         type="number"
-                                                        value={CheckPrice}
-                                                        onChange={(e)=>setCheckPrice(e.target.value)}
                                                     />
 
-                                                    <button className="px-2 btn">+</button>
+                                                    <button className="px-2 btn">-</button>
                                                 </div>
                                                 <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h5 className="onMediMargin"><strong>₹{price}</strong></h5>
@@ -71,6 +68,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart }) => {
                     prices = Number(data.price);
                     total.push(prices)
                     cartTotal += prices;
+
                 }, [])
             }
             <hr />

@@ -260,6 +260,16 @@ body {
     margin-bottom: 2px;
 }
 
+.RemoveSpinner{
+    text-align: center;
+    /* width: 45px; */
+}
+
+.RemoveSpinner::-webkit-inner-spin-button,
+.RemoveSpinner::-webkit-outer-spin-button{
+    display: none;
+}
+
 /* Responsive design to use Media Query */
 
 
