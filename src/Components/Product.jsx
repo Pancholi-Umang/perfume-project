@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import Footer from './Footer';
 import QuantityBtn from './QuantityBtn';
 import './ReactStyle.css'
+import { Link } from 'react-router-dom';
 
-const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing }) => {
+const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing,ShowPriceDetails }) => {
 
     const { Productname } = useParams()
     console.log(Productname);
 
     const { imag, category, name, price, description } = showProductPage;
-    // let TotalPriceWithQuantity = ;
     return (
         <>
             <div className='container'>
@@ -24,8 +24,8 @@ const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing })
                     </div>
 
                     <div className="col p-3 bg-dark madeRelative text-white">
-                        <h5 className="card-title">{name.toUpperCase()}&nbsp;({category.toUpperCase()})</h5>
-                        <strong><h1 className="card-text">₹{price}</h1></strong>
+                        <h5 className="card-title priceMedia">{name.toUpperCase()}&nbsp;({category.toUpperCase()})</h5>
+                        <strong><h1 className="card-text priceMedia">₹{price}</h1></strong>
 
                         <div className="d-flex align-items-center justify-content-start mt-1">
                             <QuantityBtn 
@@ -37,11 +37,11 @@ const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing })
 
                         <hr className='mt-3' />
                         <h5 className='bg-warning w-50 text-center p-1 rounded centerMedia text-dark'>Description:</h5>
-                        <p>{description}</p>
+                        <p className='description'>{description}</p>
                         <hr className='mt-5 shortDownHr' />
                         <div className='productFlexButton'>
-                            <button className="btn btn-warning col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
-                            <button className="btn btn-success mx-auto mb-2 col-md-4 text-center">PAY {price * valueQuantity}</button>
+                            <button className="btn btn-warning linkWithCssMedia col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
+                            <Link className="btn btn-success linkWithCssMedia mx-auto mb-2 col-md-4 text-center" to="/paymentgetway" onClick={() => ShowPriceDetails(showProductPage)}>PAY {price * valueQuantity}</Link>
                         </div>
                     </div>
                 </div>

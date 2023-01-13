@@ -14,6 +14,7 @@ import Registration from "./Login/Registration";
 import AddCart from "./Components/AddCart";
 import Item from "./Items/Items";
 import Product from "./Components/Product";
+import Pricepage from "./Components/Pricepage";
 
 const LocalStorageCartItem = () => {
   let list = localStorage.getItem("ShowCartData");
@@ -41,6 +42,7 @@ function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
   const [showProductPage, setShowProductPage] = useState(ProductDetailsPage());
+  const [PriceDetailsPage,setPriceDetailsPage] = useState([])
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -82,7 +84,7 @@ function App() {
   };
 
   // =====> Quantity Button Valu Chhe
-  let [valueQuantity, setValQuantity] = useState(1);
+  let [valueQuantity, setValQuantity] = useState(1);  
 
   useEffect(()=>{
     return setValQuantity(1)
@@ -102,6 +104,11 @@ function App() {
     } else {
       setValQuantity(1);
     }
+  }
+
+
+  function ShowPriceDetails(e){
+    setPriceDetailsPage(e)
   }
 
   // ====> End Quantity BUtton
@@ -142,12 +149,15 @@ function App() {
             exact
             path="/cart"
             element={
-              <AddCart
-                addToCart={addToCart}
-                size={addToCart.length}
-                deleteItems={deleteItems}
-                emptyCart={emptyCart}
-              />
+            <AddCart
+              addToCart={addToCart}
+              size={addToCart.length}
+              valueQuantity={valueQuantity}
+              deleteItems={deleteItems}
+              emptyCart={emptyCart}
+              plusing={plusing}
+              minusing={minusing}
+            />
             }
           />
           <Route exact path="/about" element={<About />} />
@@ -164,8 +174,14 @@ function App() {
                 valueQuantity={valueQuantity}
                 plusing={plusing}
                 minusing={minusing}
+                ShowPriceDetails={ShowPriceDetails}
               />
             }
+          />
+          <Route
+            exact
+            path="/paymentgetway"
+            element={ <Pricepage PriceDetailsPage={PriceDetailsPage} /> }
           />
         </Routes>
       </BrowserRouter>

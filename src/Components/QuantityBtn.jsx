@@ -8,7 +8,7 @@ const QuantityBtn = ({ valueQuantity, plusing, minusing}) => {
         <>
             <div className="counter">
                 <span className="down" onClick={minusing}>-</span>
-                <input type="text" value={valueQuantity} />
+                    <input type="text" className='RemoveSpinner no-drop' value={valueQuantity} disabled/>  {/*onChange use karvu nai*/}
                 <span className="up" onClick={plusing} >+</span>
             </div>
         </>

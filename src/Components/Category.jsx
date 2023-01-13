@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import './ReactStyle.css'
 
-const Category = ({Alldata, Item, SetCart, ClickToAnotherPage}) => {
+const Category = ({ Alldata, Item, SetCart, ClickToAnotherPage }) => {
   const [data, setData] = useState([]);
   const [name, setName] = useState("All Category")
 
-  React.useEffect(()=>{
+  useEffect(()=>{
     return setData(Item)
   },[])
 
+  
   const allValues = [...new Set(Alldata.map((val) => val.category))];
-  console.log(allValues);
 
   const handleClick = (btnProps) => {
-    console.log(btnProps)
-    if (!btnProps) {
-      return setData(Alldata);
+    if(btnProps){
+      const result = Alldata.filter((val) => {
+        setName(btnProps)
+        return val.category === btnProps;
+      });
+      setData(result);
     }
-    const result = Alldata.filter((val) => {
-      return val.category === btnProps;
-    });
-    setName(btnProps);
-    setData(result);
+    else{
+      setData(Alldata)
+    }
   };
 
   return (
@@ -47,7 +48,7 @@ const Category = ({Alldata, Item, SetCart, ClickToAnotherPage}) => {
         </div>
       </div>
       <hr />
-
+      {`(${data.length} of ${Item.length} items)`}
       <div className="container mt-5 ">
         <div className="row gridSystemOnMedia d-flex justify-content-around m-1">
           {data.map((value, index) => {

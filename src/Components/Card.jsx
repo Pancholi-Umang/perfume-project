@@ -9,8 +9,8 @@ function Card({ SetCart, value, ClickToAnotherPage }) {
             <div className=" mt-2 mx-1 col-md-3 myData p-1 card">
                 <img className="img myCardImage" src={imag} alt="Card image cap" />
                 <div className="card-body">
-                    <h5 className="card-title text-center">{name.toUpperCase()}&nbsp;({category.toUpperCase()})</h5>
-                    <p className="card-text text-center"><strong>₹{price}</strong></p>
+                    <h5 className="card-title categoryPrice text-center">{name.toUpperCase()}&nbsp;({category.toUpperCase()})</h5>
+                    <p className="card-text categoryPrice text-center"><strong>₹{price}</strong></p>
                     <p className="card-text btnAround d-flex justify-content-around p-1">
                         <button className="btn clor myChange" onClick={() => SetCart(value)}>ADD CART</button>
                         <Link className="btn btn-success myChange" to={`/product/${name}`} onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>

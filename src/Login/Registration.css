@@ -45,11 +45,17 @@
 }
 
 
+.setHeight{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
 .Auth-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
 }
 
 .Auth-form-container-registration {
@@ -59,7 +65,7 @@
 }
 
 .Auth-form {
-    width: 500px;
+    width:400px;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -86,8 +92,3 @@ label {
     color: rgb(34, 34, 34);
 }
 
-@media only screen and (min-width: 250px) and (max-width: 992px) {
-    .Auth-form-container {
-        height: 40vh;
-    }
-}

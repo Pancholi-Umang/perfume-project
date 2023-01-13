@@ -193,15 +193,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    /* flex-direction: column; */
 }
 
 .clor {
     background-color: #c7dff7;
     color: black;
 }
+.clorW {
+    border: none;
+    outline: none;
+}
 
-/* lightblue bg */
 
 .card {
     border-radius: 10px;
@@ -210,6 +212,10 @@ body {
 .makePointer{
     cursor: pointer;
 }
+
+.no-drop {cursor: no-drop;}
+
+
 
 /* -------> quantity btn css */
 
@@ -243,7 +249,6 @@ body {
     font-size: 25px;
     padding: 5px 5px 7px 5px;
     cursor: pointer;
-    /* color: #000; */
     user-select: none;
     border: none;
     outline: none;
@@ -262,18 +267,157 @@ body {
 
 .RemoveSpinner{
     text-align: center;
-    /* width: 45px; */
 }
-
+    
 .RemoveSpinner::-webkit-inner-spin-button,
 .RemoveSpinner::-webkit-outer-spin-button{
     display: none;
 }
 
+.GiveOnMargin{
+    margin-left: 5px;
+    margin-right: 5px;
+   
+}
+
+.madeBtn{
+    border: none;
+    outline: none;
+    background-color: aquamarine;
+}
+
+
+
+
+
+
+
+.form-control {
+    border-bottom: 2px solid #eee !important;
+    border: none;
+    font-weight: 600
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 2px solid blue !important;
+}
+
+
+
+.inputbox {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%
+}
+
+.inputbox span {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    transition: 0.5s
+}
+
+.inputbox i {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+    transition: 0.5s;
+    color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.inputbox input:focus~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.inputbox input:valid~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.card-blue{
+
+    background-color: #492bc4;
+}
+
+.hightlight{
+
+    background-color: #5737d9;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.yellow{
+
+    color: #fdcc49; 
+}
+
+.decoration{
+
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* .btn-success {
+    color: #fff;
+    background-color: #492bc4;
+    border-color:#492bc4;
+} */
+
+
+
+.decoration:hover{
+
+    text-decoration: none;
+    color: #fdcc49; 
+}
+
+.AddCartButtonToggle{
+    display: none;
+}
+
+.setThis{
+    border-radius: 10px;
+    color: #495057;
+}
+
+
+
+
 /* Responsive design to use Media Query */
 
-
 @media only screen and (max-width: 768px) {
+
+    .makeMenuButtonWithMedia button{
+        font-size: 10px;
+    }
+
+    .relPos{
+        display: none;
+    }
+    .AddCartButtonToggle{
+        display: block;
+    }
+
+    .OnmediaWidthSmall{
+        width: 50%;
+        margin: auto;
+    }
+
     .counter {
         margin: auto;
         margin-top: 10px;
@@ -341,17 +485,61 @@ body {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-    .gridSystemOnMedia {
-        display: flex;
+
+    .relPos{
+        display: none;
+    }
+    .AddCartButtonToggle{
+        display: block;
     }
 
+    .onMediaPrice{
+        font-size: 15px;
+        margin: auto;
+    }
+
+    .SetFontsizeMedia{
+        font-size: 9px;
+    }
+
+    .OnmediaWidthSmall{
+        width: 30%;
+    }
+
+    
     .myData {
         width: 40%;
+    }
+    
+    .mediaQueryImage{
+        border: 1px solid black;
     }
 }
 
 
 @media only screen and (min-width: 510px) and (max-width: 768px) {
+    .productFlexButton .linkWithCssMedia{
+        width: 100%;
+    }
+
+    .madeRelative .priceMedia{
+        font-size: 15px;
+    }
+    
+    .productFlexButton{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .centerMedia{
+        font-size: 12px;
+    }
+
+    .description{
+        font-size: 10px;
+    }
+
     .myData {
         width: 70%;
     }
@@ -393,6 +581,10 @@ body {
 
 
 @media only screen and (max-width: 395px) {
+    .setWidthWithMedia{
+        width: 100%;
+    }
+    
     .helpinmedia {
         margin-bottom: 10px;
     }
@@ -440,7 +632,12 @@ body {
     background: black;
 }
 
-@media only screen and (min-width: 310px) and (max-width: 368px) {
+@media only screen and (min-width: 290px) and (max-width: 368px) {
+    
+    .mediaQueryImage{
+        width: 250px;
+    }
+    
     .btnAround {
         display: flex;
         align-items: center;
@@ -453,14 +650,174 @@ body {
         margin-bottom: 5px;
     }
 
+    .OnmediaWidthSmall{
+        width: 70%;
+        margin: auto;
+    }
+
 }
 
 @media only screen and (min-width: 345px) and (max-width: 510px) {
+    .OnPaddingRight{
+        padding-left:5px;
+    }
+    
     .myData {
         width: 100%;
     }
 
     .setWidthWithMedia {
         width: 100%;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+    .btnAround{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .myChange{
+        margin-top: 5px;
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .categoryPrice{
+        font-size: 13px;
+    }
+
+    .MakeMediaCssUsingHeaderCart{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .makeMenuButtonWithMedia button{
+        height: 25px;
+        font-size: 7px;
+        display: flex;
+        align-items: center ;
+        margin: 7px auto;
+    }
+
+    .UseCenter{
+        display: none;
+    }
+
+    .productFlexButton .linkWithCssMedia{
+        width: 100%;
+    }
+    
+    .productFlexButton{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .centerStarmedia h4,h6{
+        font-size: 10px;
+    }
+
+    .madeRelative .centerMedia{
+        font-size: 12px;
+    }
+    
+    .madeRelative .description{
+        font-size: 12px;
+    }
+    
+    .mediaQueryImage{
+        width: 150px;
+    }
+    
+    .thatsBrandName{
+        font-size: 10px;
+        font-weight: 700;
+    }
+    
+    .OnmediaWidthSmall{
+        width: 100%;
+        margin: auto;
+    }
+
+    .onMediaWidthChange{
+        font-size: 15px;
+    }
+
+    .onmediaBgChange{
+        font-size: 15px;
+    }
+
+    .acjustmedia .centerMedia{
+        font-size: 10px;
+    }
+
+    .thatsBrandName,.nav-item{
+        margin: auto;
+    }
+
+    .navbar-toggler{
+        outline: 1px solid black;
+        margin: auto;
+    }
+
+}
+
+@media only screen and (max-width: 190px) {
+
+    .categoryPrice{
+        font-size: 10px;
+    }
+
+    .onmediaBgChange,.centerStarmedia h4 h6{
+        font-size: 8px;
+    }
+
+    .onMediaWidthChange{
+        font-size: 10px;
+    }
+    
+    .setWidthWithMedia{
+        width: 100%;
+    }
+
+    .mediaQueryImage{
+        width: 100px;
+    }
+
+    .acjustmedia .centerMedia{
+        font-size: 7px;
+    }
+
+    .madeRelative .description{
+        font-size: 10px;
+    }
+
+    .clrCss{
+        width: 100px;
+    }
+
+    .priceMedia{
+        font-size: 10px;
+    }
+
+    .z-media h1,h4{
+        font-size: 10px;
+    }
+
+    .thatsBrandName{
+        font-size: 10px;
+        font-weight: 700;
+        margin: auto;
+    }
+
+    .navbar-toggler{
+        outline: 1px solid black;
+        margin: auto;
     }
 }

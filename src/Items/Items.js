@@ -247,7 +247,7 @@ const Item = [
     name: "Harmony",
     category: "perfumes",
     imag: Harmony,
-    price:750,
+    price:15,
     description: "Lorem ipsum dolor sit amet.",
   },
   {

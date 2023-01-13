@@ -4,7 +4,7 @@ import './ReactStyle.css'
 
 function Header({size}) {
     return (
-        <div>
+        <div className='container'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3 mb-3">
                 <div className="container-fluid">
                     <Link className="navbar-brand thatsBrandName col-md-4 text-uppercase" to='/' >Shine Perfumes</Link>
@@ -25,11 +25,9 @@ function Header({size}) {
                             <li className="nav-item">
                                 <Link className="nav-link navbar-dark" to='/login' aria-current="page">Login</Link>
                             </li>
-                            {/* <li className="nav-item">
-                                <Link className="nav-link navbar-dark" to='/about' aria-current="page">About</Link>
-                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link navbar-dark relPos" to='/cart' aria-current="page"><i className="fa fa-shopping-cart fa-lg underbase" aria-hidden="true"></i><span className='CartSetting'>{size}</span></Link>
+                                <Link className="nav-link navbar-dark AddCartButtonToggle" to='/cart' aria-current="page">Cart Item <span className='setThis'>- {size}</span></Link>
                             </li>
                         </ul>
                     </div>

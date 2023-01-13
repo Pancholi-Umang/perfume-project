@@ -4,8 +4,8 @@ import Footer from "../Components/Footer";
 
 function Login() {
   return (
-    <div>
-      <div className="Auth-form-container ">
+    <div className="container setHeight">
+      <div className="Auth-form-container container">
         <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign In</h3>
