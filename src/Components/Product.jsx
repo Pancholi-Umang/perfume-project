@@ -11,6 +11,7 @@ const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing,Sh
     console.log(Productname);
 
     const { imag, category, name, price, description } = showProductPage;
+    const ComplatePrice = price * valueQuantity;
     return (
         <>
             <div className='container'>
@@ -41,7 +42,7 @@ const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing,Sh
                         <hr className='mt-5 shortDownHr' />
                         <div className='productFlexButton'>
                             <button className="btn btn-warning linkWithCssMedia col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
-                            <Link className="btn btn-success linkWithCssMedia mx-auto mb-2 col-md-4 text-center" to="/paymentgetway" onClick={() => ShowPriceDetails(showProductPage)}>PAY {price * valueQuantity}</Link>
+                            <Link className="btn btn-success linkWithCssMedia mx-auto mb-2 col-md-4 text-center" to="/paymentgetway" onClick={() => ShowPriceDetails(ComplatePrice,showProductPage)}>PAY {ComplatePrice}</Link>
                         </div>
                     </div>
                 </div>

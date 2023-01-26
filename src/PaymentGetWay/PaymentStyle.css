@@ -1,104 +1,72 @@
-/* bodys {
-    font-family: Arial;
-    font-size: 17px;
-    padding: 8px;
+.containers{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.brand-sections{
+   background-color: #0d1033;
+   padding: 10px 40px;
+}
+.logo{
+    width: 50%;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-.row {
-    display: -ms-flexbox;
+.dataspace{
     display: flex;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin: 0 -16px;
 }
-
-.col-25 {
-    -ms-flex: 25%;
-    flex: 25%;
+.sss{
+    width: 50%;
+    flex: 0 0 auto;
 }
-
-.col-50 {
-    -ms-flex: 50%;
-    flex: 50%;
+.text-white{
+    color: #fff;
 }
-
-.col-75 {
-    -ms-flex: 75%;
-    flex: 75%;
-}
-
-.col-25,
-.col-50,
-.col-75 {
-    padding: 0 16px;
-}
-
-.container {
-    background-color: #f2f2f2;
-    padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
-    border-radius: 3px;
-}
-
-input[type=text] {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-label {
-    margin-bottom: 10px;
-    display: block;
-}
-
-.icon-container {
-    margin-bottom: 20px;
-    padding: 7px 0;
-    font-size: 24px;
-}
-
-.btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    width: 100%;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 17px;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-a {
-    color: #2196F3;
-}
-
-hr {
-    border: 1px solid lightgrey;
-}
-
-span.price {
+.company-details{
     float: right;
-    color: grey;
+    text-align: right;
 }
-
-
-@media (max-width: 800px) {
-    .row {
-        flex-direction: column-reverse;
-    }
-
-    .col-25 {
-        margin-bottom: 20px;
-    }
-} */
+.body-section{
+    padding: 16px;
+    border: 1px solid gray;
+}
+.headings{
+    font-size: 20px;
+    margin-bottom: 08px;
+}
+.sub-headings{
+    color: #262626;
+    margin-bottom: 05px;
+}
+table{
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+table thead tr{
+    border: 1px solid #111;
+    background-color: #f2f2f2;
+}
+table td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+table th, table td {
+    padding-top: 08px;
+    padding-bottom: 08px;
+}
+.table-bordereds{
+    box-shadow: 0px 0px 5px 0.5px gray;
+}
+.table-bordereds td, .table-bordereds th {
+    border: 1px solid #dee2e6;
+}
+.text-right{
+    text-align: end;
+}
+.w-20{
+    width: 20%;
+}
+.float-right{
+    float: right;
+}

@@ -4,7 +4,7 @@ import './ReactStyle.css'
 
 const Category = ({ Alldata, Item, SetCart, ClickToAnotherPage }) => {
   const [data, setData] = useState([]);
-  const [name, setName] = useState("All Category")
+  const [name, setName] = useState("All Category");
 
   useEffect(()=>{
     return setData(Item)

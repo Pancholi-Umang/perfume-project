@@ -15,6 +15,7 @@ import AddCart from "./Components/AddCart";
 import Item from "./Items/Items";
 import Product from "./Components/Product";
 import Pricepage from "./Components/Pricepage";
+import Invoice from "./PaymentGetWay/Invoice";
 
 const LocalStorageCartItem = () => {
   let list = localStorage.getItem("ShowCartData");
@@ -38,11 +39,27 @@ const ProductDetailsPage = () => {
   }
 };
 
+// payment getway page it do not lost data after refresh ====>
+
+const paymentGetwayPage = () => {
+  let list = localStorage.getItem("PayementGetway");
+
+  if (list) {
+    return JSON.parse(localStorage.getItem("PayementGetway"));
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
   const [showProductPage, setShowProductPage] = useState(ProductDetailsPage());
-  const [PriceDetailsPage,setPriceDetailsPage] = useState([])
+  const [PriceDetailsPage,setPriceDetailsPage] = useState(paymentGetwayPage());
+  
+
+  const trackingNum = (Math.floor(Math.random() * 122000000));
+  const invoiceNum = (Math.floor(Math.random() * 10000));
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -65,6 +82,18 @@ function App() {
   const ClickToAnotherPage = (e) => {
     setShowProductPage(e);
   };
+
+  // ------> product Details vala page nu chhe <------
+
+  useEffect(() => {
+    localStorage.setItem("PayementGetway", JSON.stringify(PriceDetailsPage));
+  }, [PriceDetailsPage]);
+
+  function ShowPriceDetails(e){
+    console.log(showProductPage)
+    setPriceDetailsPage(e)
+  }
+
 
   const emptyCart = () => {
     setAddToCart([]);
@@ -106,12 +135,8 @@ function App() {
     }
   }
 
-
-  function ShowPriceDetails(e){
-    setPriceDetailsPage(e)
-  }
-
   // ====> End Quantity BUtton
+
 
   return (
     <div className="container mt-2 mb-2">
@@ -181,8 +206,9 @@ function App() {
           <Route
             exact
             path="/paymentgetway"
-            element={ <Pricepage PriceDetailsPage={PriceDetailsPage} /> }
+            element={ <Pricepage showProductPage={showProductPage} PriceDetailsPage={PriceDetailsPage} /> }
           />
+          <Route exact path='/invoice' element={<Invoice invoiceNum={invoiceNum} trackingNum={trackingNum} showProductPage={showProductPage} PriceDetailsPage={PriceDetailsPage} />} />
         </Routes>
       </BrowserRouter>
     </div>
