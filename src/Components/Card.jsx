@@ -2,7 +2,7 @@ import React from 'react'
 import './ReactStyle.css'
 import { Link } from 'react-router-dom';
 
-function Card({ SetCart, value, ClickToAnotherPage }) {
+function Card({ SetCart, value, ClickToAnotherPage }) { 
     const {imag, name, category, price } = value;
     return (
         <>
