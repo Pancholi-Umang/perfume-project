@@ -51,15 +51,40 @@ const paymentGetwayPage = () => {
   }
 };
 
+// CardPayment (PricePage) details save to invoice page
+
+const PricePageToSaveCardDetails = () => {
+  let list = localStorage.getItem("PricePageToInvoicePage");
+
+  if (list) {
+    return JSON.parse(localStorage.getItem("PricePageToInvoicePage"));
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [data, setData] = useState([]);
   const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
   const [showProductPage, setShowProductPage] = useState(ProductDetailsPage());
-  const [PriceDetailsPage,setPriceDetailsPage] = useState(paymentGetwayPage());
-  
+  const [PriceDetailsPage, setPriceDetailsPage] = useState(paymentGetwayPage());
 
-  const trackingNum = (Math.floor(Math.random() * 122000000));
-  const invoiceNum = (Math.floor(Math.random() * 10000));
+  const [cardDetails, setCardDetails] = useState(
+    PricePageToSaveCardDetails({
+      CardOnName: "",
+      Address: "",
+      City: "",
+      PinCode: "",
+      State: "",
+    })
+  );
+
+  const handleChange = (e) => {
+    setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
+  };
+
+  const trackingNum = Math.floor(Math.random() * 122000000);
+  const invoiceNum = Math.floor(Math.random() * 10000);
 
   useEffect(() => {
     localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
@@ -79,21 +104,42 @@ function App() {
     localStorage.setItem("ProductDetailsData", JSON.stringify(showProductPage));
   }, [showProductPage]);
 
+  // useEffect(() => {
+  //   setCardDetails({
+  //     CardOnName: "",
+  //     Address: "",
+  //     City: "",
+  //     PinCode: "",
+  //     State: "",
+  //   });
+  // }, [showProductPage]);
+
   const ClickToAnotherPage = (e) => {
     setShowProductPage(e);
+    cardDetails.CardOnName = "";
+    cardDetails.Address = "";
+    cardDetails.City = "";
+    cardDetails.PinCode = "";
+    cardDetails.State = "";
   };
 
-  // ------> product Details vala page nu chhe <------
+  useEffect(() => {
+    localStorage.setItem("PricePageToInvoicePage", JSON.stringify(cardDetails));
+  }, [cardDetails]);
+
+  useEffect(() => {
+    localStorage.setItem("PricePageToInvoicePage", JSON.stringify(cardDetails));
+  }, []);
+
+  // ------> payment Getway vala page ni price only chhe <------
 
   useEffect(() => {
     localStorage.setItem("PayementGetway", JSON.stringify(PriceDetailsPage));
   }, [PriceDetailsPage]);
 
-  function ShowPriceDetails(e){
-    console.log(showProductPage)
-    setPriceDetailsPage(e)
+  function ShowPriceDetails(e) {
+    setPriceDetailsPage(e);
   }
-
 
   const emptyCart = () => {
     setAddToCart([]);
@@ -113,13 +159,14 @@ function App() {
   };
 
   // =====> Quantity Button Valu Chhe
-  let [valueQuantity, setValQuantity] = useState(1);  
+  let [valueQuantity, setValQuantity] = useState(1);
 
-  useEffect(()=>{
-    return setValQuantity(1)
-  },[showProductPage])
+  useEffect(() => {
+    return setValQuantity(1);
+  }, [showProductPage]);
 
-  function plusing() {
+  function plusing(id) {
+    console.log(id,"id");
     if (valueQuantity < 999) {
       setValQuantity(valueQuantity + 1);
     } else {
@@ -136,7 +183,6 @@ function App() {
   }
 
   // ====> End Quantity BUtton
-
 
   return (
     <div className="container mt-2 mb-2">
@@ -174,15 +220,15 @@ function App() {
             exact
             path="/cart"
             element={
-            <AddCart
-              addToCart={addToCart}
-              size={addToCart.length}
-              valueQuantity={valueQuantity}
-              deleteItems={deleteItems}
-              emptyCart={emptyCart}
-              plusing={plusing}
-              minusing={minusing}
-            />
+              <AddCart
+                addToCart={addToCart}
+                size={addToCart.length}
+                valueQuantity={valueQuantity}
+                deleteItems={deleteItems}
+                emptyCart={emptyCart}
+                plusing={plusing}
+                minusing={minusing}
+              />
             }
           />
           <Route exact path="/about" element={<About />} />
@@ -206,9 +252,30 @@ function App() {
           <Route
             exact
             path="/paymentgetway"
-            element={ <Pricepage showProductPage={showProductPage} PriceDetailsPage={PriceDetailsPage} /> }
+            element={
+              <Pricepage
+                handleChange={handleChange}
+                setCardDetails={setCardDetails}
+                cardDetails={cardDetails}
+                showProductPage={showProductPage}
+                PriceDetailsPage={PriceDetailsPage}
+              />
+            }
           />
-          <Route exact path='/invoice' element={<Invoice invoiceNum={invoiceNum} trackingNum={trackingNum} showProductPage={showProductPage} PriceDetailsPage={PriceDetailsPage} />} />
+          <Route
+            exact
+            path="/invoice"
+            element={
+              <Invoice
+                invoiceNum={invoiceNum}
+                trackingNum={trackingNum}
+                showProductPage={showProductPage}
+                PriceDetailsPage={PriceDetailsPage}
+                setCardDetails={setCardDetails}
+                cardDetails={cardDetails}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

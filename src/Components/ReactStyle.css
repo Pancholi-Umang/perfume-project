@@ -16,6 +16,18 @@ body {
     max-height: 250px;
 }
 
+.changeColor{
+    background-color:rgb(118, 242, 242);
+    opacity: 0.9;
+}
+.changeColorButton{
+    background-color:rgb(193, 241, 144);
+}
+.changeColorButtondiffrent{
+    background-color: #6fe85c;
+    opacity: 0.9;
+}
+
 .korimen {
     display: flex;
     justify-content: space-between;
@@ -204,6 +216,12 @@ body {
     outline: none;
 }
 
+.setInMediaUpDown {
+    background-color: rgb(144, 210, 244);
+}
+.YellowPartCenter{
+    background-color: rgb(228, 238, 243);
+}
 
 .card {
     border-radius: 10px;
@@ -215,7 +233,14 @@ body {
 
 .no-drop {cursor: no-drop;}
 
+.myCardImage:hover{
+    transform: scale(1.1);
+    transition: all 0.7s ease;
+}
 
+.myData{
+    overflow: hidden;
+}   
 
 /* -------> quantity btn css */
 
@@ -285,12 +310,6 @@ body {
     outline: none;
     background-color: aquamarine;
 }
-
-
-
-
-
-
 
 .form-control {
     border-bottom: 2px solid #eee !important;

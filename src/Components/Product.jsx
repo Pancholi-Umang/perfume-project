@@ -5,17 +5,18 @@ import QuantityBtn from './QuantityBtn';
 import './ReactStyle.css'
 import { Link } from 'react-router-dom';
 
-const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing,ShowPriceDetails }) => {
+const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing, ShowPriceDetails }) => {
 
-    const { Productname } = useParams()
+    const { Productname } = useParams();
     console.log(Productname);
 
     const { imag, category, name, price, description } = showProductPage;
     const ComplatePrice = price * valueQuantity;
+
     return (
-        <>
+        <>  
             <div className='container'>
-                <div className="bg-warning mt-3 mb-3 row d-flex justify-content-start p-2 YellowPartCenter">
+                <div className=" mt-3 mb-3 row d-flex justify-content-start p-2 YellowPartCenter">
                     <h1 className='onMediaWidthChange'>{name.toUpperCase()} ({category.toUpperCase()})</h1>
                 </div>
                 <div className="row acjustmedia">
@@ -37,12 +38,12 @@ const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing,Sh
                         </div>
 
                         <hr className='mt-3' />
-                        <h5 className='bg-warning w-50 text-center p-1 rounded centerMedia text-dark'>Description:</h5>
+                        <h5 className='changeColor w-50 text-center p-1 rounded centerMedia text-dark'>Description:</h5>
                         <p className='description'>{description}</p>
                         <hr className='mt-5 shortDownHr' />
                         <div className='productFlexButton'>
-                            <button className="btn btn-warning linkWithCssMedia col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
-                            <Link className="btn btn-success linkWithCssMedia mx-auto mb-2 col-md-4 text-center" to="/paymentgetway" onClick={() => ShowPriceDetails(ComplatePrice,showProductPage)}>PAY {ComplatePrice}</Link>
+                            <button className="btn changeColorButton linkWithCssMedia col-md-4 mb-2 mx-auto text-center" onClick={() => SetCart(showProductPage)}>ADD CART</button>
+                            <Link className="btn changeColorButtondiffrent linkWithCssMedia mx-auto mb-2 col-md-4 text-center" to="/paymentgetway" onClick={() => ShowPriceDetails(ComplatePrice,showProductPage)}>PAY {ComplatePrice}</Link>
                         </div>
                     </div>
                 </div>

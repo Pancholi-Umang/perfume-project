@@ -2,7 +2,7 @@ import React from 'react'
 import './ReactStyle.css'
 import { Link } from 'react-router-dom';
 
-function Card({ SetCart, value, ClickToAnotherPage }) { 
+function Card({ SetCart, value, ClickToAnotherPage }) {
     const {imag, name, category, price } = value;
     return (
         <>
@@ -13,7 +13,7 @@ function Card({ SetCart, value, ClickToAnotherPage }) {
                     <p className="card-text categoryPrice text-center"><strong>₹{price}</strong></p>
                     <p className="card-text btnAround d-flex justify-content-around p-1">
                         <button className="btn clor myChange" onClick={() => SetCart(value)}>ADD CART</button>
-                        <Link className="btn btn-success myChange" to={`/product/${name}`} onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
+                        <Link className="btn changeColorButton myChange" to={`/product/${name}`} onClick={()=>ClickToAnotherPage(value)} >BUY NOW</Link>
                     </p>
                 </div>
             </div>

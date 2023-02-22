@@ -1,8 +1,9 @@
 import React from "react";
 import './ReactStyle.css'
 import Footer from './Footer';
+import CartButtonQuantity from "./CartButtonQuantity";
 
-const AddCart = ({ addToCart, deleteItems, size, emptyCart,valueQuantity,plusing,minusing }) => {
+const AddCart = ({ addToCart, deleteItems, size, emptyCart, valueQuantity, plusing, minusing }) => {
     let cartTotal = 0;
     let prices = 0;
     let total = [];
@@ -40,15 +41,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart,valueQuantity,plusing
                                                     <p className="SetFontsizeMedia">{category.toUpperCase()}</p>
                                                 </div>
                                                 <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                                                    <button className="px-2 btn xcv madeBtn" onClick={minusing}>-</button>
-                                                    <input
-                                                        className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
-                                                        type="number"
-                                                        value={valueQuantity}
-                                                        disabled
-                                                        // onChange={} aano use karishu tyare j text box thi change thase atle tene use karvi nai
-                                                    />
-                                                    <button className="px-2 btn xcv madeBtn" onClick={plusing}>+</button>
+                                                    <CartButtonQuantity valueQuantity={valueQuantity} plusing={plusing} minusing={minusing} id={id} />
                                                 </div>
                                                 <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h5 className="onMediMargin onMediaPrice"><strong>₹{price}</strong></h5>
@@ -65,6 +58,7 @@ const AddCart = ({ addToCart, deleteItems, size, emptyCart,valueQuantity,plusing
                     </div>
                 </div>
             </section>
+            
             {
                 addToCart.map((data) => {
                     prices = Number(data.price);

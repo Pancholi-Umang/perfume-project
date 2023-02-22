@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./PaymentStyle.css";
 
-const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum}) => {
+const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDetails}) => {
     const {name , price} = showProductPage;
     let Quantity = PriceDetailsPage / price;
 
@@ -44,9 +44,10 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum}) => {
               </p>
             </div>
             <div className="col-md-6 sss">
-              <p className="sub-headings">Full Name: Umang Pancholi</p>
-              <p className="sub-headings">Address: 223,24 kamalpark sociaty near matavadi LK road surat</p>
-              <p className="sub-headings">Phone Number: 8690016600</p>
+              <p className="sub-headings">Full Name: {cardDetails.CardOnName.toUpperCase()}</p>
+              <p className="sub-headings">Address: {cardDetails.Address.toLowerCase()}</p>
+              <p className="sub-headings">City: {cardDetails.City.toUpperCase()} - {cardDetails.PinCode}</p>
+              <p className="sub-headings">State: {cardDetails.State.toUpperCase()}</p>
             </div>
           </div>
         </div>

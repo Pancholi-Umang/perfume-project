@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
 
-const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
+const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDetails , handleChange}) => {
   const { name } = showProductPage;
-
+  
   let navigate = useNavigate();
   const goBackFunc = () => {
     navigate(`/product/${name}`);
   };
-
+  
   function expDateValidate(year) {
     if (Number(year) > 2035) {
       return "Expiry Date Year cannot be greater than 2035";
     }
     return;
   }
-
+  
   const {
     getCardNumberProps,
     getCVCProps,
@@ -24,22 +24,21 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
     meta: { erroredInputs },
   } = useCreditCardValidator({ expiryDateValidator: expDateValidate });
 
-  const [NameCard, setNameCard] = useState("");
-  const [Address, setAddress] = useState("");
-  const [City, setCity] = useState("");
-  const [PinCode, setPinCode] = useState("");
-  const [States, setStates] = useState("");
-  const [isDisabled, setDisabled] = useState(false);
+  const [isDisabled, setDisabled] = useState(false); 
 
-  const PricePageNuForm = () => {
-    
+  // console.log(cardDetails.CardOnName,cardDetails.Address,cardDetails.City,cardDetails.PinCode,cardDetails.State)
+
+
+  const PricePageNuForm = (e) => {
+    setCardDetails({ ...cardDetails ,[e.target.name]: e.target.value })
     if (  
-      NameCard.length > 0 &&
-      Address.length > 0 &&
-      City.length > 0 &&
-      PinCode.length === 6 &&
-      States.length > 0
-    ) {
+      cardDetails.CardOnName.length > 0 &&
+      cardDetails.Address.length > 0 &&
+      cardDetails.City.length > 0 &&
+      cardDetails.PinCode.length === 6 &&
+      cardDetails.State.length > 0
+    ) 
+     {
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -68,8 +67,8 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
                   name="CardOnName"
                   className="form-control"
                   autoComplete="off"
-                  value={NameCard.toUpperCase()}
-                  onChange={(e) => setNameCard(e.target.value)}
+                  value={cardDetails.CardOnName.toUpperCase()}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -135,8 +134,8 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={Address}
-                        onChange={(e) => setAddress(e.target.value)}
+                        value={cardDetails.Address}
+                        onChange={handleChange}
                       />
                       <span>Street Address</span>
                     </div>
@@ -150,8 +149,8 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={City.toUpperCase()}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={cardDetails.City.toUpperCase()}
+                        onChange={handleChange}
                       />
                       <span>City</span>
                     </div>
@@ -167,8 +166,8 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={States.toUpperCase()}
-                        onChange={(e) => setStates(e.target.value)}
+                        value={cardDetails.State.toUpperCase()}
+                        onChange={handleChange}
                       />
                       <span>State/Province</span>
                     </div>
@@ -182,8 +181,8 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
                         className="form-control"
                         required="required"
                         autoComplete="off"
-                        value={PinCode}
-                        onChange={(e) => setPinCode(e.target.value)}
+                        value={cardDetails.PinCode}
+                        onChange={handleChange}
                       />
                       <span>Zip code</span>
                     </div>
@@ -200,7 +199,6 @@ const Pricepage = ({ PriceDetailsPage, showProductPage }) => {
               </span>
 
               <Link type="submit" className={`btn btn-success px-3`} to={isDisabled ? '/invoice' : '/paymentgetway'} onClick={PricePageNuForm} >
-              
                 PAY ₹{PriceDetailsPage}
               </Link>
 
