@@ -2,45 +2,46 @@ import React, { useState } from "react";
 import "./Registration.css";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
-// import { useNavigate  } from "react-router-dom";
-// import setBodyColor from '../setBodyColor'
 
 function Registration() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
-  // const navigate  = useNavigate();
+  const [values, setValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
 
-  // const RedirectToLogin = (e) => {
-  //   navigate("/login");
-  // };
+  const handleChange = (event) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    if (id === "firstName") {
-      setFirstName(value);
+  const validate = () => {
+    if (values.firstName.length > 15) {
+      alert(" FirstName Must be 15 characters or less")
     }
-    if (id === "lastName") {
-      setLastName(value);
+    
+    else if (values.lastName.length > 20) {
+      alert(" LastName Must be 20 characters or less")
     }
-    if (id === "email") {
-      setEmail(value);
+
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      alert(" Invalid email address ")
     }
-    if (id === "password") {
-      setPassword(value);
-    }
-    if (id === "confirmPassword") {
-      setConfirmPassword(value);
+
+    else{
+      return values;
     }
   };
+
   // setBodyColor({color: "#6c7177"})
   return (
     <>
       <div className="Auth-form-container-registration">
-        <form className="Auth-form">
+        <form className="Auth-form" onSubmit={validate}> 
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign Up</h3>
 
@@ -49,11 +50,12 @@ function Registration() {
               <input
                 className="form-control"
                 type="text"
-                value={firstName}
-                onChange={(e) => handleInputChange(e)}
+                value={values.firstName}
+                onChange={handleChange}
                 id="firstName"
                 placeholder="First Name"
                 autoComplete="off"
+                name="firstName"
               />
             </div>
 
@@ -61,11 +63,11 @@ function Registration() {
               <label className="mb-1">Last Name </label>
               <input
                 type="text"
-                name=""
+                name="lastName"
                 id="lastName"
-                value={lastName}
                 className="form-control"
-                onChange={(e) => handleInputChange(e)}
+                onChange={handleChange}
+                value={values.lastName}
                 placeholder="LastName"
                 autoComplete="off"
               />
@@ -76,10 +78,11 @@ function Registration() {
                 type="email"
                 id="email"
                 className="form-control"
-                value={email}
-                onChange={(e) => handleInputChange(e)}
+                onChange={handleChange}
+                value={values.email}
                 placeholder="Email"
                 autoComplete="off"
+                name="email"
               />
             </div>
 
@@ -89,22 +92,11 @@ function Registration() {
                 className="form-control"
                 type="password"
                 id="password"
-                value={password}
-                onChange={(e) => handleInputChange(e)}
+                onChange={handleChange}
+                value={values.password}
                 placeholder="Password"
                 autoComplete="off"
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label className="mb-1">Password</label>
-              <input
-                className="form-control"
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Confirm Password"
-                autoComplete="off"
+                name="password"
               />
             </div>
 
@@ -113,6 +105,7 @@ function Registration() {
                 type="submit"
                 // onClick={(e) => RedirectToLogin(e)}
                 className="btn btn-primary"
+                onClick={validate}
               >
                 Submit
               </button>

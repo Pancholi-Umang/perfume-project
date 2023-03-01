@@ -16,6 +16,7 @@ import Item from "./Items/Items";
 import Product from "./Components/Product";
 import Pricepage from "./Components/Pricepage";
 import Invoice from "./PaymentGetWay/Invoice";
+import scrollTopButton from "./Assets/other/scrollToTopIcon.png";
 
 const LocalStorageCartItem = () => {
   let list = localStorage.getItem("ShowCartData");
@@ -78,6 +79,23 @@ function App() {
       State: "",
     })
   );
+
+  const [showButton, setShowButton] = useState(false);
+  useEffect(() => {
+    const handleScrollButtonVisisblity = () => {
+      window.pageYOffset > 300 ? setShowButton(true) : setShowButton(false);
+    };
+
+    window.addEventListener("scroll", handleScrollButtonVisisblity);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollButtonVisisblity);
+    };
+  }, []);
+
+  const handleClickToScroll = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
@@ -158,32 +176,6 @@ function App() {
     setAddToCart(DeleteCardData);
   };
 
-  // =====> Quantity Button Valu Chhe
-  let [valueQuantity, setValQuantity] = useState(1);
-
-  useEffect(() => {
-    return setValQuantity(1);
-  }, [showProductPage]);
-
-  function plusing(id) {
-    console.log(id,"id");
-    if (valueQuantity < 999) {
-      setValQuantity(valueQuantity + 1);
-    } else {
-      setValQuantity(999);
-    }
-  }
-
-  function minusing() {
-    if (valueQuantity > 1) {
-      setValQuantity(valueQuantity - 1);
-    } else {
-      setValQuantity(1);
-    }
-  }
-
-  // ====> End Quantity BUtton
-
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
@@ -223,11 +215,9 @@ function App() {
               <AddCart
                 addToCart={addToCart}
                 size={addToCart.length}
-                valueQuantity={valueQuantity}
                 deleteItems={deleteItems}
                 emptyCart={emptyCart}
-                plusing={plusing}
-                minusing={minusing}
+                
               />
             }
           />
@@ -242,9 +232,6 @@ function App() {
               <Product
                 showProductPage={showProductPage}
                 SetCart={SetCart}
-                valueQuantity={valueQuantity}
-                plusing={plusing}
-                minusing={minusing}
                 ShowPriceDetails={ShowPriceDetails}
               />
             }
@@ -278,6 +265,17 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+      {/* scroll button */}
+      {showButton && (
+        <div className={`scrollToTop`}>
+          <button
+            className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1"
+            onClick={handleClickToScroll}
+          >
+            <img src={scrollTopButton} alt="updownArrow" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

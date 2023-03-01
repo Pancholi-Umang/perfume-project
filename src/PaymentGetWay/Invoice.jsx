@@ -20,11 +20,11 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
       <div className="containers">
         <div className="brand-sections">
           <div className="row dataspace">
-            <div className="col-6 sss">
-              <h1 className="text-white">SHINE PERFUMES</h1>
+            <div className="col-md-6 col-sm-12 mb-3 sss">
+              <h1 className="text-white onMarginautoMedia">SHINE PERFUMES</h1>
             </div>
-            <div className="col-6 sss">
-              <div className="company-details">
+            <div className="col-md-6 col-sm-12">
+              <div className="company-details ">
                 <p className="text-white">D-154,155 Gulvadi Road</p>
                 <p className="text-white">Surat , Gujrat</p>
                 <p className="text-white">+91 8690012345</p>
@@ -34,8 +34,8 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
         </div>
 
         <div className="body-section">
-          <div className="row dataspace">
-            <div className="col-md-6 sss">
+          <div className="row dataspace ">
+            <div className="col-md-6 tong">
               <h2 className="headings">Invoice No : {invoiceNum}</h2>
               <p className="sub-headings">Tracking No : SHINE{trackingNum} </p>
               <p className="sub-headings">Order Date: {dates} </p>
@@ -43,7 +43,8 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
                 Email Address: shineperfumes@gmail.com
               </p>
             </div>
-            <div className="col-md-6 sss">
+            <hr className="d-md-none d-sm-block" />
+            <div className="col-md-6 tong">
               <p className="sub-headings">Full Name: {cardDetails.CardOnName.toUpperCase()}</p>
               <p className="sub-headings">Address: {cardDetails.Address.toLowerCase()}</p>
               <p className="sub-headings">City: {cardDetails.City.toUpperCase()} - {cardDetails.PinCode}</p>
@@ -85,7 +86,7 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
               </tr>
               <tr>
                 <td colSpan="3" className="text-right">
-                  Grand Total &nbsp;
+                  Grand Total &nbsp;  
                 </td>
                 <td> ₹{Math.floor((PriceDetailsPage * 18 / 100) + PriceDetailsPage)} </td>
               </tr>
@@ -96,7 +97,7 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
         </div>
 
         <div className="body-section">
-          <p>
+          <p className="bodysecP">
             &copy; Copyright 2023 - shineperfumes. All rights reserved.
             
           </p>

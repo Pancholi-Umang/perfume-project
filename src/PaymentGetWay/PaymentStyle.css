@@ -70,3 +70,28 @@ table th, table td {
 .float-right{
     float: right;
 }
+
+@media only screen and (max-width: 768px){
+    .sss{
+        width: 100%;
+    }
+    h1{
+        font-size: 20px;
+        margin:auto auto 1px auto;
+    }
+}
+
+@media only screen and (max-width: 270px){
+    div{
+        font-size: 12px;
+    }    
+    h1{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 230px){
+    h1,div{
+        font-size: 10px;
+    }    
+}

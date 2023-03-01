@@ -2,7 +2,8 @@ import React from "react";
 import './ReactStyle.css';
 
 const CartButtonQuantity = ({valueQuantity, plusing, minusing, id}) => {
-    console.log(id);
+
+  
   return (
     <>
       <button type="submit" className="px-2 btn xcv madeBtn" onClick={() => minusing(id)} >  - </button>

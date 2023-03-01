@@ -2,10 +2,15 @@ body {
     background: rgb(228, 238, 243);
 }
 
-::-webkit-scrollbar{
+.mediaQueryImage {
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+::-webkit-scrollbar {
     display: none;
-  }
-  
+}
+
 .thatsBrandName {
     font-family: "Audiowide", sans-serif;
 }
@@ -20,14 +25,16 @@ body {
     max-height: 250px;
 }
 
-.changeColor{
-    background-color:rgb(118, 242, 242);
+.changeColor {
+    background-color: rgb(118, 242, 242);
     opacity: 0.9;
 }
-.changeColorButton{
-    background-color:rgb(193, 241, 144);
+
+.changeColorButton {
+    background-color: rgb(193, 241, 144);
 }
-.changeColorButtondiffrent{
+
+.changeColorButtondiffrent {
     background-color: #6fe85c;
     opacity: 0.9;
 }
@@ -59,30 +66,31 @@ body {
 }
 
 
-.manageSpaceContainer{
-    height: 550px;
+.manageSpaceContainer {
+    height: 500px;
 }
 
-.sweCollorBlck{
+.sweCollorBlck {
     color: black;
     text-decoration: none;
     border-bottom: 1px solid black;
 }
-.sweCollorBlck:hover{
+
+.sweCollorBlck:hover {
     color: chocolate;
     border-bottom: 1px solid chocolate;
 }
 
-.addImageTamplateInBg{
+.addImageTamplateInBg {
     background-image: url(../Assets/other/backgroundPerfumeBannerImage.jpeg);
     height: 250px;
-    background-size:cover;
-    background-position:inherit;
+    background-size: cover;
+    background-position: inherit;
     background-repeat: no-repeat;
 }
 
-.CreateFontsizeWithColor{
-    font-size:x-large;
+.CreateFontsizeWithColor {
+    font-size: x-large;
     color: chocolate;
     font-weight: 500;
 }
@@ -244,6 +252,7 @@ body {
     background-color: #c7dff7;
     color: black;
 }
+
 .clorW {
     border: none;
     outline: none;
@@ -252,7 +261,8 @@ body {
 .setInMediaUpDown {
     background-color: rgb(144, 210, 244);
 }
-.YellowPartCenter{
+
+.YellowPartCenter {
     background-color: rgb(228, 238, 243);
 }
 
@@ -260,22 +270,24 @@ body {
     border-radius: 10px;
 }
 
-.makePointer{
+.makePointer {
     cursor: pointer;
 }
 
-.no-drop {cursor: no-drop}
+.no-drop {
+    cursor: no-drop
+}
 
-.myCardImage:hover{
+.myCardImage:hover {
     transform: scale(1.1);
     transition: all 0.7s ease;
 }
 
-.myData{
+.myData {
     overflow: hidden;
-}  
+}
 
-.makeWidth{
+.makeWidth {
     width: 60px;
     background-color: #7c4dff;
     height: 2px;
@@ -325,26 +337,26 @@ body {
     padding-left: 20px;
 }
 
-.up{
+.up {
     margin-bottom: 2px;
 }
 
-.RemoveSpinner{
+.RemoveSpinner {
     text-align: center;
 }
-    
+
 .RemoveSpinner::-webkit-inner-spin-button,
-.RemoveSpinner::-webkit-outer-spin-button{
+.RemoveSpinner::-webkit-outer-spin-button {
     display: none;
 }
 
-.GiveOnMargin{
+.GiveOnMargin {
     margin-left: 5px;
     margin-right: 5px;
-   
+
 }
 
-.madeBtn{
+.madeBtn {
     border: none;
     outline: none;
     background-color: aquamarine;
@@ -405,12 +417,12 @@ input::-webkit-inner-spin-button {
     font-size: 12px
 }
 
-.card-blue{
+.card-blue {
 
     background-color: #492bc4;
 }
 
-.hightlight{
+.hightlight {
 
     background-color: #5737d9;
     padding: 10px;
@@ -419,12 +431,12 @@ input::-webkit-inner-spin-button {
     font-size: 14px;
 }
 
-.yellow{
+.yellow {
 
-    color: #fdcc49; 
+    color: #fdcc49;
 }
 
-.decoration{
+.decoration {
 
     text-decoration: none;
     font-size: 14px;
@@ -438,17 +450,17 @@ input::-webkit-inner-spin-button {
 
 
 
-.decoration:hover{
+.decoration:hover {
 
     text-decoration: none;
-    color: #fdcc49; 
+    color: #fdcc49;
 }
 
-.AddCartButtonToggle{
+.AddCartButtonToggle {
     display: none;
 }
 
-.setThis{
+.setThis {
     border-radius: 10px;
     color: #495057;
 }
@@ -456,23 +468,23 @@ input::-webkit-inner-spin-button {
 
 
 
-.imageSet{
+.imageSet {
     height: 250px;
 }
 
-.positionClass{
+.positionClass {
     position: absolute;
     left: 23px;
     top: 20px;
 }
 
-.HeigthWidthClass{
+.HeigthWidthClass {
     height: 150px;
     width: 200px;
     margin: auto;
 }
 
-.CardBorder{
+.CardBorder {
     border: none;
 }
 
@@ -491,31 +503,42 @@ input::-webkit-inner-spin-button {
 
 @media only screen and (max-width: 768px) {
 
-    .manageSpaceContainer{
+    .sss{
+        display: flex;
+        justify-content: center;
+    }
+
+    .onMarginautoMedia{
+        margin: auto;
+        display: inline;
+    }
+
+    .manageSpaceContainer {
         height: 250px;
     }
 
-    .mediaClassForMargin{
+    .mediaClassForMargin {
         margin: 5px auto 5px auto;
     }
 
-    .imageSet{
+    .imageSet {
         height: 150px;
         max-width: 150px;
     }
 
-    .makeMenuButtonWithMedia button{
+    .makeMenuButtonWithMedia button {
         font-size: 10px;
     }
 
-    .relPos{
+    .relPos {
         display: none;
     }
-    .AddCartButtonToggle{
+
+    .AddCartButtonToggle {
         display: block;
     }
 
-    .OnmediaWidthSmall{
+    .OnmediaWidthSmall {
         width: 50%;
         margin: auto;
     }
@@ -525,11 +548,11 @@ input::-webkit-inner-spin-button {
         margin-top: 10px;
     }
 
-    .onMediaCardCss{
+    .onMediaCardCss {
         text-align: center;
     }
 
-    .onMediMargin{
+    .onMediMargin {
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -544,8 +567,8 @@ input::-webkit-inner-spin-button {
     }
 
     .mediaQueryImage {
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 25px;
+        margin-bottom: 25px;
     }
 
     .madeRelative,
@@ -588,57 +611,65 @@ input::-webkit-inner-spin-button {
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
 
-    .relPos{
+   
+    .relPos {
         display: none;
     }
-    .AddCartButtonToggle{
+
+    .AddCartButtonToggle {
         display: block;
     }
 
-    .onMediaPrice{
+    .onMediaPrice {
         font-size: 15px;
         margin: auto;
     }
 
-    .SetFontsizeMedia{
+
+    .SetFontsizeMedia {
         font-size: 9px;
     }
 
-    .OnmediaWidthSmall{
+    .OnmediaWidthSmall {
         width: 30%;
     }
 
-    
+
     .myData {
         width: 40%;
     }
-    
-    .mediaQueryImage{
+
+    .mediaQueryImage {
         border: 1px solid black;
     }
 }
 
 
 @media only screen and (min-width: 510px) and (max-width: 768px) {
-    .productFlexButton .linkWithCssMedia{
+    .productFlexButton .linkWithCssMedia {
         width: 100%;
     }
 
-    .madeRelative .priceMedia{
+    .manageSpaceContainer{
+        height: 250px;
+    }
+
+    .madeRelative .priceMedia {
         font-size: 15px;
     }
-    
-    .productFlexButton{
+
+    .productFlexButton {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
     }
-    .centerMedia{
+
+    .centerMedia {
         font-size: 12px;
     }
 
-    .description{
+    .description {
         font-size: 10px;
     }
 
@@ -658,6 +689,10 @@ input::-webkit-inner-spin-button {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+    }
+
+    .manageSpaceContainer{
+        height: 350px;
     }
 
     body {
@@ -683,11 +718,19 @@ input::-webkit-inner-spin-button {
 
 
 @media only screen and (max-width: 395px) {
-    .setWidthWithMedia{
+
+    th{
+        font-size: 10px;
+    }
+    td{
+        font-size: 8px;
+    }
+
+    .setWidthWithMedia {
         width: 100%;
     }
-    
-    .helpinmedia {
+
+    .helpinmedia {  
         margin-bottom: 10px;
     }
 
@@ -735,11 +778,42 @@ input::-webkit-inner-spin-button {
 }
 
 @media only screen and (min-width: 290px) and (max-width: 368px) {
-    
-    .mediaQueryImage{
+
+    .tong h2{
+        font-size: 15px;
+    }
+
+    .tong p{
+        font-size: 13px;
+    }
+
+    .bodysecP{
+        font-size: 10px;
+    }
+
+    .onMarginautoMedia{
+        font-size: 15px;
+        color:aqua ;
+    }
+
+    .mediaHomepageH4{
+        font-size: larger;
+    }
+    .mediaHomepageH1{
+        font-size: x-large;
+    }
+    .mediaHomepageH5{
+        font-size: medium;
+    }
+
+    .HeigthWidthClass {
+        height: 120px;
+    }
+
+    .mediaQueryImage {
         width: 250px;
     }
-    
+
     .btnAround {
         display: flex;
         align-items: center;
@@ -752,20 +826,51 @@ input::-webkit-inner-spin-button {
         margin-bottom: 5px;
     }
 
-    .OnmediaWidthSmall{
+    .OnmediaWidthSmall {
         width: 70%;
         margin: auto;
+    }
+
+    .manageSpaceContainer{
+        height: 150px;
     }
 
 }
 
 @media only screen and (min-width: 345px) and (max-width: 510px) {
-    .OnPaddingRight{
-        padding-left:5px;
+
+    .tong h2{
+        font-size: 15px;
+    }
+
+    .tong p{
+        font-size: 13px;
+    }
+
+    .bodysecP{
+        font-size: 10px;
     }
     
+    .mediaHomepageH4{
+        font-size: larger;
+    }
+    .mediaHomepageH1{
+        font-size: x-large;
+    }
+    .mediaHomepageH5{
+        font-size: medium;
+    }
+    
+    .OnPaddingRight {
+        padding-left: 5px;
+    }
+
     .myData {
         width: 100%;
+    }
+
+    .manageSpaceContainer{
+        height: 200px;
     }
 
     .setWidthWithMedia {
@@ -774,151 +879,227 @@ input::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 290px) {
-    .btnAround{
+
+    .bodysecP{
+        font-size: 10px;
+    }
+
+    .tong h2{
+        font-size: 11px;
+    }
+
+    .tong p{
+        font-size: 9px;
+    }
+
+    th{
+        font-size: 8px;
+    }
+    td{
+        font-size: 8px;
+    }
+
+    .mediaHomepageH4{
+        font-size: small;
+    }
+    .mediaHomepageH1{
+        font-size: medium;
+        font-size: small;
+        color: #495057;
+    }
+    .mediaHomepageH5{
+        font-size: 10px;
+    }
+
+    .manageSpaceContainer{
+        height: 150px;
+    }
+
+    .HeigthWidthClass {
+        height: 100px;
+        width: 100px;
+    }
+
+    .btnAround {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
     }
 
-    .myChange{
+    .myChange {
         margin-top: 5px;
         width: 100%;
         font-size: 10px;
     }
 
-    .categoryPrice{
+    .categoryPrice {
         font-size: 13px;
     }
 
-    .MakeMediaCssUsingHeaderCart{
+    .MakeMediaCssUsingHeaderCart {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
     }
 
-    .makeMenuButtonWithMedia button{
+    .makeMenuButtonWithMedia button {
         height: 25px;
         font-size: 7px;
         display: flex;
-        align-items: center ;
+        align-items: center;
         margin: 7px auto;
     }
 
-    .UseCenter{
+    .UseCenter {
         display: none;
     }
 
-    .productFlexButton .linkWithCssMedia{
+    .productFlexButton .linkWithCssMedia {
         width: 100%;
     }
-    
-    .productFlexButton{
+
+    .productFlexButton {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: column;
     }
 
-    .centerStarmedia h4,h6{
+    .centerStarmedia h4,
+    h6 {
         font-size: 10px;
     }
 
-    .madeRelative .centerMedia{
+    .madeRelative .centerMedia {
         font-size: 12px;
     }
-    
-    .madeRelative .description{
+
+    .madeRelative .description {
         font-size: 12px;
     }
-    
-    .mediaQueryImage{
+
+    .mediaQueryImage {
         width: 150px;
     }
-    
-    .thatsBrandName{
+
+    .thatsBrandName {
         font-size: 10px;
         font-weight: 700;
     }
-    
-    .OnmediaWidthSmall{
+
+    .OnmediaWidthSmall {
         width: 100%;
         margin: auto;
     }
 
-    .onMediaWidthChange{
+    .onMediaWidthChange {
         font-size: 15px;
     }
 
-    .onmediaBgChange{
+    .onmediaBgChange {
         font-size: 15px;
     }
 
-    .acjustmedia .centerMedia{
+    .acjustmedia .centerMedia {
         font-size: 10px;
     }
 
-    .thatsBrandName,.nav-item{
+    .thatsBrandName,
+    .nav-item {
         margin: auto;
     }
 
-    .navbar-toggler{
+    .navbar-toggler {
         outline: 1px solid black;
         margin: auto;
     }
 
+    .headings{
+        font-size: 12px;
+    }
 }
 
 @media only screen and (max-width: 190px) {
 
-    .categoryPrice{
-        font-size: 10px;
-    }
-
-    .onmediaBgChange,.centerStarmedia h4 h6{
+    .bodysecP{
         font-size: 8px;
     }
 
-    .onMediaWidthChange{
+    .tong h2{
         font-size: 10px;
     }
-    
-    .setWidthWithMedia{
+
+    .tong p{
+        font-size: 8px;
+    }
+
+
+    .manageSpaceContainer{
+        height: 150px;
+    }
+
+    .mediaHomepageH4{
+        font-size: small;
+    }
+    .mediaHomepageH1{
+        font-size:x-small;
+        color: #495057;
+    }
+    .mediaHomepageH5{
+        font-size: 8px;
+    }
+
+    .categoryPrice {
+        font-size: 10px;
+    }
+
+    .onmediaBgChange,
+    .centerStarmedia h4 h6 {
+        font-size: 8px;
+    }
+
+    .onMediaWidthChange {
+        font-size: 10px;
+    }
+
+    .setWidthWithMedia {
         width: 100%;
     }
 
-    .mediaQueryImage{
+    .mediaQueryImage {
         width: 100px;
     }
 
-    .acjustmedia .centerMedia{
+    .acjustmedia .centerMedia {
         font-size: 7px;
     }
 
-    .madeRelative .description{
+    .madeRelative .description {
         font-size: 10px;
     }
-
-    .clrCss{
+    
+    .clrCss {
         width: 100px;
     }
 
-    .priceMedia{
+    .priceMedia {
         font-size: 10px;
     }
 
-    .z-media h1,h4{
+    .z-media h1,
+    h4 {
         font-size: 10px;
     }
 
-    .thatsBrandName{
+    .thatsBrandName {
         font-size: 10px;
         font-weight: 700;
         margin: auto;
     }
 
-    .navbar-toggler{
+    .navbar-toggler {
         outline: 1px solid black;
         margin: auto;
     }
