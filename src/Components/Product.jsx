@@ -1,13 +1,32 @@
-import React from "react";
+import React,{useState} from "react";
 import { useParams } from "react-router-dom";
 import Footer from "./Footer";
 import QuantityBtn from "./QuantityBtn";
 import "./ReactStyle.css";
 import { Link } from "react-router-dom";
 
-const Product = ({ showProductPage, SetCart, valueQuantity, plusing, minusing, ShowPriceDetails, }) => {
+const Product = ({ showProductPage, SetCart, ShowPriceDetails }) => {
+
+  let [valueQuantity, setValQuantity] = useState(1);
+
     const { Productname } = useParams();
     console.log(Productname);
+
+  function plusing() {
+    if (valueQuantity < 999) {
+        setValQuantity(valueQuantity + 1);
+      } else {
+        setValQuantity(999);
+      }
+  }
+
+  function minusing() {
+    if (valueQuantity > 1) {
+      setValQuantity(valueQuantity - 1);
+    } else {
+      setValQuantity(1);
+    }
+  }
 
     const { imag, category, name, price, description } = showProductPage;
     const ComplatePrice = price * valueQuantity;
