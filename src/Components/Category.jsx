@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import Footer2 from "./Footer2";
 import './ReactStyle.css'
+import axios from "axios";
 
-const Category = ({ Alldata, Item, SetCart, ClickToAnotherPage }) => {
-  const [data, setData] = useState([]);
+const Category = () => {
+  const [dataItem, setDataItem] = useState([]);
+  const [Alldata, setAlldata] = useState([]);
   const [name, setName] = useState("All Category");
+  const [loading, setLoading] = useState(false);
 
-  useEffect(()=>{
-    return setData(Item)
-  },[])
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  const baseURL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  const GetData = () => {
+    axios.get(baseURL).then((response) => {
+     setDataItem(response.data);
+     setAlldata(response.data);
+    })
+  }
+
+  useEffect(() => {
+      GetData();
+  }, [])
+
 
   
   const allValues = [...new Set(Alldata.map((val) => val.category))];
@@ -19,16 +39,16 @@ const Category = ({ Alldata, Item, SetCart, ClickToAnotherPage }) => {
         setName(btnProps)
         return val.category === btnProps;
       });
-      setData(result);
+      setDataItem(result);
     }
     else{
-      setData(Alldata)
+      setDataItem(Alldata)
     }
   };
 
   return (
     <div className="container">
-      <div className="row ">
+      <div className="row">
         <div className="dropdown col-md-3">
           <button className="btn btn-secondary dropdown-toggle col-md-12" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {name.toUpperCase()}
@@ -48,16 +68,29 @@ const Category = ({ Alldata, Item, SetCart, ClickToAnotherPage }) => {
         </div>
       </div>
       <hr />
-      {`(${data.length} of ${Item.length} items)`}
+      {`(${dataItem.length} of ${Alldata.length} itemss)`}
       <div className="container mt-5 ">
-        <div className="row gridSystemOnMedia d-flex justify-content-around m-1">
-          {data.map((value, index) => {
+      {
+        loading ? (
+          <div className="containes">
+          <div className="item1-1"></div>
+          <div className="item2-2"></div>
+          <div className="item3-3"></div>
+          <div className="item4-4"></div>
+          <div className="item5-5"></div>
+        </div>
+        ) : (
+          <div className="row gridSystemOnMedia d-flex justify-content-around m-1">
+          {dataItem.map((value, index) => {
             return (
-              <Card key={index} SetCart={SetCart} value={value} ClickToAnotherPage={ClickToAnotherPage} />
+              <Card key={index} value={value} />
             );
           })}
         </div>
+        )
+      }
       </div>
+      <Footer2 />
     </div>
   );
 };

@@ -12,73 +12,12 @@ import TermsCondition from "./Section/T_and_C";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registration from "./Login/Registration";
 import AddCart from "./Components/AddCart";
-import Item from "./Items/Items";
 import Product from "./Components/Product";
 import Pricepage from "./Components/Pricepage";
 import Invoice from "./PaymentGetWay/Invoice";
 import scrollTopButton from "./Assets/other/scrollToTopIcon.png";
 
-const LocalStorageCartItem = () => {
-  let list = localStorage.getItem("ShowCartData");
-
-  if (list) {
-    return JSON.parse(localStorage.getItem("ShowCartData"));
-  } else {
-    return [];
-  }
-};
-
-// product details page it do not lost data after refresh ====>
-
-const ProductDetailsPage = () => {
-  let list = localStorage.getItem("ProductDetailsData");
-
-  if (list) {
-    return JSON.parse(localStorage.getItem("ProductDetailsData"));
-  } else {
-    return [];
-  }
-};
-
-// payment getway page it do not lost data after refresh ====>
-
-const paymentGetwayPage = () => {
-  let list = localStorage.getItem("PayementGetway");
-
-  if (list) {
-    return JSON.parse(localStorage.getItem("PayementGetway"));
-  } else {
-    return [];
-  }
-};
-
-// CardPayment (PricePage) details save to invoice page
-
-const PricePageToSaveCardDetails = () => {
-  let list = localStorage.getItem("PricePageToInvoicePage");
-
-  if (list) {
-    return JSON.parse(localStorage.getItem("PricePageToInvoicePage"));
-  } else {
-    return [];
-  }
-};
-
 function App() {
-  const [data, setData] = useState([]);
-  const [addToCart, setAddToCart] = useState(LocalStorageCartItem());
-  const [showProductPage, setShowProductPage] = useState(ProductDetailsPage());
-  const [PriceDetailsPage, setPriceDetailsPage] = useState(paymentGetwayPage());
-
-  const [cardDetails, setCardDetails] = useState(
-    PricePageToSaveCardDetails({
-      CardOnName: "",
-      Address: "",
-      City: "",
-      PinCode: "",
-      State: "",
-    })
-  );
 
   const [showButton, setShowButton] = useState(false);
   useEffect(() => {
@@ -97,187 +36,40 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleChange = (e) => {
-    setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
-  };
-
-  const trackingNum = Math.floor(Math.random() * 122000000);
-  const invoiceNum = Math.floor(Math.random() * 10000);
-
-  useEffect(() => {
-    localStorage.setItem("ShowCartData", JSON.stringify(addToCart));
-  }, [addToCart]);
-
-  useEffect(() => {
-    setData(Item);
-  }, []);
-
-  const SetCart = (CartItem) => {
-    setAddToCart([...addToCart, CartItem]);
-  };
-
-  // ------> product Details vala page nu chhe <------
-
-  useEffect(() => {
-    localStorage.setItem("ProductDetailsData", JSON.stringify(showProductPage));
-  }, [showProductPage]);
-
-  // useEffect(() => {
-  //   setCardDetails({
-  //     CardOnName: "",
-  //     Address: "",
-  //     City: "",
-  //     PinCode: "",
-  //     State: "",
-  //   });
-  // }, [showProductPage]);
-
-  const ClickToAnotherPage = (e) => {
-    setShowProductPage(e);
-    cardDetails.CardOnName = "";
-    cardDetails.Address = "";
-    cardDetails.City = "";
-    cardDetails.PinCode = "";
-    cardDetails.State = "";
-  };
-
-  useEffect(() => {
-    localStorage.setItem("PricePageToInvoicePage", JSON.stringify(cardDetails));
-  }, [cardDetails]);
-
-  useEffect(() => {
-    localStorage.setItem("PricePageToInvoicePage", JSON.stringify(cardDetails));
-  }, []);
-
-  // ------> payment Getway vala page ni price only chhe <------
-
-  useEffect(() => {
-    localStorage.setItem("PayementGetway", JSON.stringify(PriceDetailsPage));
-  }, [PriceDetailsPage]);
-
-  function ShowPriceDetails(e) {
-    setPriceDetailsPage(e);
-  }
-
-  const emptyCart = () => {
-    setAddToCart([]);
-  };
-
-  const changeHandler = (e) => {
-    var search = e.target.value;
-    const myFilter = Item.filter((es) => {
-      return es.name.toLowerCase().includes(search.toLowerCase());
-    });
-    setData(myFilter);
-  };
-
-  const deleteItems = (index) => {
-    const DeleteCardData = addToCart.filter((element) => index !== element.id);
-    setAddToCart(DeleteCardData);
-  };
 
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
-        <Header size={addToCart.length} />
+        <Header/>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route
-            exact
-            path="/category"
-            element={
-              <Category
-                Alldata={data}
-                SetCart={SetCart}
-                ClickToAnotherPage={ClickToAnotherPage}
-                Item={Item}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/allproduct"
-            element={
-              <AllProduct
-                changeHandler={changeHandler}
-                data={data}
-                SetCart={SetCart}
-                ClickToAnotherPage={ClickToAnotherPage}
-              />
-            }
-          />
+          <Route path="/category" element={ <Category/> }  />
+          <Route exact path="/allproduct" element={ <AllProduct /> }/>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reg" element={<Registration />} />
-          <Route
-            exact
-            path="/cart"
-            element={
-              <AddCart
-                addToCart={addToCart}
-                size={addToCart.length}
-                deleteItems={deleteItems}
-                emptyCart={emptyCart}
-                
-              />
-            }
-          />
+          <Route exact path="/cart" element={ <AddCart/> }/>
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/policy" element={<PrivacyPolicy />} />
           <Route exact path="/terms" element={<TermsCondition />} />
-          <Route
-            exact
-            path={`/product/:Productname`}
-            element={
-              <Product
-                showProductPage={showProductPage}
-                SetCart={SetCart}
-                ShowPriceDetails={ShowPriceDetails}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/paymentgetway"
-            element={
-              <Pricepage
-                handleChange={handleChange}
-                setCardDetails={setCardDetails}
-                cardDetails={cardDetails}
-                showProductPage={showProductPage}
-                PriceDetailsPage={PriceDetailsPage}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/invoice"
-            element={
-              <Invoice
-                invoiceNum={invoiceNum}
-                trackingNum={trackingNum}
-                showProductPage={showProductPage}
-                PriceDetailsPage={PriceDetailsPage}
-                setCardDetails={setCardDetails}
-                cardDetails={cardDetails}
-              />
-            }
-          />
+          <Route exact path="/product/:Productname/:Productid"  element={ <Product/> } />
+          <Route exact path="/paymentgetway/:productname/:totalprice" element={ <Pricepage/> } />
+          <Route exact path="/invoice/:productname/:totalprice" element={ <Invoice/> } />
         </Routes>
       </BrowserRouter>
+
       {/* scroll button */}
       {showButton && (
         <div className={`scrollToTop`}>
-          <button
-            className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1"
-            onClick={handleClickToScroll}
-          >
+          <button className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1" onClick={handleClickToScroll}>
             <img src={scrollTopButton} alt="updownArrow" />
           </button>
         </div>
       )}
+
     </div>
   );
 }
 
 export default App;
+

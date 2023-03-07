@@ -2,12 +2,47 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./PaymentStyle.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDetails}) => {
-    const {name , price} = showProductPage;
-    let Quantity = PriceDetailsPage / price;
+const Invoice = () => {
+  const { productname, totalprice } = useParams();
+  const [apiData , setApiData] = useState([]);
+  const [mapping , setMapping] = useState([]);
+  let Prices = Number(0);
+
+  const URL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json";
+  useEffect(()=>{
+    axios.get(URL).then((response) => {
+      setMapping(response.data);
+    });
+  },[]);
 
 
+  const baseURL = "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
+  useEffect(()=>{
+    axios.get(baseURL).then((response) => {
+      setApiData(response.data);
+    });
+  },[]);
+
+  var arr = [];
+  for (let key in apiData) {
+    arr.push(Object.assign(apiData[key], { id: key }));
+  }
+  let arraydata =arr[arr.length-1]
+  
+    mapping.map((values)=>{
+      if(values.name === productname){
+        Prices = values.price;
+      }
+    },[])
+
+  const trackingNum = Math.floor(Math.random() * 122000000);
+  const invoiceNum = Math.floor(Math.random() * 10000);
+
+
+    
   const [dates,setDates] = useState("");
   useEffect(()=>{
     var today = new Date();
@@ -45,10 +80,10 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
             </div>
             <hr className="d-md-none d-sm-block" />
             <div className="col-md-6 tong">
-              <p className="sub-headings">Full Name: {cardDetails.CardOnName.toUpperCase()}</p>
-              <p className="sub-headings">Address: {cardDetails.Address.toLowerCase()}</p>
-              <p className="sub-headings">City: {cardDetails.City.toUpperCase()} - {cardDetails.PinCode}</p>
-              <p className="sub-headings">State: {cardDetails.State.toUpperCase()}</p>
+              <p className="sub-headings">Full Name: {arraydata?.CardOnName.toUpperCase()}</p>
+              <p className="sub-headings">Address: {arraydata?.Address.toLowerCase()}</p>
+              <p className="sub-headings">City: {arraydata?.City.toUpperCase()} - {arraydata?.PinCode}</p>
+              <p className="sub-headings">State: {arraydata?.State.toUpperCase()}</p>
             </div>
           </div>
         </div>
@@ -67,28 +102,28 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
             </thead>
             <tbody>
               <tr>
-                <td>{name}</td>
-                <td>₹{price}</td>
-                <td>{Quantity}</td>
-                <td>₹{PriceDetailsPage}</td>
+                <td>{productname}</td>
+                <td>₹{Prices}</td>
+                <td>{totalprice / Prices}</td>
+                <td>₹{totalprice}</td>
               </tr>
               <tr>
                 <td colSpan="3" className="text-right">
                   Sub Total &nbsp;
                 </td>
-                <td>₹{PriceDetailsPage}</td>
+                <td>₹{totalprice}</td>
               </tr>
               <tr>
                 <td colSpan="3" className="text-right">
                   Total Tax &nbsp;
                 </td>
-                <td> 18%</td>
+                <td>18%</td>
               </tr>
               <tr>
                 <td colSpan="3" className="text-right">
                   Grand Total &nbsp;  
                 </td>
-                <td> ₹{Math.floor((PriceDetailsPage * 18 / 100) + PriceDetailsPage)} </td>
+                <td> ₹{Math.floor((Number(totalprice) * 18 / 100) + Number(totalprice))} </td>
               </tr>
             </tbody>
           </table>
@@ -97,10 +132,7 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
         </div>
 
         <div className="body-section">
-          <p className="bodysecP">
-            &copy; Copyright 2023 - shineperfumes. All rights reserved.
-            
-          </p>
+          <p className="bodysecP"> &copy; Copyright 2023 - shineperfumes. All rights reserved.</p>
         </div>
       </div>
     </div>
@@ -108,3 +140,4 @@ const Invoice = ({showProductPage,PriceDetailsPage,invoiceNum,trackingNum,cardDe
 };
 
 export default Invoice;
+   

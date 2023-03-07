@@ -1,22 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDetails , handleChange}) => {
-  const { name } = showProductPage;
-  
+const Pricepage = () => {
+  const { productname, totalprice } = useParams();
+
+  const [cardDetails, setCardDetails] = useState({
+    CardOnName: "",
+    Address: "",
+    City: "",
+    PinCode: "",
+    State: "",
+  });
+
+  const handleChange = (e) => {
+    setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
+  };
+
   let navigate = useNavigate();
   const goBackFunc = () => {
-    navigate(`/product/${name}`);
+    navigate(`/`);
   };
-  
+
   function expDateValidate(year) {
     if (Number(year) > 2035) {
       return "Expiry Date Year cannot be greater than 2035";
     }
     return;
   }
-  
+
   const {
     getCardNumberProps,
     getCVCProps,
@@ -24,21 +38,24 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
     meta: { erroredInputs },
   } = useCreditCardValidator({ expiryDateValidator: expDateValidate });
 
-  const [isDisabled, setDisabled] = useState(false); 
-
-  // console.log(cardDetails.CardOnName,cardDetails.Address,cardDetails.City,cardDetails.PinCode,cardDetails.State)
-
+  const [isDisabled, setDisabled] = useState(false);
 
   const PricePageNuForm = (e) => {
-    setCardDetails({ ...cardDetails ,[e.target.name]: e.target.value })
-    if (  
+    setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
+    console.log(cardDetails);
+
+    if (
       cardDetails.CardOnName.length > 0 &&
       cardDetails.Address.length > 0 &&
       cardDetails.City.length > 0 &&
       cardDetails.PinCode.length === 6 &&
       cardDetails.State.length > 0
-    ) 
-     {
+    ) {
+      axios({
+        method: "post",
+        url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
+        data: cardDetails,
+      });
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -67,7 +84,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                   name="CardOnName"
                   className="form-control"
                   autoComplete="off"
-                  value={cardDetails.CardOnName.toUpperCase()}
+                  value={cardDetails?.CardOnName.toUpperCase()}
                   onChange={handleChange}
                   required
                 />
@@ -134,7 +151,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails.Address}
+                        value={cardDetails?.Address}
                         onChange={handleChange}
                       />
                       <span>Street Address</span>
@@ -149,7 +166,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails.City.toUpperCase()}
+                        value={cardDetails?.City.toUpperCase()}
                         onChange={handleChange}
                       />
                       <span>City</span>
@@ -166,7 +183,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails.State.toUpperCase()}
+                        value={cardDetails?.State.toUpperCase()}
                         onChange={handleChange}
                       />
                       <span>State/Province</span>
@@ -181,7 +198,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                         className="form-control"
                         required="required"
                         autoComplete="off"
-                        value={cardDetails.PinCode}
+                        value={cardDetails?.PinCode}
                         onChange={handleChange}
                       />
                       <span>Zip code</span>
@@ -198,10 +215,18 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
                 </button>
               </span>
 
-              <Link type="submit" className={`btn btn-success px-3`} to={isDisabled ? '/invoice' : '/paymentgetway'} onClick={PricePageNuForm} >
-                PAY ₹{PriceDetailsPage}
+              <Link
+                type="submit"
+                className={`btn btn-success px-3`}
+                to={
+                  isDisabled
+                    ? `/invoice/${productname}/${totalprice}`
+                    : `/paymentgetway/${productname}/${totalprice}`
+                }
+                onClick={PricePageNuForm}
+              >
+                PAY ₹{totalprice}
               </Link>
-
             </div>
           </div>
 
@@ -209,7 +234,7 @@ const Pricepage = ({ PriceDetailsPage, showProductPage, setCardDetails, cardDeta
             <div className="card card-blue p-3 text-white mb-3">
               <span>You have to pay</span>
               <div className="d-flex flex-row align-items-end mb-3">
-                <h1 className="mb-0 yellow">₹{PriceDetailsPage}</h1>
+                <h1 className="mb-0 yellow">₹{totalprice}</h1>
               </div>
 
               <span>

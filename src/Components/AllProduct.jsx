@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import Footer from "./Footer";
+import Footer2 from "./Footer2";
+import axios from "axios";
 
-function AllProduct({ data, changeHandler, SetCart, ClickToAnotherPage }) {
+function AllProduct() {
+  const [data, setData] = useState([]);
+  const [Items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  const baseURL =
+    "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setData(response.data);
+      setItems(response.data);
+    });
+  }, []);
+
+  const changeHandler = (e) => {
+    var search = e.target.value;
+    const myFilter = Items.filter((es) => {
+      return es.name.toLowerCase().includes(search.toLowerCase());
+    });
+    setData(myFilter);
+  };
+
   return (
     <div className="container OnPaddingRight ">
       <div className="col-md-10 container px-1">
@@ -14,22 +43,27 @@ function AllProduct({ data, changeHandler, SetCart, ClickToAnotherPage }) {
         />
       </div>
 
-      <div className="container">
-        <div className="row d-flex justify-content-around mt-2 ">
-          {data.map((value, index) => {
-            return (
-              <Card
-                key={index}
-                SetCart={SetCart}
-                ClickToAnotherPage={ClickToAnotherPage}
-                value={value}
-              />
-            );
-          })}
+      {loading ? (
+        <div className="containes">
+          <div className="item1-1"></div>
+          <div className="item2-2"></div>
+          <div className="item3-3"></div>
+          <div className="item4-4"></div>
+          <div className="item5-5"></div>
         </div>
-      </div>
+      ) : (
+        <div className="container">
+          <div className="row d-flex justify-content-around mt-2 ">
+            {data.map((value, index) => {
+              return (
+                <Card key={index}  value={value} />
+              );
+            })}
+          </div>
+        </div>
+      )}
       <hr />
-      <Footer />
+      <Footer2 />
     </div>
   );
 }
