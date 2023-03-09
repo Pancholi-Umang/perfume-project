@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 
 const AddCart = ({ onPaymentGetwayUsingCart }) => {
   const [addToCart, setAddToCart] = useState([]);
-
+  const [buttonQuantity, setButtonQuantity] = useState(1);
+  
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   const deleteItems = (index) => {
@@ -34,36 +35,52 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     axios.get(baseURL).then((response) => {
       setAddToCart(response.data);
     });
-  }, [deleteItems, emptyCart]);
-
-  function plusing(id) {
-    //   addToCart.map((curElem)=>{
-    //     if(curElem.id === id){
-    //       if(curElem.quantity < 999){
-    //         return {...addToCart , quantity: curElem.quantity + 1}
-    //       }
-    //       else{
-    //         return {...addToCart , quantity: Number(999)}
-    //       }
-    //     }
-    //   })
-  }
-
-  function minusing(id) {
-    //   addToCart.map((curElem)=>{
-    //     if(curElem.id === id){
-    //       if(curElem.quantity > 1){
-    //         return {...addToCart , quantity: curElem.quantity + 1}
-    //       }
-    //       else{
-    //         return {...addToCart , quantity: Number(1)}
-    //       }
-    //     }
-    //   })
-  }
+  }, [deleteItems, emptyCart, buttonQuantity]);
+  
+  
   var arr = [];
   for (let key in addToCart) {
     arr.push(Object.assign(addToCart[key], { id: key }));
+  }
+  
+  function plusing(id, qty, imag, name, price, category, description) {
+    setButtonQuantity(qty);
+    if(buttonQuantity < 99){
+      axios.put(
+        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
+        {
+          category: category,
+          description: description,
+          name: name,
+          imag: imag,
+          price: price,
+          id: id,
+          quantity: qty
+        }
+      );
+    }else{
+      setButtonQuantity(Number(99))
+    }
+  }
+
+  function minusing(id, qty, imag, name, price, category, description) {
+    setButtonQuantity(qty);
+    if(buttonQuantity > 1){
+    axios.put(
+      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
+      {
+        category: category,
+        description: description,
+        name: name,
+        imag: imag,
+        price:price,
+        id: id,
+        quantity: qty
+      }
+    );
+    }else{
+      setButtonQuantity(Number(1))
+    }
   }
 
   let cartTotal = 0;
@@ -105,7 +122,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                   <hr />
 
                   {arr?.map((value, index) => {
-                    const { id, imag, name, price, category } = value;
+                    const { id, imag, name, price, category, quantity, description } = value;
                     return (
                       <div
                         className="card rounded-3 mb-4 onMediaCardCss"
@@ -130,31 +147,19 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                                 {category?.toUpperCase()}
                               </p>
                             </div>
+
                             <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                              <button
-                                type="submit"
-                                className="px-2 btn xcv madeBtn"
-                                onClick={() => minusing(id)}
-                              >
-                                -
-                              </button>
-                              <input
-                                className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
-                                type="number"
-                                // value={quantity}
-                                value={1}
-                                disabled
-                              />
-                              <button
-                                className="px-2 btn xcv madeBtn"
-                                onClick={() => plusing(id)}
-                              >
-                                +
-                              </button>
+                            <button className="px-2 btn madeBtn" onClick={() => minusing(id,quantity-1,imag,name,price,category,description)} > - </button>
+
+                            <input className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
+                              type="number" value={quantity} disabled />
+
+                            <button className="px-2 btn madeBtn" onClick={() => plusing(id,quantity+1,imag,name,price,category,description)}> + </button>
                             </div>
+
                             <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
                               <h5 className="onMediMargin onMediaPrice">
-                                <strong> ₹{price} </strong>
+                                <strong> ₹{price*quantity} </strong>
                               </h5>
                             </div>
                             <div className="col-md-2 col-lg-2 col-xl-2 ">
@@ -176,7 +181,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
           </section>
 
           {arr?.map((data) => {
-            prices = Number(data.price);
+            prices = Number(data.price*data.quantity);
             total.push(prices);
             cartTotal += prices;
           }, [])}

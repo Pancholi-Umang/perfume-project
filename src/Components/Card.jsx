@@ -15,7 +15,8 @@ function Card({ value }) {
               "name":val.name,
               "imag":val.imag,
               "price":val.price,
-              "id":val.id
+              "id":val.id,
+              "quantity":val.quantity
             }
           });
     }  

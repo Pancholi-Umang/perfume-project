@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.xcv {
+    outline: 1px solid greenyellow;
+}
+
+.gradient-custom {
+    background: #f6d365;
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+
+.stylingprofile{
+    width: 80px;
+    /* background-color: #f6d365; */
+    border-radius: 50%;
+}
+
+.radiosss{
+    border-radius: 5rem;
+}

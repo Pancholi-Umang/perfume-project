@@ -39,8 +39,8 @@ function AllProduct() {
           type="text"
           className="setWidthWithMedia form-control"
           placeholder="Search Here..."
-          onChange={changeHandler}
-        />
+            onChange={changeHandler}
+          />
       </div>
 
       {loading ? (

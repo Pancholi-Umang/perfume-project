@@ -16,7 +16,10 @@ import Product from "./Components/Product";
 import Pricepage from "./Components/Pricepage";
 import Invoice from "./PaymentGetWay/Invoice";
 import scrollTopButton from "./Assets/other/scrollToTopIcon.png";
+import Profile from "./Profile/Profile";
 
+
+// product details page it do not lost data after refresh ====>
 function App() {
 
   const [showButton, setShowButton] = useState(false);
@@ -24,7 +27,6 @@ function App() {
     const handleScrollButtonVisisblity = () => {
       window.pageYOffset > 300 ? setShowButton(true) : setShowButton(false);
     };
-
     window.addEventListener("scroll", handleScrollButtonVisisblity);
 
     return () => {
@@ -55,6 +57,7 @@ function App() {
           <Route exact path="/product/:Productname/:Productid"  element={ <Product/> } />
           <Route exact path="/paymentgetway/:productname/:totalprice" element={ <Pricepage/> } />
           <Route exact path="/invoice/:productname/:totalprice" element={ <Invoice/> } />
+          <Route exact path="/profile" element={ <Profile/> } />
         </Routes>
       </BrowserRouter>
 

@@ -17,12 +17,13 @@ const Product = () => {
       method: "post",
       url: "https://cart-47ea1-default-rtdb.firebaseio.com/cart.json",
       data: {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: val.id,
+        "category": val.category,
+        "description": val.description,
+        "name": val.name,
+        "imag": val.imag,
+        "price": val.price,
+        "id": val.id,
+        "quantity": val.quantity
       },
     });
   };

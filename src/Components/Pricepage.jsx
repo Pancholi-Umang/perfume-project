@@ -27,7 +27,7 @@ const Pricepage = () => {
   function expDateValidate(year) {
     if (Number(year) > 2035) {
       return "Expiry Date Year cannot be greater than 2035";
-    }
+    } 
     return;
   }
 
@@ -57,6 +57,7 @@ const Pricepage = () => {
         data: cardDetails,
       });
       setDisabled(true);
+      
     } else {
       setDisabled(false);
     }
@@ -103,7 +104,7 @@ const Pricepage = () => {
                     />
                     <i className="fa fa-credit-card"></i>
                     <small>
-                      {erroredInputs.cardNumber && erroredInputs.cardNumber}
+                      {erroredInputs?.cardNumber && erroredInputs?.cardNumber}
                     </small>
                   </div>
                 </div>
@@ -120,7 +121,7 @@ const Pricepage = () => {
                         {...getExpiryDateProps()}
                       />
                       <small>
-                        {erroredInputs.expiryDate && erroredInputs.expiryDate}
+                        {erroredInputs?.expiryDate && erroredInputs?.expiryDate}
                       </small>
                     </div>
 
@@ -133,7 +134,7 @@ const Pricepage = () => {
                         autoComplete="off"
                         {...getCVCProps()}
                       />
-                      <small>{erroredInputs.cvc && erroredInputs.cvc}</small>
+                      <small>{erroredInputs?.cvc && erroredInputs?.cvc}</small>
                     </div>
                   </div>
                 </div>
@@ -216,7 +217,6 @@ const Pricepage = () => {
               </span>
 
               <Link
-                type="submit"
                 className={`btn btn-success px-3`}
                 to={
                   isDisabled
