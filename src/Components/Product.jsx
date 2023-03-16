@@ -23,9 +23,24 @@ const Product = () => {
         "imag": val.imag,
         "price": val.price,
         "id": val.id,
-        "quantity": val.quantity
+        "quantity": val.quantity,
+        "status":val.status
       },
     });
+    axios.put(
+      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Productid}.json`,
+      {
+        category: val.category,
+        description: val.description,
+        name: val.name,
+        imag: val.imag,
+        price: val.price,
+        id: Productid,
+        quantity: val.quantity,
+        is_wishlist:"false",
+        status:"true"
+      }
+    );
   };
 
   const baseURL = `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Productid}/.json/`;

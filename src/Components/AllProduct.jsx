@@ -34,13 +34,8 @@ function AllProduct() {
 
   return (
     <div className="container OnPaddingRight ">
-      <div className="col-md-10 container px-1">
-        <input
-          type="text"
-          className="setWidthWithMedia form-control"
-          placeholder="Search Here..."
-            onChange={changeHandler}
-          />
+      <div className="col-md-10 mb-3 container px-1">
+        <input type="text" className="setWidthWithMedia form-control" placeholder="Search Here..." onChange={changeHandler} />
       </div>
 
       {loading ? (
@@ -53,15 +48,16 @@ function AllProduct() {
         </div>
       ) : (
         <div className="container">
-          <div className="row d-flex justify-content-around mt-2 ">
+          <div className="row d-flex justify-content-around change-data ">
             {data.map((value, index) => {
               return (
-                <Card key={index}  value={value} />
+                <Card key={index} value={value} />
               );
             })}
           </div>
         </div>
       )}
+
       <hr />
       <Footer2 />
     </div>

@@ -18,9 +18,16 @@ import Invoice from "./PaymentGetWay/Invoice";
 import scrollTopButton from "./Assets/other/scrollToTopIcon.png";
 import Profile from "./Profile/Profile";
 
-
 // product details page it do not lost data after refresh ====>
 function App() {
+  
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const [showButton, setShowButton] = useState(false);
   useEffect(() => {
@@ -38,41 +45,53 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
-        <Header/>
+        <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/category" element={ <Category/> }  />
-          <Route exact path="/allproduct" element={ <AllProduct /> }/>
+          <Route path="/category" element={<Category />} />
+          <Route exact path="/allproduct" element={<AllProduct />} z/>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reg" element={<Registration />} />
-          <Route exact path="/cart" element={ <AddCart/> }/>
+          <Route exact path="/cart" element={<AddCart />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/policy" element={<PrivacyPolicy />} />
           <Route exact path="/terms" element={<TermsCondition />} />
-          <Route exact path="/product/:Productname/:Productid"  element={ <Product/> } />
-          <Route exact path="/paymentgetway/:productname/:totalprice" element={ <Pricepage/> } />
-          <Route exact path="/invoice/:productname/:totalprice" element={ <Invoice/> } />
-          <Route exact path="/profile" element={ <Profile/> } />
+          <Route
+            exact
+            path="/product/:Productname/:Productid"
+            element={<Product />}
+          />
+          <Route
+            exact
+            path="/paymentgetway/:productname/:totalprice"
+            element={<Pricepage />}
+          />
+          <Route
+            exact
+            path="/invoice/:productname/:totalprice"
+            element={<Invoice />}
+          />
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
 
       {/* scroll button */}
       {showButton && (
         <div className={`scrollToTop`}>
-          <button className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1" onClick={handleClickToScroll}>
+          <button
+            className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1"
+            onClick={handleClickToScroll}
+          >
             <img src={scrollTopButton} alt="updownArrow" />
           </button>
         </div>
       )}
-
     </div>
   );
 }
 
 export default App;
-

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Registration.css";
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer";
+import Footer2 from "../Components/Footer2";
 
 function Registration() {
 
@@ -119,7 +119,7 @@ function Registration() {
           </div>
         </form>
       </div>
-      <Footer />
+      <Footer2 />
     </>
   );
 }

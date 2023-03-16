@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ReactStyle.css";
-import Footer from "./Footer";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer2 from "./Footer2";
 
 const AddCart = ({ onPaymentGetwayUsingCart }) => {
   const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
-  
+  const [ num, setNum] = useState(0)
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -16,9 +17,28 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     }, 2000);
   }, []);
 
-  const deleteItems = (index) => {
+  const deleteItems = (value,id) => {
+    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
+      setNum(response.data);
+      console.log(response.data)
+    });
+    console.log(num)
+    axios.put(
+      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${num}.json`,
+      {
+        category: value.category,
+        description: value.description,
+        name: value.name,
+        imag: value.imag,
+        price: value.price,
+        id: num,
+        quantity: value.quantity,
+        is_wishlist:"false",
+        status:"false",
+      }
+    );
     const DeleteCardData = axios.delete(
-      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${index}.json`
+      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
     );
     setAddToCart(DeleteCardData);
   };
@@ -36,16 +56,15 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
       setAddToCart(response.data);
     });
   }, [deleteItems, emptyCart, buttonQuantity]);
-  
-  
+
   var arr = [];
   for (let key in addToCart) {
     arr.push(Object.assign(addToCart[key], { id: key }));
   }
-  
+
   function plusing(id, qty, imag, name, price, category, description) {
     setButtonQuantity(qty);
-    if(buttonQuantity < 99){
+    if (buttonQuantity < 99) {
       axios.put(
         `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
         {
@@ -55,31 +74,31 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
           imag: imag,
           price: price,
           id: id,
-          quantity: qty
+          quantity: qty,
         }
       );
-    }else{
-      setButtonQuantity(Number(99))
+    } else {
+      setButtonQuantity(Number(99));
     }
   }
 
   function minusing(id, qty, imag, name, price, category, description) {
     setButtonQuantity(qty);
-    if(buttonQuantity > 1){
-    axios.put(
-      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
-      {
-        category: category,
-        description: description,
-        name: name,
-        imag: imag,
-        price:price,
-        id: id,
-        quantity: qty
-      }
-    );
-    }else{
-      setButtonQuantity(Number(1))
+    if (buttonQuantity > 1) {
+      axios.put(
+        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
+        {
+          category: category,
+          description: description,
+          name: name,
+          imag: imag,
+          price: price,
+          id: id,
+          quantity: qty,
+        }
+      );
+    } else {
+      setButtonQuantity(Number(1));
     }
   }
 
@@ -149,24 +168,28 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                             </div>
 
                             <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                            <button className="px-2 btn madeBtn" onClick={() => minusing(id,quantity-1,imag,name,price,category,description)} > - </button>
+                              <button className="px-2 btn madeBtn"
+                                onClick={() => minusing(id, quantity - 1, imag, name, price, category, description)} > -  </button>
 
-                            <input className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
-                              type="number" value={quantity} disabled />
+                              <input
+                                className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
+                                type="number" value={quantity} disabled
+                              />
 
-                            <button className="px-2 btn madeBtn" onClick={() => plusing(id,quantity+1,imag,name,price,category,description)}> + </button>
+                              <button className="px-2 btn madeBtn"
+                                onClick={() => plusing(id, quantity + 1, imag, name, price, category, description)} > +  </button>
                             </div>
 
                             <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
                               <h5 className="onMediMargin onMediaPrice">
-                                <strong> ₹{price*quantity} </strong>
+                                <strong> ₹{price * quantity} </strong>
                               </h5>
                             </div>
                             <div className="col-md-2 col-lg-2 col-xl-2 ">
                               <div className="stringing h-50 ">
                                 <i
                                   className="fa fa-trash-o fa-2x makePointer btn btn-danger"
-                                  onClick={() => deleteItems(id)}
+                                  onClick={() => deleteItems(value,id)}
                                 ></i>
                               </div>
                             </div>
@@ -181,7 +204,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
           </section>
 
           {arr?.map((data) => {
-            prices = Number(data.price*data.quantity);
+            prices = Number(data.price * data.quantity);
             total.push(prices);
             cartTotal += prices;
           }, [])}
@@ -197,15 +220,16 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                 to="/paymentgetway"
                 onClick={() => onPaymentGetwayUsingCart()}
               >
-                PAY NOW
+                Place order
               </Link>
             </div>
           </div>
         </>
       )}
-      <Footer />
+      <Footer2 />
     </div>
   );
 };
 
 export default AddCart;
+

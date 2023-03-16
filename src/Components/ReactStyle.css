@@ -740,6 +740,10 @@ input::-webkit-inner-spin-button {
         font-size: 10px;
     }
 
+    .change-data{
+        margin: auto;
+    }
+
     .myData {
         width: 70%;
     }
