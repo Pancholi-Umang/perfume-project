@@ -7,7 +7,6 @@ import Footer2 from "./Footer2";
 const AddCart = ({ onPaymentGetwayUsingCart }) => {
   const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
-  const [ num, setNum] = useState(0)
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -17,12 +16,8 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     }, 2000);
   }, []);
 
-  const deleteItems = (value,id) => {
-    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
-      setNum(response.data);
-      console.log(response.data)
-    });
-    console.log(num)
+
+   const GiveData = (value,num) => {
     axios.put(
       `https://shine-perfumes-default-rtdb.firebaseio.com/items/${num}.json`,
       {
@@ -37,12 +32,28 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
         status:"false",
       }
     );
+   }
+
+  const deleteItems = (value,id) => {
+    console.log(value,id,"val")
+    let number=''
+    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
+      // setNum(response.data);
+      number=response.data
+      console.log(response.data)
+    });
+    console.log(number)
+
     const DeleteCardData = axios.delete(
       `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
     );
+    DeleteCardData?.then((res)=>{
+      console.log(res);
+      GiveData(value,number);
+    })
     setAddToCart(DeleteCardData);
+    // GiveData(value,num);
   };
-
   const emptyCart = () => {
     const DeleteAllCardData = axios.delete(
       `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`
@@ -50,12 +61,14 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     setAddToCart(DeleteAllCardData);
   };
 
+
+
   const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setAddToCart(response.data);
     });
-  }, [deleteItems, emptyCart, buttonQuantity]);
+  }, [ emptyCart, buttonQuantity]);
 
   var arr = [];
   for (let key in addToCart) {
