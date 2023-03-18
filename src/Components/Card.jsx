@@ -5,8 +5,10 @@ import axios from "axios";
 
 function Card({ value }) {
   const { imag, name, category, price, id, status } = value;
+  const [toggling, setToggling] = React.useState(status);
 
   const SetCart = (val, id) => {
+    setToggling(true)
     axios({
       method: "post",
       url: "https://cart-47ea1-default-rtdb.firebaseio.com/cart.json",
@@ -48,7 +50,7 @@ function Card({ value }) {
             <strong>₹{price}</strong>
           </p>
           <p className="card-text btnAround d-flex justify-content-around p-1">
-            {status == "false" ? (
+            {toggling == "false" ? (
               <button
                 className="btn clor myChange"
                 onClick={() => SetCart(value, id)}

@@ -15,7 +15,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
 
@@ -29,7 +29,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
         imag: value.imag,
         price: value.price,
         id: num,
-        quantity: value.quantity,
+        quantity: Number(1),
         is_wishlist:"false",
         status:"false",
       }
@@ -62,17 +62,18 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
         setDataFunction();
       })
       setAddToCart(DeleteCardData);
-  };
-  
-
-
-  var arr = [];
-  for (let key in addToCart) {
+    };
+    
+    
+    
+    var arr = [];
+    for (let key in addToCart) {
     arr.push(Object.assign(addToCart[key], { id: key }));
   }
-
+  
   function plusing(id, qty, imag, name, price, category, description) {
     setButtonQuantity(qty);
+    setDataFunction();
     if (buttonQuantity < 99) {
       axios.put(
         `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
@@ -90,9 +91,10 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
       setButtonQuantity(Number(99));
     }
   }
-
+  
   function minusing(id, qty, imag, name, price, category, description) {
     setButtonQuantity(qty);
+    setDataFunction();
     if (buttonQuantity > 1) {
       axios.put(
         `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
