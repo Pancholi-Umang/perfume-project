@@ -12,17 +12,20 @@ function AllProduct() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
   }, []);
 
-  const baseURL =
-    "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
-  useEffect(() => {
+  const baseURL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  const GetData = () => {
     axios.get(baseURL).then((response) => {
       setData(response.data);
       setItems(response.data);
-    });
-  }, []);
+    })
+  }
+
+  useEffect(() => {
+      GetData();
+  }, [loading])
 
   const changeHandler = (e) => {
     var search = e.target.value;
@@ -51,7 +54,7 @@ function AllProduct() {
           <div className="row d-flex justify-content-around change-data ">
             {data.map((value, index) => {
               return (
-                <Card key={index} value={value} />
+                <Card key={index} value={value} loading={loading} />
               );
             })}
           </div>

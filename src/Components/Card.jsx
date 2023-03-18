@@ -3,23 +3,10 @@ import "./ReactStyle.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Card({ value }) {    
-  const { imag, name, category, price, id } = value;
+function Card({ value }) {
+  const { imag, name, category, price, id, status } = value;
 
-// multiple time rendering thay chhe
-
-//   const checkdata = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
-//   const getData = () => {
-//     axios.get(checkdata).then((response) => {
-//       setCheckValue(response.data);
-//     });
-//   };
-//   useEffect(() => {
-//     getData();
-//   }, []);   
-
-  const SetCart = (val,id) => {
-    console.log(id);
+  const SetCart = (val, id) => {
     axios({
       method: "post",
       url: "https://cart-47ea1-default-rtdb.firebaseio.com/cart.json",
@@ -43,11 +30,11 @@ function Card({ value }) {
         price: val.price,
         id: id,
         quantity: val.quantity,
-        is_wishlist:"false",
-        status:"true"
+        is_wishlist: "false",
+        status: "true",
       }
     );
-   };
+  };
 
   return (
     <>
@@ -61,10 +48,26 @@ function Card({ value }) {
             <strong>₹{price}</strong>
           </p>
           <p className="card-text btnAround d-flex justify-content-around p-1">
-            <button className="btn clor myChange" onClick={() => SetCart(value,id)} >
-              ADD CART
-            </button>
-            <Link className="btn changeColorButton myChange" to={`/product/${name}/${id}`} >
+            {status == "false" ? (
+              <button
+                className="btn clor myChange"
+                onClick={() => SetCart(value, id)}
+              >
+                ADD CART
+              </button>
+            ) : (
+              <Link
+                className="btn clor myChange"
+                to="/cart"
+              >
+                Go to cart
+              </Link>
+            )}
+
+            <Link
+              className="btn changeColorButton myChange"
+              to={`/product/${name}/${id}`}
+            >
               BUY NOW
             </Link>
           </p>

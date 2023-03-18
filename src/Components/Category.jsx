@@ -49,7 +49,7 @@ const Category = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="dropdown col-md-3">
+        <div className="dropdown col-md-3 col-sm-4">
           <button className="btn btn-secondary dropdown-toggle col-md-12" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {name.toUpperCase()}
           </button>

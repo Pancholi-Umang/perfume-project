@@ -7,6 +7,8 @@ import Footer2 from "./Footer2";
 const AddCart = ({ onPaymentGetwayUsingCart }) => {
   const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
+  
+
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -31,44 +33,38 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
         is_wishlist:"false",
         status:"false",
       }
-    );
-   }
+      );
+    }
 
-  const deleteItems = (value,id) => {
-    console.log(value,id,"val")
-    let number=''
-    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
-      // setNum(response.data);
-      number=response.data
-      console.log(response.data)
-    });
-    console.log(number)
 
-    const DeleteCardData = axios.delete(
-      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
-    );
-    DeleteCardData?.then((res)=>{
-      console.log(res);
-      GiveData(value,number);
-    })
-    setAddToCart(DeleteCardData);
-    // GiveData(value,num);
+    const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+    function setDataFunction() {
+      axios.get(baseURL).then((response) => {
+        setAddToCart(response.data);
+    }
+  )}
+    useEffect(() => {
+      setDataFunction();
+    }, [buttonQuantity]);
+    
+    const deleteItems = (value,id) => {
+      let number=''
+      axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
+        number=response.data;
+      });
+      
+      const DeleteCardData = axios.delete(
+        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
+        );
+        DeleteCardData?.then((res)=>{
+        console.log(res);
+        GiveData(value,number);
+        setDataFunction();
+      })
+      setAddToCart(DeleteCardData);
   };
-  const emptyCart = () => {
-    const DeleteAllCardData = axios.delete(
-      `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`
-    );
-    setAddToCart(DeleteAllCardData);
-  };
+  
 
-
-
-  const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
-  useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setAddToCart(response.data);
-    });
-  }, [ emptyCart, buttonQuantity]);
 
   var arr = [];
   for (let key in addToCart) {
@@ -139,12 +135,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
 
                     <div className="makeMenuButtonWithMedia">
                       <p className="mb-0">
-                        <button
-                          onClick={emptyCart}
-                          className="btn btn-secondary"
-                        >
-                          Empty Cart
-                        </button>
+                        
                       </p>
                     </div>
                   </div>
