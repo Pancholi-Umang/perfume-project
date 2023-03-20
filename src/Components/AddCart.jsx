@@ -7,107 +7,101 @@ import Footer2 from "./Footer2";
 const AddCart = ({ onPaymentGetwayUsingCart }) => {
   const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
-  
-
 
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+  useEffect(() => { setLoading(true); setTimeout(() =>setLoading(false) , 1000)}, []);
 
+  const [btnLoader, setButtonLoader] = useState(false);
+  useEffect(()=>{
+      setButtonLoader(true);
+      setTimeout(() => {
+        setButtonLoader(false);
+      }, 1500);
+  },[buttonQuantity])
 
-   const GiveData = (value,num) => {
+  const GiveData = (value, num) => {
+    let Numbers = Number(num);
+    console.log(typeof value.category)
+    console.log(typeof value.description)
+    console.log(typeof value.name)
+    console.log(typeof value.imag)
+    console.log(typeof value.price)
+    console.log(typeof Numbers)
+    console.log(typeof value.quantity)
+    console.log(num)
     axios.put(
-      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${num}.json`,
+      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
         category: value.category,
         description: value.description,
         name: value.name,
         imag: value.imag,
         price: value.price,
-        id: num,
+        id: Numbers,
         quantity: Number(1),
-        is_wishlist:"false",
-        status:"false",
+        is_wishlist: "false",
+        status: "false",
       }
-      );
-    }
+    );
+  };
 
-
+  function setDataFunction() {
     const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
-    function setDataFunction() {
-      axios.get(baseURL).then((response) => {
-        setAddToCart(response.data);
-    }
-  )}
-    useEffect(() => {
-      setDataFunction();
-    }, [buttonQuantity]);
-    
-    const deleteItems = (value,id) => {
-      let number=''
-      axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}/id.json`).then((response) => {
-        number=response.data;
+    axios.get(baseURL).then((response) => {
+      setAddToCart(response.data);
+    });
+  }
+  useEffect(() => {
+    setDataFunction();
+  }, [btnLoader]);
+
+  const deleteItems = (value) => {
+    let number ="";
+    axios
+      .get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}/id.json`)
+      .then((response) => {
+        console.log(response)
+        number = response.data;
       });
-      
-      const DeleteCardData = axios.delete(
-        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
-        );
-        DeleteCardData?.then((res)=>{
-        console.log(res);
-        GiveData(value,number);
-        setDataFunction();
-      })
-      setAddToCart(DeleteCardData);
-    };
-    
-    
-    
-    var arr = [];
-    for (let key in addToCart) {
+    const DeleteCardData = axios.delete(
+      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
+    );
+    DeleteCardData?.then((res) => {
+      console.log(res,number);
+      GiveData(value, number);
+      setDataFunction();
+    });
+    setAddToCart(DeleteCardData);
+  };
+
+  var arr = [];
+  for (let key in addToCart) {
     arr.push(Object.assign(addToCart[key], { id: key }));
   }
-  
-  function plusing(id, qty, imag, name, price, category, description) {
+
+  function plusing(id, qty) {
     setButtonQuantity(qty);
-    setDataFunction();
     if (buttonQuantity < 99) {
-      axios.put(
+      axios.patch(
         `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
         {
-          category: category,
-          description: description,
-          name: name,
-          imag: imag,
-          price: price,
-          id: id,
           quantity: qty,
         }
-      );
+        );
     } else {
       setButtonQuantity(Number(99));
     }
   }
-  
-  function minusing(id, qty, imag, name, price, category, description) {
+
+  function minusing(id, qty) {
     setButtonQuantity(qty);
-    setDataFunction();
     if (buttonQuantity > 1) {
-      axios.put(
+      axios.patch(
         `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
         {
-          category: category,
-          description: description,
-          name: name,
-          imag: imag,
-          price: price,
-          id: id,
           quantity: qty,
         }
-      );
+        );
     } else {
       setButtonQuantity(Number(1));
     }
@@ -136,9 +130,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                     <h3 className="fw-normal mb-0 text-black">Shopping Cart</h3>
 
                     <div className="makeMenuButtonWithMedia">
-                      <p className="mb-0">
-                        
-                      </p>
+                      <p className="mb-0"></p>
                     </div>
                   </div>
                   <span className=" UseCenter">
@@ -147,7 +139,8 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                   <hr />
 
                   {arr?.map((value, index) => {
-                    const { id, imag, name, price, category, quantity, description } = value;
+                    const {id, imag,  name,  price,  category,  quantity} = value;
+                    // console.log(value)
                     return (
                       <div
                         className="card rounded-3 mb-4 onMediaCardCss"
@@ -174,16 +167,29 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                             </div>
 
                             <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                              <button className="px-2 btn madeBtn"
-                                onClick={() => minusing(id, quantity - 1, imag, name, price, category, description)} > -  </button>
+                              <button
+                                className="px-2 btn madeBtn"
+                                onClick={() => minusing( id, quantity - 1)}
+                              > - </button>
 
-                              <input
-                                className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
-                                type="number" value={quantity} disabled
-                              />
+                              {
+                                 btnLoader ? (
+                                  <div className="btnsloader"></div>
+                                 ) :(
+                                  <input
+                                  className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
+                                  type="number"
+                                  value={quantity}
+                                  disabled
+                                />
+                                 )
+                              }
+                             
 
-                              <button className="px-2 btn madeBtn"
-                                onClick={() => plusing(id, quantity + 1, imag, name, price, category, description)} > +  </button>
+                              <button
+                                className="px-2 btn madeBtn"
+                                onClick={() => plusing(id, quantity + 1)}
+                              > + </button>
                             </div>
 
                             <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
@@ -195,7 +201,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                               <div className="stringing h-50 ">
                                 <i
                                   className="fa fa-trash-o fa-2x makePointer btn btn-danger"
-                                  onClick={() => deleteItems(value,id)}
+                                  onClick={() => deleteItems(value)}
                                 ></i>
                               </div>
                             </div>
@@ -238,4 +244,3 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
 };
 
 export default AddCart;
-
