@@ -27,9 +27,19 @@ function AllProduct() {
       GetData();
   }, [loading])
 
+  var DATAarr = [];
+  for (let key in data) {
+    DATAarr.push(Object.assign(data[key], { id: key }));
+  }
+
+  var ITEMSarr = [];
+  for (let key in Items) {
+    ITEMSarr.push(Object.assign(Items[key], { id: key }));
+  }
+
   const changeHandler = (e) => {
     var search = e.target.value;
-    const myFilter = Items.filter((es) => {
+    const myFilter = ITEMSarr.filter((es) => {
       return es.name.toLowerCase().includes(search.toLowerCase());
     });
     setData(myFilter);
@@ -52,7 +62,7 @@ function AllProduct() {
       ) : (
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
-            {data.map((value, index) => {
+            {DATAarr.map((value, index) => {
               return (
                 <Card key={index} value={value} loading={loading} />
               );

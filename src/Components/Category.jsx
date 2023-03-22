@@ -30,19 +30,29 @@ const Category = () => {
   }, [])
 
 
+  var DATAarr = [];
+  for (let key in Alldata) {
+    DATAarr.push(Object.assign(Alldata[key], { id: key }));
+  }
+
+  var ITEMSarr = [];
+  for (let key in dataItem) {
+    ITEMSarr.push(Object.assign(dataItem[key], { id: key }));
+  }
+
   
-  const allValues = [...new Set(Alldata.map((val) => val.category))];
+  const allValues = [...new Set(DATAarr.map((val) => val.category))];
 
   const handleClick = (btnProps) => {
     if(btnProps){
-      const result = Alldata.filter((val) => {
+      const result = DATAarr.filter((val) => {
         setName(btnProps)
         return val.category === btnProps;
       });
       setDataItem(result);
     }
     else{
-      setDataItem(Alldata)
+      setDataItem(DATAarr)
     }
   };
 
@@ -68,7 +78,7 @@ const Category = () => {
         </div>
       </div>
       <hr />
-      {`(${dataItem.length} of ${Alldata.length} itemss)`}
+      {`(${ITEMSarr.length} of ${DATAarr.length} itemss)`}
       <div className="container mt-5 ">
       {
         loading ? (
@@ -81,7 +91,7 @@ const Category = () => {
         </div>
         ) : (
           <div className="row gridSystemOnMedia d-flex justify-content-around m-1">
-          {dataItem.map((value, index) => {
+          {ITEMSarr.map((value, index) => {
             return (
               <Card key={index} value={value} />
             );
