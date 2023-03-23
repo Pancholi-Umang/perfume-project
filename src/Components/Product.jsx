@@ -10,38 +10,6 @@ const Product = () => {
   const { Productid } = useParams();
 
   const [valOFQuantrity, setValOfQuantity] = useState(1);
-  const [urldata, setUrlData] = useState({});
-
-  const SetCart = (val) => {
-    axios({
-      method: "post",
-      url: "https://cart-47ea1-default-rtdb.firebaseio.com/cart.json",
-      data: {
-        "category": val.category,
-        "description": val.description,
-        "name": val.name,
-        "imag": val.imag,
-        "price": val.price,
-        "id": val.id,
-        "quantity": val.quantity,
-        "status":val.status
-      },
-    });
-    axios.put(
-      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Productid}.json`,
-      {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: Productid,
-        quantity: val.quantity,
-        is_wishlist:"false",
-        status:"true"
-      }
-    );
-  };
 
   const baseURL = `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Productid}/.json/`;
   useEffect(() => {
@@ -50,9 +18,10 @@ const Product = () => {
     });
   }, []);
 
-  console.log(urldata);
+  const [urldata, setUrlData] = useState({});
+  const { imag, category, name, price, description } = urldata;
 
-  function Adds() {
+    function Adds() {
     if (valOFQuantrity < 999) {
       setValOfQuantity(valOFQuantrity + 1);
     } else {
@@ -68,9 +37,7 @@ const Product = () => {
     }
   }
 
-  const { imag, category, name, price, description } = urldata;
   const ComplatePrice = price * valOFQuantrity;
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -125,14 +92,10 @@ const Product = () => {
               <p className="description">{description}</p>
               <hr className="mt-5 shortDownHr" />
               <div className="productFlexButton">
-                <button
-                  className="btn changeColorButton linkWithCssMedia col-md-4 mb-2 mx-auto text-center"
-                  onClick={() => SetCart(urldata)}
-                >
-                  ADD CART
-                </button>
+                
+
                 <Link
-                  className="btn changeColorButtondiffrent linkWithCssMedia mx-auto mb-2 col-md-4 text-center"
+                  className="btn changeColorButtondiffrent linkWithCssMedia mb-2 col-md-4 text-center"
                   to={`/paymentgetway/${name}/${ComplatePrice}`}
                 >
                   PAY ₹{ComplatePrice}
