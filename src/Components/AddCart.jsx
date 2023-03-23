@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer2 from "./Footer2";
 
-const AddCart = ({ onPaymentGetwayUsingCart }) => {
+const AddCart = () => {
   const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
 
@@ -16,19 +16,12 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
       setButtonLoader(true);
       setTimeout(() => {
         setButtonLoader(false);
-      }, 1500);
+      }, 1000);
   },[buttonQuantity])
+
 
   const GiveData = (value, num) => {
     let Numbers = Number(num);
-    console.log(typeof value.category)
-    console.log(typeof value.description)
-    console.log(typeof value.name)
-    console.log(typeof value.imag)
-    console.log(typeof value.price)
-    console.log(typeof Numbers)
-    console.log(typeof value.quantity)
-    console.log(num)
     axios.put(
       `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
@@ -66,8 +59,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
     const DeleteCardData = axios.delete(
       `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
     );
-    DeleteCardData?.then((res) => {
-      console.log(res,number);
+    DeleteCardData?.then(() => {
       GiveData(value, number);
       setDataFunction();
     });
@@ -140,12 +132,8 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
 
                   {arr?.map((value, index) => {
                     const {id, imag,  name,  price,  category,  quantity} = value;
-                    // console.log(value)
                     return (
-                      <div
-                        className="card rounded-3 mb-4 onMediaCardCss"
-                        key={index}
-                      >
+                      <div className="card rounded-3 mb-4 onMediaCardCss" key={index}>
                         <div className="card-body p-4">
                           <div className="row justify-content-between align-items-center">
                             <div className="col-md-2 col-lg-2 col-xl-2">
@@ -167,10 +155,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                             </div>
 
                             <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                              <button
-                                className="px-2 btn madeBtn"
-                                onClick={() => minusing( id, quantity - 1)}
-                              > - </button>
+                              <button className="px-2 btn madeBtn" onClick={() => minusing( id, quantity - 1)}> - </button>
 
                               {
                                  btnLoader ? (
@@ -184,7 +169,6 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
                                 />
                                  )
                               }
-                             
 
                               <button
                                 className="px-2 btn madeBtn"
@@ -229,8 +213,7 @@ const AddCart = ({ onPaymentGetwayUsingCart }) => {
             <div className="col-md-6 text-center">
               <Link
                 className="btn btn-primary col-md-4"
-                to="/paymentgetway"
-                onClick={() => onPaymentGetwayUsingCart()}
+                to={`/cartgetway/${cartTotal}`}
               >
                 Place order
               </Link>

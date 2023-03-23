@@ -31,12 +31,14 @@ const Invoice = () => {
     arr.push(Object.assign(apiData[key], { id: key }));
   }
   let arraydata =arr[arr.length-1]
+  console.log(arraydata)
   
     mapping.map((values)=>{
       if(values.name === productname){
         Prices = values.price;
       }
     },[])
+    
 
   const trackingNum = Math.floor(Math.random() * 122000000);
   const invoiceNum = Math.floor(Math.random() * 10000);

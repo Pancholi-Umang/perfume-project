@@ -29,7 +29,8 @@ function AllProduct() {
 
   var DATAarr = [];
   for (let key in data) {
-    DATAarr.push(Object.assign(data[key], { id: key }));
+    
+    DATAarr.push(Object.assign(data[key], {id: key }));
   }
 
   var ITEMSarr = [];
@@ -62,9 +63,9 @@ function AllProduct() {
       ) : (
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
-            {DATAarr.map((value, index) => {
+            {DATAarr?.map((value, index) => {
               return (
-                <Card key={index} value={value} loading={loading} />
+                <Card key={index}  value={value} loading={loading} />
               );
             })}
           </div>

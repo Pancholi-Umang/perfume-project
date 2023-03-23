@@ -17,19 +17,15 @@ import Pricepage from "./Components/Pricepage";
 import Invoice from "./PaymentGetWay/Invoice";
 import scrollTopButton from "./Assets/other/scrollToTopIcon.png";
 import Profile from "./Profile/Profile";
+import CartPayment from "./Components/CartPayment";
+import CartInvoice from "./Components/CartInvoice";
+import Is_wishlist from "./Components/Is_wishlist";
 
 // product details page it do not lost data after refresh ====>
 function App() {
-  
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
 
   const [showButton, setShowButton] = useState(false);
+
   useEffect(() => {
     const handleScrollButtonVisisblity = () => {
       window.pageYOffset > 300 ? setShowButton(true) : setShowButton(false);
@@ -60,6 +56,10 @@ function App() {
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/policy" element={<PrivacyPolicy />} />
           <Route exact path="/terms" element={<TermsCondition />} />
+          <Route exact path="/cartgetway/:totalprice" element={<CartPayment />} />
+          <Route exact path="/is_wishlist" element={<Is_wishlist />} />
+
+
           <Route
             exact
             path="/product/:Productname/:Productid"
@@ -74,6 +74,11 @@ function App() {
             exact
             path="/invoice/:productname/:totalprice"
             element={<Invoice />}
+          />
+          <Route
+            exact
+            path="/cart-invoice"
+            element={<CartInvoice />}
           />
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
