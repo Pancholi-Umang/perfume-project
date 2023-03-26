@@ -13,6 +13,8 @@ const Pricepage = () => {
     City: "",
     PinCode: "",
     State: "",
+    productname:productname,
+    Total:totalprice
   });
 
   const handleChange = (e) => {
@@ -43,21 +45,20 @@ const Pricepage = () => {
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
     console.log(cardDetails);
-
+    
     if (
       cardDetails.CardOnName.length > 0 &&
       cardDetails.Address.length > 0 &&
       cardDetails.City.length > 0 &&
       cardDetails.PinCode.length === 6 &&
       cardDetails.State.length > 0
-    ) {
-      axios({
-        method: "post",
-        url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
-        data: cardDetails,
-      });
+      ) {
+        isDisabled ? (axios({
+          method: "post",
+          url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
+          data: cardDetails,
+      })):(console.log("alert"))
       setDisabled(true);
-      
     } else {
       setDisabled(false);
     }

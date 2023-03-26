@@ -40,7 +40,7 @@ function Home() {
               className="manageSpaceContainer bg-dark d-block w-100"
               alt="..."
             />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-sm-block">
               <h1>Shine Perfumes</h1>
               <h6>
                 Some representative placeholder content for the second slide.
@@ -53,7 +53,7 @@ function Home() {
               className="manageSpaceContainer d-block w-100"
               alt="..."
             />
-            <div className="carousel-caption  d-none d-md-block">
+            <div className="carousel-caption  d-none d-sm-block">
               <h1 className="text-dark">Shine Perfumes</h1>
               <h6 className="text-dark">
                 All kinds of collections will be found here
@@ -68,7 +68,7 @@ function Home() {
               className="manageSpaceContainer bg-dark d-block w-100"
               alt="..."
             />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-sm-block">
               <h6>Style Destination</h6>
               <h1>Shine Perfumes</h1>
               <p>

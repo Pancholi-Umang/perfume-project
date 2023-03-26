@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const CartPayment = () => {
-  const {totalprice } = useParams();
+  const { totalprice } = useParams();
+
+  const [apiData, setApiData] = useState([]);
+
+  const URL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+  useEffect(() => {
+    axios.get(URL).then((response) => {
+      setApiData(response.data);
+    });
+  }, []);
+
+  var arr = [];
+  var nme = [];
+  for (let key in apiData) {
+    arr.push(Object.assign(apiData[key], { id: key }));
+  }
+
+  arr.map((val) => {
+    const { name } = val;
+    return nme.push(name);
+  });
+
+  let convertSting = nme.toString();
 
   const [cardDetails, setCardDetails] = useState({
     CardOnName: "",
@@ -13,6 +35,8 @@ const CartPayment = () => {
     City: "",
     PinCode: "",
     State: "",
+    Total: totalprice,
+    productname: convertSting,
   });
 
   const handleChange = (e) => {
@@ -27,7 +51,7 @@ const CartPayment = () => {
   function expDateValidate(year) {
     if (Number(year) > 2035) {
       return "Expiry Date Year cannot be greater than 2035";
-    } 
+    }
     return;
   }
 
@@ -44,15 +68,19 @@ const CartPayment = () => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
     console.log(cardDetails);
 
-    if ( cardDetails.CardOnName.length > 0 && cardDetails.Address.length > 0 && cardDetails.City.length > 0 && cardDetails.PinCode.length === 6 && cardDetails.State.length > 0
+    if (
+      cardDetails.CardOnName.length > 0 &&
+      cardDetails.Address.length > 0 &&
+      cardDetails.City.length > 0 &&
+      cardDetails.PinCode.length === 6 &&
+      cardDetails.State.length > 0
     ) {
-      axios({
+      isDisabled ? (axios({
         method: "post",
         url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
         data: cardDetails,
-      });
+    })):(console.log("alert"))
       setDisabled(true);
-      
     } else {
       setDisabled(false);
     }
@@ -213,11 +241,7 @@ const CartPayment = () => {
 
               <Link
                 className={`btn btn-success px-3`}
-                to={
-                  isDisabled
-                    ? `/cart-invoice/`
-                    : `/cartgetway/${totalprice}`
-                }
+                to={isDisabled ? `/cart-invoice/` : `/cartgetway/${totalprice}`}
                 onClick={PricePageNuForm}
               >
                 PAY ₹{totalprice}

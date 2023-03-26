@@ -15,22 +15,22 @@ function AllProduct() {
     }, 1500);
   }, []);
 
-  const baseURL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  const baseURL =
+    "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
   const GetData = () => {
     axios.get(baseURL).then((response) => {
       setData(response.data);
       setItems(response.data);
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-      GetData();
-  }, [loading])
+    GetData();
+  }, [loading]);
 
   var DATAarr = [];
   for (let key in data) {
-    
-    DATAarr.push(Object.assign(data[key], {id: key }));
+    DATAarr.push(Object.assign(data[key], { id: key }));
   }
 
   var ITEMSarr = [];
@@ -49,7 +49,12 @@ function AllProduct() {
   return (
     <div className="container OnPaddingRight ">
       <div className="col-md-10 mb-3 container px-1">
-        <input type="text" className="setWidthWithMedia form-control" placeholder="Search Here..." onChange={changeHandler} />
+        <input
+          type="text"
+          className="setWidthWithMedia form-control"
+          placeholder="Search Here..."
+          onChange={changeHandler}
+        />
       </div>
 
       {loading ? (
@@ -64,9 +69,7 @@ function AllProduct() {
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
             {DATAarr?.map((value, index) => {
-              return (
-                <Card key={index}  value={value} loading={loading} />
-              );
+              return <Card key={index} value={value} loading={loading} />;
             })}
           </div>
         </div>

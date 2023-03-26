@@ -9,16 +9,18 @@ const AddCart = () => {
   const [buttonQuantity, setButtonQuantity] = useState(1);
 
   const [loading, setLoading] = useState(false);
-  useEffect(() => { setLoading(true); setTimeout(() =>setLoading(false) , 1000)}, []);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
 
   const [btnLoader, setButtonLoader] = useState(false);
-  useEffect(()=>{
-      setButtonLoader(true);
-      setTimeout(() => {
-        setButtonLoader(false);
-      }, 1000);
-  },[buttonQuantity])
-
+  useEffect(() => {
+    setButtonLoader(true);
+    setTimeout(() => {
+      setButtonLoader(false);
+    }, 1000);
+  }, [buttonQuantity]);
 
   const GiveData = (value, num) => {
     let Numbers = Number(num);
@@ -49,11 +51,13 @@ const AddCart = () => {
   }, [btnLoader]);
 
   const deleteItems = (value) => {
-    let number ="";
+    let number = "";
     axios
-      .get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}/id.json`)
+      .get(
+        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}/id.json`
+      )
       .then((response) => {
-        console.log(response)
+        console.log(response);
         number = response.data;
       });
     const DeleteCardData = axios.delete(
@@ -79,7 +83,7 @@ const AddCart = () => {
         {
           quantity: qty,
         }
-        );
+      );
     } else {
       setButtonQuantity(Number(99));
     }
@@ -93,7 +97,7 @@ const AddCart = () => {
         {
           quantity: qty,
         }
-        );
+      );
     } else {
       setButtonQuantity(Number(1));
     }
@@ -131,9 +135,12 @@ const AddCart = () => {
                   <hr />
 
                   {arr?.map((value, index) => {
-                    const {id, imag,  name,  price,  category,  quantity} = value;
+                    const { id, imag, name, price, category, quantity } = value;
                     return (
-                      <div className="card rounded-3 mb-4 onMediaCardCss" key={index}>
+                      <div
+                        className="card rounded-3 mb-4 onMediaCardCss"
+                        key={index}
+                      >
                         <div className="card-body p-4">
                           <div className="row justify-content-between align-items-center">
                             <div className="col-md-2 col-lg-2 col-xl-2">
@@ -155,25 +162,30 @@ const AddCart = () => {
                             </div>
 
                             <div className="col-md-2 col-lg-2 OnmediaWidthSmall col-xl-2 d-flex align-items-center justify-content-around ">
-                              <button className="px-2 btn madeBtn" onClick={() => minusing( id, quantity - 1)}> - </button>
+                              <button
+                                className="px-2 btn madeBtn"
+                                onClick={() => minusing(id, quantity - 1)}
+                              >
+                                -
+                              </button>
 
-                              {
-                                 btnLoader ? (
-                                  <div className="btnsloader"></div>
-                                 ) :(
-                                  <input
+                              {btnLoader ? (
+                                <div className="btnsloader"></div>
+                              ) : (
+                                <input
                                   className=" text-center GiveOnMargin RemoveSpinner no-drop form-control input-sm"
                                   type="number"
                                   value={quantity}
                                   disabled
                                 />
-                                 )
-                              }
+                              )}
 
                               <button
                                 className="px-2 btn madeBtn"
                                 onClick={() => plusing(id, quantity + 1)}
-                              > + </button>
+                              >
+                                +
+                              </button>
                             </div>
 
                             <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">

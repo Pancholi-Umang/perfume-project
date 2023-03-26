@@ -89,10 +89,10 @@ const Is_wishlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {arr.map((values) => {
+                    {arr.map((values, index) => {
                       const { name, imag, price } = values;
                       return (
-                        <tr>
+                        <tr key={index}>
                           <td>
                             <div className="display-flex align-center justify-content-around">
                               <div className="img-product">

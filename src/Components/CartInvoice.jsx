@@ -23,6 +23,7 @@ const CartInvoice = () => {
   for (let key in apiData) {
     arr.push(Object.assign(apiData[key], { id: key }));
   }
+  
   var arrData = [];
   for (let key in Data) {
     arrData.push(Object.assign(Data[key], { id: key }));
