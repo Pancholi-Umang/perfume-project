@@ -1,41 +1,83 @@
 import React, { useState } from "react";
 import "./Registration.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
+import axios from "axios";
 
 function Registration() {
 
-  const [values, setValues] = useState({
+  const navigate = useNavigate();
+
+  const [inputs, setInput] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    password: "",
+    pass: "",
   });
 
+  // const [values, setValues] = useState([]);
+
   const handleChange = (event) => {
-    setValues((prevValues) => ({
+    setInput((prevValues) => ({
       ...prevValues,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const validate = () => {
-    if (values.firstName.length > 15) {
-      alert(" FirstName Must be 15 characters or less")
-    }
+  const validate = (e)=>{
+    e.preventDefault();
+ 
+    // const {firstName,lastName,email,pass} = inputs;
+    // if(firstName === ""){
+    //   alert("FirstName field is required")
+    // }else if(lastName === ""){
+    //   alert("LastName field is required")
+    // }else if(email === ""){
+    //   alert("email field is required");
+    // }else if(!email.includes("@")){
+    //   alert("plz enter valid email address")
+    // }else if(pass === ""){
+    //   alert("Password field is required")
+    // }else if(pass.length < 5){
+    //   alert("password length greater than")
+    // }else{
+    //   console.log("data successfully");
+    //   navigate('/login');
+    // }
+
+    // const sendData = {
+    //   firstName:inputs.firstName,
+    //   lastName:inputs.lastName,
+    //   email:inputs.email,
+    //   pass:inputs.pass
+    //   }
+
+    axios.post('http://localhost/perfume/api/save', inputs).then(function(response){
+      // if(response.inputs.Status === 'Invalid'){
+      //   alert('Invalid user')
+      // }
+    console.log(response.data);
+    navigate('/login');
+    });
+  }
+
+  // const validate = () => {
+  //   if (values.firstName.length > 15) {
+  //     alert(" FirstName Must be 15 characters or less")
+  //   }
     
-    else if (values.lastName.length > 20) {
-      alert(" LastName Must be 20 characters or less")
-    }
+  //   else if (values.lastName.length > 20) {
+  //     alert(" LastName Must be 20 characters or less")
+  //   }
 
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      alert(" Invalid email address ")
-    }
+  //   else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  //     alert(" Invalid email address ")
+  //   }
 
-    else{
-      return values;
-    }
-  };
+  //   else{
+  //     return values;
+  //   }
+  // };
 
   // setBodyColor({color: "#6c7177"})
   return (
@@ -50,12 +92,13 @@ function Registration() {
               <input
                 className="form-control"
                 type="text"
-                value={values.firstName}
+                value={inputs.firstName}
                 onChange={handleChange}
                 id="firstName"
-                placeholder="First Name"
-                autoComplete="off"
                 name="firstName"
+                placeholder="First Name"
+                // autoComplete="off"
+                
               />
             </div>
 
@@ -63,13 +106,13 @@ function Registration() {
               <label className="mb-1">Last Name </label>
               <input
                 type="text"
-                name="lastName"
                 id="lastName"
+                name="lastName"
                 className="form-control"
                 onChange={handleChange}
-                value={values.lastName}
+                value={inputs.lastName}
                 placeholder="LastName"
-                autoComplete="off"
+                // autoComplete="off"
               />
             </div>
             <div className="form-group mt-3">
@@ -77,12 +120,13 @@ function Registration() {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="form-control"
                 onChange={handleChange}
-                value={values.email}
+                value={inputs.email}
                 placeholder="Email"
-                autoComplete="off"
-                name="email"
+                // autoComplete="off"
+                
               />
             </div>
 
@@ -91,21 +135,22 @@ function Registration() {
               <input
                 className="form-control"
                 type="password"
-                id="password"
+                id="pass"
+                name="pass"
                 onChange={handleChange}
-                value={values.password}
+                value={inputs.pass}
                 placeholder="Password"
-                autoComplete="off"
-                name="password"
+                // autoComplete="off"
+                
               />
             </div>
 
             <div className="d-grid gap-2 mt-3">
               <button
                 type="submit"
+                name="add"
                 // onClick={(e) => RedirectToLogin(e)}
                 className="btn btn-primary"
-                onClick={validate}
               >
                 Submit
               </button>
