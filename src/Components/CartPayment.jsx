@@ -8,27 +8,6 @@ const CartPayment = () => {
   const { totalprice } = useParams();
 
   const [apiData, setApiData] = useState([]);
-
-  const URL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
-  useEffect(() => {
-    axios.get(URL).then((response) => {
-      setApiData(response.data);
-    });
-  }, []);
-
-  var arr = [];
-  var nme = [];
-  for (let key in apiData) {
-    arr.push(Object.assign(apiData[key], { id: key }));
-  }
-
-  arr.map((val) => {
-    const { name } = val;
-    return nme.push(name);
-  });
-
-  let convertSting = nme.toString();
-
   const [cardDetails, setCardDetails] = useState({
     CardOnName: "",
     Address: "",
@@ -36,8 +15,38 @@ const CartPayment = () => {
     PinCode: "",
     State: "",
     Total: totalprice,
-    productname: convertSting,
+    productname:"",
   });
+
+  const URL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+
+  useEffect(() => {
+    axios.get(URL).then((response) => {
+      setApiData(response.data);
+    });
+  }, []);
+
+
+
+  useEffect(() => {
+  var arr = [];
+    for (let key in apiData) {
+      arr.push(Object.assign(apiData[key], { id: key }));
+    }
+
+   let x = arr.map((val) => {
+      const { name } = val;
+      return name
+    });
+
+    const StringData  = x.toString();
+    setCardDetails({
+      ...cardDetails,
+      productname : StringData
+    })
+    
+  },[apiData])
+
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
@@ -108,7 +117,7 @@ const CartPayment = () => {
                   name="CardOnName"
                   className="form-control"
                   autoComplete="off"
-                  value={cardDetails?.CardOnName.toUpperCase()}
+                  value={cardDetails?.CardOnName}
                   onChange={handleChange}
                   required
                 />
@@ -190,7 +199,7 @@ const CartPayment = () => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails?.City.toUpperCase()}
+                        value={cardDetails?.City}
                         onChange={handleChange}
                       />
                       <span>City</span>
@@ -207,7 +216,7 @@ const CartPayment = () => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails?.State.toUpperCase()}
+                        value={cardDetails?.State}
                         onChange={handleChange}
                       />
                       <span>State/Province</span>

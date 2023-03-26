@@ -1,56 +1,65 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./PaymentStyle.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Invoice = () => {
   const { productname, totalprice } = useParams();
-  const [apiData , setApiData] = useState([]);
-  const [mapping , setMapping] = useState([]);
+  const [apiData, setApiData] = useState([]);
+  const [mapping, setMapping] = useState([]);
   let Prices = Number(0);
 
   const URL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json";
-  useEffect(()=>{
+  useEffect(() => {
     axios.get(URL).then((response) => {
       setMapping(response.data);
     });
-  },[]);
+  }, []);
 
-
-  const baseURL = "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
-  useEffect(()=>{
+  const baseURL =
+    "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
+  useEffect(() => {
     axios.get(baseURL).then((response) => {
       setApiData(response.data);
     });
-  },[]);
+  }, []);
 
   var arr = [];
   for (let key in apiData) {
     arr.push(Object.assign(apiData[key], { id: key }));
   }
-  let arraydata =arr[arr.length-1]
-  console.log(arraydata)
-  
-    mapping.map((values)=>{
-      if(values.name === productname){
-        Prices = values.price;
-      }
-    },[])
-    
+  let arraydata = arr[arr.length - 1];
+  console.log(arraydata);
+
+  mapping.map((values) => {
+    if (values.name === productname) {
+      Prices = values.price;
+    }
+  }, []);
 
   const trackingNum = Math.floor(Math.random() * 122000000);
   const invoiceNum = Math.floor(Math.random() * 10000);
 
-
-    
-  const [dates,setDates] = useState("");
-  useEffect(()=>{
+  const [dates, setDates] = useState("");
+  useEffect(() => {
     var today = new Date();
-    let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-    setDates(date)
-  },[])
+    let date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
+    setDates(date);
+  }, []);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
 
   return (
     <div>
@@ -72,21 +81,46 @@ const Invoice = () => {
 
         <div className="body-section">
           <div className="row dataspace ">
-            <div className="col-md-6 tong">
-              <h2 className="headings">Invoice No : {invoiceNum}</h2>
-              <p className="sub-headings">Tracking No : SHINE{trackingNum} </p>
-              <p className="sub-headings">Order Date: {dates} </p>
-              <p className="sub-headings">
-                Email Address: shineperfumes@gmail.com
-              </p>
-            </div>
-            <hr className="d-md-none d-sm-block" />
-            <div className="col-md-6 tong">
-              <p className="sub-headings">Full Name: {arraydata?.CardOnName.toUpperCase()}</p>
-              <p className="sub-headings">Address: {arraydata?.Address.toLowerCase()}</p>
-              <p className="sub-headings">City: {arraydata?.City.toUpperCase()} - {arraydata?.PinCode}</p>
-              <p className="sub-headings">State: {arraydata?.State.toUpperCase()}</p>
-            </div>
+            {
+              loading ? (
+                <div className="col-md-6 tong">
+                  <div className="d-flex justify-content-center">
+                  <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                <div className="col-md-6 tong">
+                  <h2 className="headings">Invoice No : {invoiceNum}</h2>
+                  <p className="sub-headings">
+                    Tracking No : SHINE{trackingNum}{" "}
+                  </p>
+                  <p className="sub-headings">Order Date: {dates} </p>
+                  <p className="sub-headings">
+                    Email Address: shineperfumes@gmail.com
+                  </p>
+                </div>
+                <hr className="d-md-none d-sm-block" />
+
+                <div className="col-md-6 tong">
+                  <p className="sub-headings">
+                    Full Name: {arraydata?.CardOnName.toUpperCase()}
+                  </p>
+                  <p className="sub-headings">
+                    Address: {arraydata?.Address.toLowerCase()}
+                  </p>
+                  <p className="sub-headings">
+                    City: {arraydata?.City.toUpperCase()} - {arraydata?.PinCode}
+                  </p>
+                  <p className="sub-headings">
+                    State: {arraydata?.State.toUpperCase()}
+                  </p>
+                </div>
+              </>
+            )
+            }
           </div>
         </div>
 
@@ -123,9 +157,14 @@ const Invoice = () => {
               </tr>
               <tr>
                 <td colSpan="3" className="text-right">
-                  Grand Total &nbsp;  
+                  Grand Total &nbsp;
                 </td>
-                <td> ₹{Math.floor((Number(totalprice) * 18 / 100) + Number(totalprice))} </td>
+                <td>
+                  ₹
+                  {Math.floor(
+                    (Number(totalprice) * 18) / 100 + Number(totalprice)
+                  )}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -134,7 +173,9 @@ const Invoice = () => {
         </div>
 
         <div className="body-section">
-          <p className="bodysecP"> &copy; Copyright 2023 - shineperfumes. All rights reserved.</p>
+          <p className="bodysecP">
+            &copy; Copyright 2023 - shineperfumes. All rights reserved.
+          </p>
         </div>
       </div>
     </div>
@@ -142,4 +183,3 @@ const Invoice = () => {
 };
 
 export default Invoice;
-   

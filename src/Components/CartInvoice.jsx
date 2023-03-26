@@ -80,11 +80,11 @@ const CartInvoice = () => {
         <div className="body-section">
           <div className="row dataspace ">
             {loading ? (
-              <span
-                class="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
+               <div className="d-flex justify-content-center">
+               <div className="spinner-border" role="status">
+                 <span className="sr-only">Loading...</span>
+               </div>
+               </div>
             ) : (
               <>
                 <div className="col-md-6 tong">

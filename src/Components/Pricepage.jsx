@@ -86,7 +86,7 @@ const Pricepage = () => {
                   name="CardOnName"
                   className="form-control"
                   autoComplete="off"
-                  value={cardDetails?.CardOnName.toUpperCase()}
+                  value={cardDetails?.CardOnName}
                   onChange={handleChange}
                   required
                 />
@@ -168,7 +168,7 @@ const Pricepage = () => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails?.City.toUpperCase()}
+                        value={cardDetails?.City}
                         onChange={handleChange}
                       />
                       <span>City</span>
@@ -185,7 +185,7 @@ const Pricepage = () => {
                         className="form-control"
                         required
                         autoComplete="off"
-                        value={cardDetails?.State.toUpperCase()}
+                        value={cardDetails?.State}
                         onChange={handleChange}
                       />
                       <span>State/Province</span>
