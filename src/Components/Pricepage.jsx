@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
 import axios from "axios";
@@ -6,6 +6,17 @@ import { useParams } from "react-router-dom";
 
 const Pricepage = () => {
   const { productname, totalprice } = useParams();
+  const [dates, setDates] = useState("");
+
+  useEffect(() => {
+    var today = new Date();
+    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    setDates(date);
+    setCardDetails({
+      ...cardDetails,
+      Date : dates
+    })
+  }, [dates]);
 
   const [cardDetails, setCardDetails] = useState({
     CardOnName: "",
@@ -14,8 +25,10 @@ const Pricepage = () => {
     PinCode: "",
     State: "",
     productname:productname,
-    Total:totalprice
+    Total:totalprice,
+    Date:dates
   });
+  console.log(cardDetails)
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });

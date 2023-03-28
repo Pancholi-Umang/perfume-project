@@ -8,24 +8,25 @@ const CartPayment = () => {
   const { totalprice } = useParams();
 
   const [apiData, setApiData] = useState([]);
-  const [cardDetails, setCardDetails] = useState({
-    CardOnName: "",
-    Address: "",
-    City: "",
-    PinCode: "",
-    State: "",
-    Total: totalprice,
-    productname:"",
-  });
-
-  const URL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+  const [dates, setDates] = useState("");
 
   useEffect(() => {
-    axios.get(URL).then((response) => {
+    var today = new Date();
+    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    setDates(date);
+  }, []);
+
+  const [cardDetails, setCardDetails] = useState({
+    CardOnName: "", Address: "", City: "", PinCode: "", State: "", Total:totalprice, productname:"", Date:dates
+  });
+
+  useEffect(() => {
+    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`).then((response) => {
       setApiData(response.data);
     });
   }, []);
 
+  console.log(cardDetails)
 
 
   useEffect(() => {
@@ -42,7 +43,8 @@ const CartPayment = () => {
     const StringData  = x.toString();
     setCardDetails({
       ...cardDetails,
-      productname : StringData
+      productname : StringData,
+      Date:dates
     })
     
   },[apiData])

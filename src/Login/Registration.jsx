@@ -5,85 +5,74 @@ import Footer2 from "../Components/Footer2";
 import axios from "axios";
 
 function Registration() {
-
-  const navigate = useNavigate();
-
-  const [inputs, setInput] = useState({
+  
+  const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    pass: "",
+    password: "",
   });
+  
+  const validateForm = (formValues) => {
+    const errors = {};
+    
+    if (!formValues.firstName?.trim()) {
+      errors.firstName = "First Name is required";
+    }
+    
+    if (!formValues.lastName?.trim()) {
+      errors.lastName = "Last Name is required";
+    }
+    
+    if (!formValues.email?.trim()) {
+      errors.email = "Email is required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formValues.email.trim())
+      ) {
+        errors.email = "Invalid email address";
+      }
+      
+      if (!formValues.password?.trim()) {
+        errors.password = "Password is required";
+      } else if (formValues.password.trim().length < 8) {
+        errors.password = "Password must be at least 8 characters long";
+      }
+      
+    return errors;
+  };
 
-  // const [values, setValues] = useState([]);
-
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
+  
+  console.log(errors)
+  
+  
   const handleChange = (event) => {
-    setInput((prevValues) => ({
+    setFormValues((prevValues) => ({
       ...prevValues,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const validate = (e)=>{
+  const validate = (e) => {
     e.preventDefault();
- 
-    // const {firstName,lastName,email,pass} = inputs;
-    // if(firstName === ""){
-    //   alert("FirstName field is required")
-    // }else if(lastName === ""){
-    //   alert("LastName field is required")
-    // }else if(email === ""){
-    //   alert("email field is required");
-    // }else if(!email.includes("@")){
-    //   alert("plz enter valid email address")
-    // }else if(pass === ""){
-    //   alert("Password field is required")
-    // }else if(pass.length < 5){
-    //   alert("password length greater than")
-    // }else{
-    //   console.log("data successfully");
-    //   navigate('/login');
-    // }
+    const validationErrors = validateForm(formValues);
+    setErrors(validationErrors);
 
-    // const sendData = {
-    //   firstName:inputs.firstName,
-    //   lastName:inputs.lastName,
-    //   email:inputs.email,
-    //   pass:inputs.pass
-    //   }
+    if (Object.keys(validationErrors).length === 0) {
+      // axios.post("http://localhost/perfume/api/save", formValues)
+      // .then(function (response) {
+      //   console.log(response.data);
+      // });
+        navigate("/login");
+    }
 
-    axios.post('http://localhost/perfume/api/save', inputs).then(function(response){
-      // if(response.inputs.Status === 'Invalid'){
-      //   alert('Invalid user')
-      // }
-    console.log(response.data);
-    navigate('/login');
-    });
-  }
-
-  // const validate = () => {
-  //   if (values.firstName.length > 15) {
-  //     alert(" FirstName Must be 15 characters or less")
-  //   }
     
-  //   else if (values.lastName.length > 20) {
-  //     alert(" LastName Must be 20 characters or less")
-  //   }
-
-  //   else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //     alert(" Invalid email address ")
-  //   }
-
-  //   else{
-  //     return values;
-  //   }
-  // };
-
-  // setBodyColor({color: "#6c7177"})
+  };
   return (
     <>
       <div className="Auth-form-container-registration">
-        <form className="Auth-form" onSubmit={validate}> 
+        <form className="Auth-form" onSubmit={validate}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign Up</h3>
 
@@ -92,15 +81,15 @@ function Registration() {
               <input
                 className="form-control"
                 type="text"
-                value={inputs.firstName}
+                value={formValues?.firstName}
                 onChange={handleChange}
                 id="firstName"
                 name="firstName"
                 placeholder="First Name"
-                // autoComplete="off"
-                
+                autoComplete="off"
               />
             </div>
+            <p className="text-danger">{errors?.firstName}</p>
 
             <div className="form-group mt-3">
               <label className="mb-1">Last Name </label>
@@ -110,11 +99,13 @@ function Registration() {
                 name="lastName"
                 className="form-control"
                 onChange={handleChange}
-                value={inputs.lastName}
+                value={formValues?.lastName}
                 placeholder="LastName"
-                // autoComplete="off"
+                autoComplete="off"
               />
             </div>
+            <p className="text-danger">{errors?.lastName}</p>
+
             <div className="form-group mt-3">
               <label className="mb-1">email</label>
               <input
@@ -123,12 +114,12 @@ function Registration() {
                 name="email"
                 className="form-control"
                 onChange={handleChange}
-                value={inputs.email}
+                value={formValues?.email}
                 placeholder="Email"
-                // autoComplete="off"
-                
+                autoComplete="off"
               />
             </div>
+            <p className="text-danger">{errors?.email}</p>
 
             <div className="form-group mt-3">
               <label className="mb-1">Password</label>
@@ -136,20 +127,19 @@ function Registration() {
                 className="form-control"
                 type="password"
                 id="pass"
-                name="pass"
+                name="password"
                 onChange={handleChange}
-                value={inputs.pass}
+                value={formValues?.password}
                 placeholder="Password"
-                // autoComplete="off"
-                
+                autoComplete="off"
               />
             </div>
+            <p className="text-danger">{errors?.password}</p>
 
             <div className="d-grid gap-2 mt-3">
               <button
                 type="submit"
                 name="add"
-                // onClick={(e) => RedirectToLogin(e)}
                 className="btn btn-primary"
               >
                 Submit

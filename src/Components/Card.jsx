@@ -39,8 +39,7 @@ function Card({ value }) {
     );
   };
 
-
-  const addWishlist = (val,id) => {
+  const addWishlist = (val, id) => {
     setChangeList(true);
     axios({
       method: "post",
@@ -54,7 +53,7 @@ function Card({ value }) {
         id: id,
         quantity: val.quantity,
       },
-    }); 
+    });
     axios.put(
       `https://shine-perfumes-default-rtdb.firebaseio.com/items/${id}.json`,
       {
@@ -69,7 +68,7 @@ function Card({ value }) {
         status: "false",
       }
     );
-  }
+  };
 
   return (
     <>
@@ -78,25 +77,26 @@ function Card({ value }) {
         <div className="card-body">
           <h5 className="card-title categoryPrice text-center">
             <div>
-              {changelist == "false" ? (
-                <button className="bg-transparent border-0" onClick={() => addWishlist(value, id)}>
-                 <span id="boot-icon" className="bi bi-heart-fill" style={{fontSize:"19px", color:"rgb(128, 128, 128)", opacity:"0.2"}}></span>
+              {changelist === "false" ? (
+                <button
+                  className="bg-transparent border-0 mb-1"
+                  onClick={() => addWishlist(value, id)}
+                >
                 </button>
               ) : (
-                <Link className="bg-transparent border-0" to="/is_wishlist">
-                  <span id="boot-icon" className="bi bi-heart-fill" style={{fontSize:"19px", color:"rgb(255, 0, 0)"}}></span>
+                <Link className="bg-transparent border-0 mb-1" to="/is_wishlist">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
                 </Link>
               )}
             </div>
             {name.toUpperCase()}
-            <br/>
-            ({category})
+            <br />({category})
           </h5>
           <p className="card-text categoryPrice text-center">
             <strong>₹{price}</strong>
           </p>
           <p className="card-text btnAround d-flex justify-content-around p-1">
-            {toggling == "false" ? (
+            {toggling === "false" ? (
               <button
                 className="btn clor myChange"
                 onClick={() => SetCart(value, id)}

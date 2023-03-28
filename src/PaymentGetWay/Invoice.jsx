@@ -7,6 +7,8 @@ const Invoice = () => {
   const { productname, totalprice } = useParams();
   const [apiData, setApiData] = useState([]);
   const [mapping, setMapping] = useState([]);
+  const [dates, setDates] = useState("");
+
   let Prices = Number(0);
 
   const URL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json";
@@ -29,7 +31,6 @@ const Invoice = () => {
     arr.push(Object.assign(apiData[key], { id: key }));
   }
   let arraydata = arr[arr.length - 1];
-  console.log(arraydata);
 
   mapping.map((values) => {
     if (values.name === productname) {
@@ -37,29 +38,24 @@ const Invoice = () => {
     }
   }, []);
 
+  
   const trackingNum = Math.floor(Math.random() * 122000000);
   const invoiceNum = Math.floor(Math.random() * 10000);
 
-  const [dates, setDates] = useState("");
   useEffect(() => {
     var today = new Date();
-    let date =
-      today.getDate() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getFullYear();
+    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
     setDates(date);
   }, []);
 
-  const [loading, setLoading] = useState(false);
 
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+  }, [dates]);
 
   return (
     <div>
@@ -83,11 +79,9 @@ const Invoice = () => {
           <div className="row dataspace ">
             {
               loading ? (
-                <div className="col-md-6 tong">
                   <div className="d-flex justify-content-center">
                   <div className="spinner-border" role="status">
                     <span className="sr-only">Loading...</span>
-                  </div>
                   </div>
                 </div>
               ) : (
@@ -95,7 +89,7 @@ const Invoice = () => {
                 <div className="col-md-6 tong">
                   <h2 className="headings">Invoice No : {invoiceNum}</h2>
                   <p className="sub-headings">
-                    Tracking No : SHINE{trackingNum}{" "}
+                    Tracking No : SHINE{trackingNum}
                   </p>
                   <p className="sub-headings">Order Date: {dates} </p>
                   <p className="sub-headings">
@@ -106,10 +100,10 @@ const Invoice = () => {
 
                 <div className="col-md-6 tong">
                   <p className="sub-headings">
-                    Full Name: {arraydata?.CardOnName.toUpperCase()}
+                    Full Name: {arraydata?.CardOnName?.toUpperCase()}
                   </p>
                   <p className="sub-headings">
-                    Address: {arraydata?.Address.toLowerCase()}
+                    Address: {arraydata?.Address?.toLowerCase()}
                   </p>
                   <p className="sub-headings">
                     City: {arraydata?.City.toUpperCase()} - {arraydata?.PinCode}
