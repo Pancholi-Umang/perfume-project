@@ -5,48 +5,46 @@ import Footer2 from "../Components/Footer2";
 import axios from "axios";
 
 function Registration() {
-  
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
-  
+
   const validateForm = (formValues) => {
     const errors = {};
-    
+
     if (!formValues.firstName?.trim()) {
       errors.firstName = "First Name is required";
     }
-    
+
     if (!formValues.lastName?.trim()) {
       errors.lastName = "Last Name is required";
     }
-    
+
     if (!formValues.email?.trim()) {
       errors.email = "Email is required";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formValues.email.trim())
-      ) {
-        errors.email = "Invalid email address";
-      }
-      
-      if (!formValues.password?.trim()) {
-        errors.password = "Password is required";
-      } else if (formValues.password.trim().length < 8) {
-        errors.password = "Password must be at least 8 characters long";
-      }
-      
+    ) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!formValues.password?.trim()) {
+      errors.password = "Password is required";
+    } else if (formValues.password.trim().length < 8) {
+      errors.password = "Password must be at least 8 characters long";
+    }
+
     return errors;
   };
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-  
-  console.log(errors)
-  
-  
+
+  console.log(errors);
+
   const handleChange = (event) => {
     setFormValues((prevValues) => ({
       ...prevValues,
@@ -64,10 +62,8 @@ function Registration() {
       // .then(function (response) {
       //   console.log(response.data);
       // });
-        navigate("/login");
+      navigate("/login");
     }
-
-    
   };
   return (
     <>
@@ -89,7 +85,9 @@ function Registration() {
                 autoComplete="off"
               />
             </div>
-            <p className="text-danger">{errors?.firstName}</p>
+            {errors?.firstName && (
+              <span className="text-danger">{errors?.firstName}</span>
+            )}
 
             <div className="form-group mt-3">
               <label className="mb-1">Last Name </label>
@@ -104,7 +102,9 @@ function Registration() {
                 autoComplete="off"
               />
             </div>
-            <p className="text-danger">{errors?.lastName}</p>
+            {errors?.lastName && (
+              <span className="text-danger">{errors?.lastName}</span>
+            )}
 
             <div className="form-group mt-3">
               <label className="mb-1">email</label>
@@ -119,7 +119,9 @@ function Registration() {
                 autoComplete="off"
               />
             </div>
-            <p className="text-danger">{errors?.email}</p>
+            {errors?.email && (
+              <span className="text-danger">{errors?.email}</span>
+            )}
 
             <div className="form-group mt-3">
               <label className="mb-1">Password</label>
@@ -134,14 +136,12 @@ function Registration() {
                 autoComplete="off"
               />
             </div>
-            <p className="text-danger">{errors?.password}</p>
+            {errors?.password && (
+              <span className="text-danger">{errors?.password}</span>
+            )}
 
             <div className="d-grid gap-2 mt-3">
-              <button
-                type="submit"
-                name="add"
-                className="btn btn-primary"
-              >
+              <button type="submit" name="add" className="btn btn-primary">
                 Submit
               </button>
             </div>

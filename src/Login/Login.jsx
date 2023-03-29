@@ -81,13 +81,13 @@ function Login() {
       allUser.find((data) => {
         if (inputs.email === data.email && inputs.password === data.password) {
           setValing(data);
+          handleLogin();  
+        }else {
+          errorLogin();
         }
       });
-      handleLogin();
       setInput(initialVal);
-    } else {
-      errorLogin();
-    }
+    } 
   };
 
 

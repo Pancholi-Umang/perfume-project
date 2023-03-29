@@ -49,12 +49,8 @@ function AllProduct() {
   return (
     <div className="container OnPaddingRight ">
       <div className="col-md-10 mb-3 container px-1">
-        <input
-          type="text"
-          className="setWidthWithMedia form-control"
-          placeholder="Search Here..."
-          onChange={changeHandler}
-        />
+      <input type="email" className="form-control" id="floatingInput" placeholder="Search Here..." onChange={changeHandler}/>
+ 
       </div>
 
       {loading ? (
