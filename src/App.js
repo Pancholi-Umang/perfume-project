@@ -48,7 +48,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/category" element={<Category />} />
-          <Route exact path="/allproduct" element={<AllProduct />} z/>
+          <Route exact path="/allproduct" element={<AllProduct />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reg" element={<Registration />} />
           <Route exact path="/cart" element={<AddCart />} />
@@ -58,28 +58,10 @@ function App() {
           <Route exact path="/terms" element={<TermsCondition />} />
           <Route exact path="/cartgetway/:totalprice" element={<CartPayment />} />
           <Route exact path="/is_wishlist" element={<Is_wishlist />} />
-
-
-          <Route
-            exact
-            path="/product/:Productname/:Productid"
-            element={<Product />}
-          />
-          <Route
-            exact
-            path="/paymentgetway/:productname/:totalprice"
-            element={<Pricepage />}
-          />
-          <Route
-            exact
-            path="/invoice/:productname/:totalprice"
-            element={<Invoice />}
-          />
-          <Route
-            exact
-            path="/cart-invoice"
-            element={<CartInvoice />}
-          />
+          <Route exact path="/product/:Productname/:Productid" element={<Product />} />
+          <Route exact path="/paymentgetway/:productname/:totalprice" element={<Pricepage />} />
+          <Route exact path="/invoice/:productname/:totalprice" element={<Invoice />} />
+          <Route exact path="/cart-invoice" element={<CartInvoice />} />
           <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
