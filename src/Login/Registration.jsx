@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Registration.css";
 import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
-import axios from "axios";
 
 function Registration() {
   const [formValues, setFormValues] = useState({

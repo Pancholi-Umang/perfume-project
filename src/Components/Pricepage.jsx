@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -10,12 +10,12 @@ const Pricepage = () => {
 
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    let date = today.getDate()+"/"+(today.getMonth() + 1)+"/"+today.getFullYear();
     setDates(date);
     setCardDetails({
       ...cardDetails,
-      Date : dates
-    })
+      Date: dates,
+    });
   }, [dates]);
 
   const [cardDetails, setCardDetails] = useState({
@@ -24,11 +24,11 @@ const Pricepage = () => {
     City: "",
     PinCode: "",
     State: "",
-    productname:productname,
-    Total:totalprice,
-    Date:dates
+    productname: productname,
+    Total: totalprice,
+    Date: dates,
   });
-  console.log(cardDetails)
+  console.log(cardDetails);
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
@@ -42,7 +42,7 @@ const Pricepage = () => {
   function expDateValidate(year) {
     if (Number(year) > 2035) {
       return "Expiry Date Year cannot be greater than 2035";
-    } 
+    }
     return;
   }
 
@@ -53,27 +53,28 @@ const Pricepage = () => {
     meta: { erroredInputs },
   } = useCreditCardValidator({ expiryDateValidator: expDateValidate });
 
-  const [isDisabled, setDisabled] = useState(false);
 
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
     console.log(cardDetails);
-    
+
     if (
-      cardDetails.CardOnName.length > 0 &&
-      cardDetails.Address.length > 0 &&
-      cardDetails.City.length > 0 &&
+      cardDetails.CardOnName.length > 5 &&
+      cardDetails.Address.length > 10 &&
+      cardDetails.City.length > 3 &&
       cardDetails.PinCode.length === 6 &&
-      cardDetails.State.length > 0
-      ) {
-        isDisabled ? (axios({
-          method: "post",
-          url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
-          data: cardDetails,
-      })):(console.log("alert"))
-      setDisabled(true);
+      cardDetails.State.length > 3
+    ) {
+      axios({
+            method: "post",
+            url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
+            data: cardDetails,
+          })
+          .then(() => {
+            navigate(`/invoice/${productname}/${totalprice}`);
+          })
     } else {
-      setDisabled(false);
+      navigate(`/paymentgetway/${productname}/${totalprice}`);
     }
   };
 
@@ -208,7 +209,7 @@ const Pricepage = () => {
                   <div className="col-md-6">
                     <div className="inputbox mt-3 mr-2">
                       <input
-                        type="text"
+                        type="number"
                         name="PinCode"
                         className="form-control"
                         required="required"
@@ -230,17 +231,12 @@ const Pricepage = () => {
                 </button>
               </span>
 
-              <Link
+              <button
                 className={`btn btn-success px-3`}
-                to={
-                  isDisabled
-                    ? `/invoice/${productname}/${totalprice}`
-                    : `/paymentgetway/${productname}/${totalprice}`
-                }
                 onClick={PricePageNuForm}
               >
                 PAY ₹{totalprice}
-              </Link>
+              </button>
             </div>
           </div>
 
