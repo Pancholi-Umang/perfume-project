@@ -12,7 +12,7 @@ const CartInvoice = () => {
     });
   }, []);
 
-  const URL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+  const URL = `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`;
   useEffect(() => {
     axios.get(URL).then((response) => {
       setData(response.data);
@@ -38,12 +38,7 @@ const CartInvoice = () => {
   const [dates, setDates] = useState("");
   useEffect(() => {
     var today = new Date();
-    let date =
-      today.getDate() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getFullYear();
+    let date = today.getDate()+"/"+(today.getMonth() + 1)+"/"+today.getFullYear();
     setDates(date);
   }, []);
 
@@ -106,7 +101,7 @@ const CartInvoice = () => {
                     Address: {arraydata?.Address?.toLowerCase()}
                   </p>
                   <p className="sub-headings">
-                    City: {arraydata?.City.toUpperCase()} - {arraydata?.PinCode}
+                    City: {arraydata?.City.toUpperCase()}({arraydata?.PinCode})
                   </p>
                   <p className="sub-headings">
                     State: {arraydata?.State.toUpperCase()}

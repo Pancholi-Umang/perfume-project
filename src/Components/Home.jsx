@@ -4,6 +4,8 @@ import slider3 from "../Assets/other/slider3.jpeg";
 import { Link } from "react-router-dom";
 import Footer2 from "./Footer2";
 function Home() {
+
+
   return (
     <div className="container mt-3 mb-5">
       <div

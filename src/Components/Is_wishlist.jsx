@@ -14,7 +14,7 @@ const Is_wishlist = () => {
   const GiveData = (value, num) => {
     let Numbers = Number(num);
     axios.put(
-      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
+      `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
         category: value.category,
         description: value.description,

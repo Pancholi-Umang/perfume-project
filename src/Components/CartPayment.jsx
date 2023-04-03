@@ -21,7 +21,7 @@ const CartPayment = () => {
   });
 
   useEffect(() => {
-    axios.get(`https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`).then((response) => {
+    axios.get(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`).then((response) => {
       setApiData(response.data);
     });
   }, []);

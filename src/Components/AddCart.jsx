@@ -25,7 +25,7 @@ const AddCart = () => {
   const GiveData = (value, num) => {
     let Numbers = Number(num);
     axios.put(
-      `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
+      `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
         category: value.category,
         description: value.description,
@@ -41,7 +41,7 @@ const AddCart = () => {
   };
 
   function setDataFunction() {
-    const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+    const baseURL = `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`;
     axios.get(baseURL).then((response) => {
       setAddToCart(response.data);
     });
@@ -54,14 +54,14 @@ const AddCart = () => {
     let number = "";
     axios
       .get(
-        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}/id.json`
+        `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}/id.json`
       )
       .then((response) => {
         console.log(response);
         number = response.data;
       });
     const DeleteCardData = axios.delete(
-      `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${value.id}.json`
+      `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}.json`
     );
     DeleteCardData?.then(() => {
       GiveData(value, number);
@@ -79,7 +79,7 @@ const AddCart = () => {
     setButtonQuantity(qty);
     if (buttonQuantity < 99) {
       axios.patch(
-        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
+        `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${id}.json`,
         {
           quantity: qty,
         }
@@ -93,7 +93,7 @@ const AddCart = () => {
     setButtonQuantity(qty);
     if (buttonQuantity > 1) {
       axios.patch(
-        `https://cart-47ea1-default-rtdb.firebaseio.com/cart/${id}.json`,
+        `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${id}.json`,
         {
           quantity: qty,
         }

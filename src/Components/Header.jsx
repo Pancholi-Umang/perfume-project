@@ -1,34 +1,48 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import "./ReactStyle.css";
 
+const LocalStorageLogin = () => {
+  let list = localStorage.getItem("LoginDetails");
+
+  if (list) {
+    return JSON.parse(localStorage.getItem("LoginDetails"));
+  } else {
+    return [];
+  }
+};
+
 function Header() {
+
+  const location = useLocation()
   const myFunction = () => {
-    if(window?.getComputedStyle(document.getElementById("myCheck"))?.display !== "none"){
+    if (window?.getComputedStyle(document.getElementById("myCheck"))?.display !== "none") 
+    {
       document.getElementById("myCheck").click();
     }
-  }
-  const [CartNumber , setCartNumber] = useState([])
-    
-  const location = useLocation();
-  const baseURL = `https://cart-47ea1-default-rtdb.firebaseio.com/cart.json`;
+  };
+  const [CartNumber, setCartNumber] = useState([]);
+  const [LoginUser, setLoginUser] = useState(LocalStorageLogin());
+
+
+  const baseURL = `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`;
   useEffect(() => {
     axios.get(baseURL).then((response) => {
-        setCartNumber(response.data)
+      setCartNumber(response.data);
     });
-  }, [location.pathname]);
+  },[location.pathname]);
 
   var arrLength = [];
-  for (let key in CartNumber) {    
-      arrLength.push(Object.assign(CartNumber[key], {id: key}));
+  for (let key in CartNumber) {
+    arrLength.push(Object.assign(CartNumber[key], { id: key }));
   }
 
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-3 mb-3">
         <div className="container-fluid">
-          <Link className="navbar-brand thatsBrandName col-md-4 text-uppercase" to="/" > Shine Perfumes </Link>
+        <Link className="navbar-brand thatsBrandName col-md-4 text-uppercase" to="/" > Shine Perfumes </Link>
           <button className="navbar-toggler" id="myCheck"  type="button"
               data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"  aria-expanded="false" aria-label="Toggle navigation"> 
@@ -39,55 +53,31 @@ function Header() {
               <li className="nav-item">
                 <Link className="nav-link navbar-dark"  to="/" onClick={myFunction} aria-current="page" > Home </Link>
               </li>
+    
               <li className="nav-item">
-                <Link
-                  className="nav-link navbar-dark"
-                  to="/category"
-                  onClick={myFunction}
-                  aria-current="page"
-                >
-                  Category
-                </Link>
+                <Link className="nav-link navbar-dark" to="/category" onClick={myFunction} aria-current="page"> Category </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link navbar-dark"
-                  to="/allproduct"
-                  onClick={myFunction}
-                  aria-current="page"
-                >
-                  All Product
-                </Link>
+                <Link className="nav-link navbar-dark" to="/allproduct" onClick={myFunction} aria-current="page"> All Product </Link>
               </li>
+              {LoginUser.length == 0 ? (
+                
+                <li className="nav-item">
+                  <Link className="nav-link navbar-dark" to="/login" onClick={myFunction} aria-current="page" > Login </Link>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <Link className="nav-link navbar-dark" to="/profile" onClick={myFunction} aria-current="page"> Profile </Link>
+                </li>
+              )}
+
               <li className="nav-item">
-                <Link
-                  className="nav-link navbar-dark"
-                  to="/login"
-                  onClick={myFunction}
-                  aria-current="page"
-                >
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item" >
-                <Link
-                  className="nav-link navbar-dark relPos"
-                  onClick={myFunction}
-                  to="/cart"
-                  aria-current="page"
-                >
-                  <i
-                    className="fa fa-shopping-cart fa-lg underbase"
-                    aria-hidden="true"
-                  ></i>
+                <Link className="nav-link navbar-dark relPos" onClick={myFunction} to="/cart" aria-current="page">
+                  <i className="fa fa-shopping-cart fa-lg underbase" aria-hidden="true"></i>
                   <span className="CartSetting">{arrLength?.length}</span>
                 </Link>
-                <Link
-                  className="nav-link navbar-dark AddCartButtonToggle"
-                  onClick={myFunction}
-                  to="/cart"
-                  aria-current="page"
-                >
+
+                <Link className="nav-link navbar-dark AddCartButtonToggle" onClick={myFunction} to="/cart" aria-current="page">
                   Cart Item <span className="setThis"> - {arrLength?.length}</span>
                 </Link>
               </li>

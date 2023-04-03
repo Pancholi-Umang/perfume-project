@@ -8,23 +8,24 @@ const Invoice = () => {
   const [apiData, setApiData] = useState([]);
   const [mapping, setMapping] = useState([]);
   const [dates, setDates] = useState("");
+  const [dataToggle, setDataToggle] = useState(false)
 
   let Prices = Number(0);
 
-  const URL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json";
+  const URL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json";
   useEffect(() => {
     axios.get(URL).then((response) => {
       setMapping(response.data);
     });
   }, []);
 
-  const baseURL =
-    "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
+  const baseURL = "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setApiData(response.data);
+      setDataToggle(true)
     });
-  }, []);
+  }, [dataToggle]);
 
   var arr = [];
   for (let key in apiData) {
@@ -46,7 +47,7 @@ const Invoice = () => {
     var today = new Date();
     let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
     setDates(date);
-  }, []);
+  }, [apiData]);
 
 
   const [loading, setLoading] = useState(false);
@@ -55,7 +56,7 @@ const Invoice = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, [dates]);
+  }, [apiData]);
 
   return (
     <div>

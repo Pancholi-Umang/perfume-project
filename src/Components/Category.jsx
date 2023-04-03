@@ -17,7 +17,7 @@ const Category = () => {
     }, 1000);
   }, []);
 
-  const baseURL = "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  const baseURL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
   const GetData = () => {
     axios.get(baseURL).then((response) => {
      setDataItem(response.data);

@@ -8,7 +8,18 @@ function Login() {
   const [valing, setValing] = useState({});
   const [showAlert, setShowAlert] = useState(false);
   const [eshowAlert, seteShowAlert] = useState(false);
+  const [LoginUser, setLoginUser] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   const navigate = useNavigate();
+
   const initialVal = {
     email: "",
     password: "",
@@ -26,7 +37,7 @@ function Login() {
     ) {
       errors.email = "Invalid email address";
     }
-    
+
     if (!inputs.password.trim()) {
       errors.password = "Password is required";
     } else if (inputs.password.trim().length < 8) {
@@ -36,19 +47,27 @@ function Login() {
     return errors;
   };
 
+  const userLoginLocalStorage = (data) => {
+    setLoginUser({ ...LoginUser, data });
+  };
+
+  useEffect(() => {
+    localStorage.setItem("LoginDetails", JSON.stringify(LoginUser));
+  }, [LoginUser]);
+
   const handleLogin = () => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
-      navigate("/");
-    }, 3000);
+      navigate("/profile");
+    }, 2000);
   };
 
   const errorLogin = () => {
     seteShowAlert(true);
     setTimeout(() => {
       seteShowAlert(false);
-    }, 1000);
+    }, 2500);
   };
 
   const handleChange = (event) => {
@@ -56,14 +75,15 @@ function Login() {
     setInput({ ...inputs, [name]: value });
   };
 
+  const GetUser = () => {
+    axios
+      .get(`https://imagedemo-6e486-default-rtdb.firebaseio.com/wish.json`)
+      .then((response) => {
+        setUsers(response.data);
+      });
+  };
+
   useEffect(() => {
-    const GetUser = () => {
-      axios
-        .get(`https://imagedemo-6e486-default-rtdb.firebaseio.com/wish.json`)
-        .then((response) => {
-          setUsers(response.data);
-        });
-    };
     GetUser();
   }, []);
 
@@ -79,17 +99,19 @@ function Login() {
 
     if (Object.keys(validationErrors).length === 0) {
       allUser.find((data) => {
-        if (inputs.email === data.email && inputs.password === data.password) {
+        if (data.email === inputs.email && data.password === inputs.password) {
           setValing(data);
-          handleLogin();  
-        }else {
+          userLoginLocalStorage(data);
+          handleLogin();
+        } else if (
+          data.email !== inputs.email &&
+          data.password !== inputs.password
+        ) {
           errorLogin();
         }
       });
-      setInput(initialVal);
-    } 
+    }
   };
-
 
   return (
     <>
@@ -99,10 +121,10 @@ function Login() {
             className="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            welcome{" "}
+            welcome
             <span className="text-dark ">
               <strong>
-                {valing?.first} {valing?.last}
+                {valing?.firstName} {valing?.lastName} !
               </strong>
             </span>
             <button
@@ -115,7 +137,7 @@ function Login() {
         </div>
       )}
       {eshowAlert && (
-        <div className="container">
+        <div className={`${showAlert ? "d-none" : "container"}`}>
           <div
             className="alert alert-danger alert-dismissible fade show"
             role="alert"
@@ -131,55 +153,65 @@ function Login() {
         </div>
       )}
 
-      <div className="containersetHeight">
-        <div className="Auth-form-container container">
-          <form className="Auth-form" onSubmit={handleSubmit}>
-            <div className="Auth-form-content">
-              <h3 className="Auth-form-title">Sign In</h3>
-              <div className="form-group mt-3">
-                <label>Email address</label>
-                <input
-                  type="email"
-                  className="form-control mt-1"
-                  placeholder="Enter email"
-                  onChange={handleChange}
-                  name="email"
-                  value={inputs.email}
-                />
-              </div>
-              {errors?.email && <span className="text-danger">{errors?.email}</span>}
-
-              <div className="form-group mt-3">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control mt-1"
-                  placeholder="Enter password"
-                  onChange={handleChange}
-                  name="password"
-                  value={inputs.password}
-                />
-              </div>
-              {errors?.password && <span className="text-danger">{errors?.password}</span>}
-
-              <div className="d-grid gap-2 mt-3">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  // onClick={Change}
-                >
-                  Submit
-                </button>
-              </div>
-              <p className="forgot-password text-right mt-2">
-                <Link to="/reg" className="mt-1 anchorRemove">
-                  Create An Account
-                </Link>
-              </p>
-            </div>
-          </form>
+      {loading ? (
+        <div className="containes">
+          <div className="item1-1"></div>
+          <div className="item2-2"></div>
+          <div className="item3-3"></div>
+          <div className="item4-4"></div>
+          <div className="item5-5"></div>
         </div>
-      </div>
+      ) : (
+        <div className="containersetHeight">
+          <div className="Auth-form-container container">
+            <form className="Auth-form" onSubmit={handleSubmit}>
+              <div className="Auth-form-content">
+                <h3 className="Auth-form-title">Sign In</h3>
+                <div className="form-group mt-3">
+                  <label>Email address</label>
+                  <input
+                    type="email"
+                    className="form-control mt-1"
+                    placeholder="Enter email"
+                    onChange={handleChange}
+                    name="email"
+                    value={inputs.email}
+                  />
+                </div>
+                {errors?.email && (
+                  <span className="text-danger">{errors?.email}</span>
+                )}
+
+                <div className="form-group mt-3">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    className="form-control mt-1"
+                    placeholder="Enter password"
+                    onChange={handleChange}
+                    name="password"
+                    value={inputs.password}
+                  />
+                </div>
+                {errors?.password && (
+                  <span className="text-danger">{errors?.password}</span>
+                )}
+
+                <div className="d-grid gap-2 mt-3">
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </div>
+                <p className="forgot-password text-right mt-2">
+                  <Link to="/reg" className="mt-1 anchorRemove">
+                    Create An Account
+                  </Link>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       <Footer2 />
     </>
   );

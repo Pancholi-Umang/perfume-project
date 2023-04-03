@@ -41,10 +41,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+
   return (
     <div className="container mt-2 mb-2">
       <BrowserRouter>
-        <Header />
+        <Header/>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/category" element={<Category />} />

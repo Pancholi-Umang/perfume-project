@@ -11,7 +11,7 @@ const Product = () => {
 
   const [valOFQuantrity, setValOfQuantity] = useState(1);
 
-  const baseURL = `https://shine-perfumes-default-rtdb.firebaseio.com/items/${Productid}/.json/`;
+  const baseURL = `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Productid}/.json/`;
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setUrlData(response.data);

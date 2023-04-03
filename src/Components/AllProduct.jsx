@@ -15,8 +15,7 @@ function AllProduct() {
     }, 1500);
   }, []);
 
-  const baseURL =
-    "https://shine-perfumes-default-rtdb.firebaseio.com/items.json/";
+  const baseURL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
   const GetData = () => {
     axios.get(baseURL).then((response) => {
       setData(response.data);
@@ -65,7 +64,7 @@ function AllProduct() {
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
             {DATAarr?.map((value, index) => {
-              return <Card key={index} value={value} loading={loading} />;
+              return <Card key={index} value={value} loading={loading} />
             })}
           </div>
         </div>

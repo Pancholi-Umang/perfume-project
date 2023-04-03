@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Registration.css";
 import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
+import axios from "axios";
 
 function Registration() {
   const [formValues, setFormValues] = useState({
@@ -35,7 +36,6 @@ function Registration() {
     } else if (formValues.password.trim().length < 8) {
       errors.password = "Password must be at least 8 characters long";
     }
-
     return errors;
   };
 
@@ -57,10 +57,10 @@ function Registration() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      // axios.post("http://localhost/perfume/api/save", formValues)
-      // .then(function (response) {
-      //   console.log(response.data);
-      // });
+      axios.post(`https://imagedemo-6e486-default-rtdb.firebaseio.com/wish.json`, formValues)
+      .then(function (response) {
+        console.log(response.data);
+      });
       navigate("/login");
     }
   };
