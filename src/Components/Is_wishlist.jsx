@@ -30,7 +30,7 @@ const Is_wishlist = () => {
   };
 
   function setDataFunction() {
-    const baseURL = `https://is-wishlist-default-rtdb.firebaseio.com/wish.json`;
+    const baseURL = `https://wishlist-466aa-default-rtdb.firebaseio.com/wish.json`;
     axios.get(baseURL).then((response) => {
       setWishList(response.data);
     });
@@ -43,14 +43,14 @@ const Is_wishlist = () => {
     let number = "";
     axios
       .get(
-        `https://is-wishlist-default-rtdb.firebaseio.com/wish/${value.id}/id.json`
+        `https://wishlist-466aa-default-rtdb.firebaseio.com/wish/${value.id}/id.json`
       )
       .then((response) => {
         console.log(response);
         number = response.data;
       });
     const DeleteCardData = axios.delete(
-      `https://is-wishlist-default-rtdb.firebaseio.com/wish/${value.id}.json`
+      `https://wishlist-466aa-default-rtdb.firebaseio.com/wish/${value.id}.json`
     );
     DeleteCardData?.then(() => {
       GiveData(value, number);

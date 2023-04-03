@@ -61,7 +61,7 @@ const Pricepage = () => {
     if ( cardDetails.CardOnName.length > 5 && cardDetails.Address.length > 10 && cardDetails.City.length > 3 && cardDetails.PinCode.length === 6 && cardDetails.State.length > 3 ) {
       axios({
             method: "post",
-            url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
+            url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
             data: cardDetails,
       })
       navigate(`/invoice/${productname}/${totalprice}`);

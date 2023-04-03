@@ -43,7 +43,7 @@ function Card({ value }) {
     setChangeList(true);
     axios({
       method: "post",
-      url: "https://is-wishlist-default-rtdb.firebaseio.com/wish.json",
+      url: "https://wishlist-466aa-default-rtdb.firebaseio.com/wish.json",
       data: {
         category: val.category,
         description: val.description,

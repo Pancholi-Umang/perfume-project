@@ -57,7 +57,7 @@ function Registration() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios.post(`https://imagedemo-6e486-default-rtdb.firebaseio.com/wish.json`, formValues)
+      axios.post(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`, formValues)
       .then(function (response) {
         console.log(response.data);
       });

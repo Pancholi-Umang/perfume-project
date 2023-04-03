@@ -77,7 +77,7 @@ function Login() {
 
   const GetUser = () => {
     axios
-      .get(`https://imagedemo-6e486-default-rtdb.firebaseio.com/wish.json`)
+      .get(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`)
       .then((response) => {
         setUsers(response.data);
       });

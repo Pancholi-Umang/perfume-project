@@ -88,7 +88,7 @@ const CartPayment = () => {
     ) {
       isDisabled ? (axios({
         method: "post",
-        url: "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json",
+        url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
         data: cardDetails,
     })):(console.log("alert"))
       setDisabled(true);

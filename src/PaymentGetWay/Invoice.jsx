@@ -19,7 +19,7 @@ const Invoice = () => {
     });
   }, []);
 
-  const baseURL = "https://perfumeweb-60a0e-default-rtdb.firebaseio.com/invoice.json";
+  const baseURL = "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json";
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setApiData(response.data);
