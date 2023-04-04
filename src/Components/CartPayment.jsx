@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCreditCardValidator } from "react-creditcard-validator";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -12,43 +12,50 @@ const CartPayment = () => {
 
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    let date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
     setDates(date);
   }, []);
 
   const [cardDetails, setCardDetails] = useState({
-    CardOnName: "", Address: "", City: "", PinCode: "", State: "", Total:totalprice, productname:"", Date:dates
+    CardOnName: "",
+    Address: "",
+    City: "",
+    PinCode: "",
+    State: "",
+    Total: totalprice,
+    productname: "",
+    Date: dates,
+    deliveryStatus: "proceed",
   });
 
   useEffect(() => {
-    axios.get(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`).then((response) => {
-      setApiData(response.data);
-    });
+    axios
+      .get(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`)
+      .then((response) => {
+        setApiData(response.data);
+      });
   }, []);
 
-  console.log(cardDetails)
-
+  console.log(cardDetails);
 
   useEffect(() => {
-  var arr = [];
+    var arr = [];
     for (let key in apiData) {
       arr.push(Object.assign(apiData[key], { id: key }));
     }
 
-   let x = arr.map((val) => {
+    let x = arr.map((val) => {
       const { name } = val;
-      return name
+      return name;
     });
 
-    const StringData  = x.toString();
+    const StringData = x.toString();
     setCardDetails({
       ...cardDetails,
-      productname : StringData,
-      Date:dates
-    })
-    
-  },[apiData])
-
+      productname: StringData,
+      Date: dates,
+    });
+  }, [apiData]);
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
@@ -73,27 +80,25 @@ const CartPayment = () => {
     meta: { erroredInputs },
   } = useCreditCardValidator({ expiryDateValidator: expDateValidate });
 
-  const [isDisabled, setDisabled] = useState(false);
-
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
     console.log(cardDetails);
 
     if (
-      cardDetails.CardOnName.length > 0 &&
-      cardDetails.Address.length > 0 &&
-      cardDetails.City.length > 0 &&
+      cardDetails.CardOnName.length > 5 &&
+      cardDetails.Address.length > 10 &&
+      cardDetails.City.length > 3 &&
       cardDetails.PinCode.length === 6 &&
-      cardDetails.State.length > 0
+      cardDetails.State.length > 3
     ) {
-      isDisabled ? (axios({
+      axios({
         method: "post",
         url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
         data: cardDetails,
-    })):(console.log("alert"))
-      setDisabled(true);
+      });
+      navigate(`/cart-invoice`);
     } else {
-      setDisabled(false);
+      navigate(`/cartgetway/${totalprice}`);
     }
   };
 
@@ -250,13 +255,12 @@ const CartPayment = () => {
                 </button>
               </span>
 
-              <Link
+              <button
                 className={`btn btn-success px-3`}
-                to={isDisabled ? `/cart-invoice/` : `/cartgetway/${totalprice}`}
                 onClick={PricePageNuForm}
               >
                 PAY ₹{totalprice}
-              </Link>
+              </button>
             </div>
           </div>
 

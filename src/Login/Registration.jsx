@@ -11,6 +11,13 @@ function Registration() {
     email: "",
     password: "",
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const handleLogin = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
 
   const validateForm = (formValues) => {
     const errors = {};
@@ -61,11 +68,22 @@ function Registration() {
       .then(function (response) {
         console.log(response.data);
       });
-      navigate("/login");
+      handleLogin()
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     }
   };
   return (
     <>
+    {showAlert && (
+        <div className="container">
+          <div className="alert alert-success alert-dismissible fade show" role="alert">
+            <span className="text-dark "> <strong>  Registration Successfull... </strong> </span>
+            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+          </div>
+        </div>
+      )}
       <div className="Auth-form-container-registration">
         <form className="Auth-form" onSubmit={validate}>
           <div className="Auth-form-content">

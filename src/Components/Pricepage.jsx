@@ -10,7 +10,12 @@ const Pricepage = () => {
 
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate()+"/"+(today.getMonth() + 1)+"/"+today.getFullYear();
+    let date =
+      today.getDate() +
+      "/" +
+      (today.getMonth() + 1) +
+      "/" +
+      today.getFullYear();
     setDates(date);
     setCardDetails({
       ...cardDetails,
@@ -27,6 +32,7 @@ const Pricepage = () => {
     productname: productname,
     Total: totalprice,
     Date: dates,
+    deliveryStatus: "proceed",
   });
   console.log(cardDetails);
 
@@ -53,22 +59,26 @@ const Pricepage = () => {
     meta: { erroredInputs },
   } = useCreditCardValidator({ expiryDateValidator: expDateValidate });
 
-
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
     console.log(cardDetails);
 
-    if ( cardDetails.CardOnName.length > 5 && cardDetails.Address.length > 10 && cardDetails.City.length > 3 && cardDetails.PinCode.length === 6 && cardDetails.State.length > 3 ) {
+    if (
+      cardDetails.CardOnName.length > 5 &&
+      cardDetails.Address.length > 10 &&
+      cardDetails.City.length > 3 &&
+      cardDetails.PinCode.length === 6 &&
+      cardDetails.State.length > 3
+    ) {
       axios({
-            method: "post",
-            url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
-            data: cardDetails,
-      })
+        method: "post",
+        url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
+        data: cardDetails,
+      });
       navigate(`/invoice/${productname}/${totalprice}`);
-      } 
-      else {
-        navigate(`/paymentgetway/${productname}/${totalprice}`);
-      }
+    } else {
+      navigate(`/paymentgetway/${productname}/${totalprice}`);
+    }
   };
 
   return (
