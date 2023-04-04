@@ -1,512 +1,499 @@
 body {
-    background: rgb(228, 238, 243);
+  background: rgb(228, 238, 243);
 }
 
 /* footer */
 
 .bg-footer {
-    background-color: #33383c;
-    padding: 50px 0 30px;
+  background-color: #33383c;
+  padding: 50px 0 30px;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 .footer-heading {
-    letter-spacing: 2px;
+  letter-spacing: 2px;
 }
- 
+
 .footer-link a {
-    color: #acacac;
-    line-height: 40px;
-    font-size: 14px;
-    transition: all 0.5s;
+  color: #acacac;
+  line-height: 40px;
+  font-size: 14px;
+  transition: all 0.5s;
 }
- 
+
 .footer-link a:hover {
-    color: #1bbc9b;
+  color: #1bbc9b;
 }
- 
+
 .contact-info {
-    color: #acacac;
-    font-size: 14px;
+  color: #acacac;
+  font-size: 14px;
 }
- 
+
 .footer-social-icon {
-    font-size: 15px;
-    height: 34px;
-    width: 34px;
-    line-height: 34px;
-    border-radius: 3px;
-    text-align: center;
-    display: inline-block;
+  font-size: 15px;
+  height: 34px;
+  width: 34px;
+  line-height: 34px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
 }
- 
-.coding:hover{
-    color: #1bbc9b !important;
+
+.coding:hover {
+  color: #1bbc9b !important;
 }
- 
+
 .footer-alt {
-    color: #acacac;
+  color: #acacac;
 }
- 
+
 .footer-heading {
-    position: relative;
-    padding-bottom: 12px;
+  position: relative;
+  padding-bottom: 12px;
 }
- 
+
 .footer-heading:after {
-    content: '';
-    width: 25px;
-    border-bottom: 1px solid #FFF;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: block;
-    border-bottom: 1px solid #1bbc9b;
+  content: "";
+  width: 25px;
+  border-bottom: 1px solid #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  border-bottom: 1px solid #1bbc9b;
 }
 
 /* footer end */
 
 .mediaQueryImage {
-    margin-top: 10px;
-    margin-bottom: 10px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .thatsBrandName {
-    font-family: "Audiowide", sans-serif;
+  font-family: "Audiowide", sans-serif;
 }
 
 .NavbarInnerUl {
-    font-family: "Trirong", serif;
+  font-family: "Trirong", serif;
 }
 
 .myCardImage {
-    width: 100%;
-    min-height: 250px;
-    max-height: 250px;
+  width: 100%;
+  min-height: 250px;
+  max-height: 250px;
 }
 
 .changeColor {
-    background-color: rgb(118, 242, 242);
-    opacity: 0.9;
+  background-color: rgb(118, 242, 242);
+  opacity: 0.9;
 }
 
 .changeColorButton {
-    background-color: rgb(193, 241, 144);
+  background-color: rgb(193, 241, 144);
 }
 
 .changeColorButtondiffrent {
-    background-color: #6fe85c;
-    opacity: 0.9;
+  background-color: #6fe85c;
+  opacity: 0.9;
 }
 
 .korimen {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
-
 .makingRoundedIcon {
-    height: 200px;
-    width: 200px;
-    border-radius: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 200px;
+  width: 200px;
+  border-radius: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .makeAround {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .xcv {
-    outline: 1px solid rgb(123, 120, 120);
-
+  outline: 1px solid rgb(123, 120, 120);
 }
 
-
 .manageSpaceContainer {
-    height: 500px;
+  height: 500px;
 }
 
 .sweCollorBlck {
-    color: black;
-    text-decoration: none;
-    border-bottom: 1px solid black;
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid black;
 }
 
 .sweCollorBlck:hover {
-    color: chocolate;
-    border-bottom: 1px solid chocolate;
+  color: chocolate;
+  border-bottom: 1px solid chocolate;
 }
 
 .addImageTamplateInBg {
-    background-image: url(../Assets/other/backgroundPerfumeBannerImage.jpeg);
-    height: 250px;
-    background-size: cover;
-    background-position: inherit;
-    background-repeat: no-repeat;
+  background-image: url(../Assets/other/backgroundPerfumeBannerImage.jpeg);
+  height: 250px;
+  background-size: cover;
+  background-position: inherit;
+  background-repeat: no-repeat;
 }
 
 .CreateFontsizeWithColor {
-    font-size: x-large;
-    color: chocolate;
-    font-weight: 500;
+  font-size: x-large;
+  color: chocolate;
+  font-weight: 500;
 }
 
 .myChange {
-    border: none;
+  border: none;
 }
 
 .myChange:hover {
-    background: #000;
-    color: white;
+  background: #000;
+  color: white;
 }
 
 .flex-end-classes {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-
 .relPos {
-    position: relative;
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .CartSetting {
-    border: 1px solid white;
-    position: absolute;
-    top: -2px;
-    right: 3px;
-    color: white;
-    height: 20px;
-    width: 20px;
-    background: red;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border: 1px solid white;
+  position: absolute;
+  top: -2px;
+  right: 3px;
+  color: white;
+  height: 20px;
+  width: 20px;
+  background: red;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .underbase {
-    position: absolute;
-    left: 0;
+  position: absolute;
+  left: 0;
 }
 
 .madeUpCartHeight {
-    min-height: 200px;
-    max-height: 200px;
+  min-height: 200px;
+  max-height: 200px;
 }
 
 .AlignCneter {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .setImageAtCart {
-    min-height: 150px;
-    max-width: 150px;
+  min-height: 150px;
+  max-width: 150px;
 }
 
 .InCartInnerItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .titleFlex {
-    height: 150px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .BtnFlex {
-    height: 150px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .stringing {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .innerBtnCss {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .span {
-    display: inline-block;
+  display: inline-block;
 }
 
 .flexContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .clrCss {
-    color: #000;
+  color: #000;
 }
 
 .centerStarmedia {
-    width: 70%;
+  width: 70%;
 }
 
 .forFlexColumndir {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .takeWidth {
-    width: 100%;
+  width: 100%;
 }
 
 .clrWhite {
-    color: aliceblue;
-    text-decoration: none;
+  color: aliceblue;
+  text-decoration: none;
 }
 
 .clrWhite:hover {
-    color: yellow;
-    text-decoration: none;
+  color: yellow;
+  text-decoration: none;
 }
 
 .blackDarkerBg {
-    background-color: black;
+  background-color: black;
 }
 
 .uponclass {
-    text-align: left;
+  text-align: left;
 }
 
 .clrWhites {
-    color: white;
+  color: white;
 }
 
 .ylowclr {
-    color: yellow;
+  color: yellow;
 }
 
 .productFlexButton {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .clor {
-    background-color: #c7dff7;
-    color: black;
+  background-color: #c7dff7;
+  color: black;
 }
 
 .clorW {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .setInMediaUpDown {
-    background-color: rgb(144, 210, 244);
+  background-color: rgb(144, 210, 244);
 }
 
 .YellowPartCenter {
-    background-color: rgb(228, 238, 243);
+  background-color: rgb(228, 238, 243);
 }
 
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .makePointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .no-drop {
-    cursor: no-drop
+  cursor: no-drop;
 }
 
 .myCardImage:hover {
-    transform: scale(1.1);
-    transition: all 0.7s ease;
+  transform: scale(1.1);
+  transition: all 0.7s ease;
 }
 
 .myData {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .makeWidth {
-    width: 60px;
-    background-color: #7c4dff;
-    height: 2px;
+  width: 60px;
+  background-color: #7c4dff;
+  height: 2px;
 }
 
 /* -------> quantity btn css */
 
 .counter {
-    background: rgb(64 71 74);
-    color: white;
-    margin-top: 5px;
-    margin-bottom: 2px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 20px;
+  background: rgb(64 71 74);
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
 }
 
 .counter input {
-    width: 30px;
-    border: 0;
-    line-height: 25px;
-    font-size: 15px;
-    text-align: center;
-    background: #212529;
-    color: #fff;
-    appearance: none;
-    outline: 0;
+  width: 30px;
+  border: 0;
+  line-height: 25px;
+  font-size: 15px;
+  text-align: center;
+  background: #212529;
+  color: #fff;
+  appearance: none;
+  outline: 0;
 }
 
 .counter span {
-    line-height: 25px;
-    text-align: center;
-    font-size: 25px;
-    padding: 5px 5px 7px 5px;
-    cursor: pointer;
-    user-select: none;
-    border: none;
-    outline: none;
+  line-height: 25px;
+  text-align: center;
+  font-size: 25px;
+  padding: 5px 5px 7px 5px;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  outline: none;
 }
 
 .setWidthWithMedia {
-    width: 50%;
-    margin: auto;
-    border-radius: 15px;
-    padding-left: 20px;
+  width: 50%;
+  margin: auto;
+  border-radius: 15px;
+  padding-left: 20px;
 }
 
 .up {
-    margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .RemoveSpinner {
-    text-align: center;
+  text-align: center;
 }
 
 .RemoveSpinner::-webkit-inner-spin-button,
 .RemoveSpinner::-webkit-outer-spin-button {
-    display: none;
+  display: none;
 }
 
 .GiveOnMargin {
-    margin-left: 5px;
-    margin-right: 5px;
-
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .madeBtn {
-    border: none;
-    outline: none;
-    background-color: aquamarine;
+  border: none;
+  outline: none;
+  background-color: aquamarine;
 }
 
 .form-control {
-    border-bottom: 2px solid #eee !important;
-    border: none;
-    font-weight: 600
+  border-bottom: 2px solid #eee !important;
+  border: none;
+  font-weight: 600;
 }
 
 .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #8bbafe;
-    outline: 0;
-    box-shadow: none;
-    border-radius: 0px;
-    border-bottom: 2px solid blue !important;
+  color: #495057;
+  background-color: #fff;
+  border-color: #8bbafe;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 0px;
+  border-bottom: 2px solid blue !important;
 }
 
-
-
 .inputbox {
-    position: relative;
-    margin-bottom: 20px;
-    width: 100%
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .inputbox span {
-    position: absolute;
-    top: 7px;
-    left: 11px;
-    transition: 0.5s
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  transition: 0.5s;
 }
 
 .inputbox i {
-    position: absolute;
-    top: 13px;
-    right: 8px;
-    transition: 0.5s;
-    color: #3F51B5
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  transition: 0.5s;
+  color: #3f51b5;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.inputbox input:focus~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
+.inputbox input:focus ~ span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px;
 }
 
-.inputbox input:valid~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
+.inputbox input:valid ~ span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px;
 }
 
 .card-blue {
-
-    background-color: #492bc4;
+  background-color: #492bc4;
 }
 
 .hightlight {
-
-    background-color: #5737d9;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 14px;
+  background-color: #5737d9;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 .yellow {
-
-    color: #fdcc49;
+  color: #fdcc49;
 }
 
 .decoration {
-
-    text-decoration: none;
-    font-size: 14px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 /* .btn-success {
@@ -515,668 +502,633 @@ input::-webkit-inner-spin-button {
     border-color:#492bc4;
 } */
 
-
-
 .decoration:hover {
-
-    text-decoration: none;
-    color: #fdcc49;
+  text-decoration: none;
+  color: #fdcc49;
 }
 
 .AddCartButtonToggle {
-    display: none;
+  display: none;
 }
 
 .setThis {
-    border-radius: 10px;
-    color: #495057;
+  border-radius: 10px;
+  color: #495057;
 }
 
-
-
-
 .imageSet {
-    height: 250px;
+  height: 250px;
 }
 
 .positionClass {
-    position: absolute;
-    left: 23px;
-    top: 20px;
+  position: absolute;
+  left: 23px;
+  top: 20px;
 }
 
 .HeigthWidthClass {
-    height: 150px;
-    width: 200px;
-    margin: auto;
+  height: 150px;
+  width: 200px;
+  margin: auto;
 }
 
 .CardBorder {
-    border: none;
+  border: none;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* Responsive design to use Media Query */
 
 @media only screen and (max-width: 768px) {
+  .sss {
+    display: flex;
+    justify-content: center;
+  }
 
-    .sss{
-        display: flex;
-        justify-content: center;
-    }
+  .onMarginautoMedia {
+    margin: auto;
+    display: inline;
+  }
 
-    .onMarginautoMedia{
-        margin: auto;
-        display: inline;
-    }
+  .manageSpaceContainer {
+    height: 250px;
+  }
 
-    .manageSpaceContainer {
-        height: 250px;
-    }
+  .mediaClassForMargin {
+    margin: 5px auto 5px auto;
+  }
 
-    .mediaClassForMargin {
-        margin: 5px auto 5px auto;
-    }
+  .imageSet {
+    height: 150px;
+    max-width: 150px;
+  }
 
-    .imageSet {
-        height: 150px;
-        max-width: 150px;
-    }
+  .makeMenuButtonWithMedia button {
+    font-size: 10px;
+  }
 
-    .makeMenuButtonWithMedia button {
-        font-size: 10px;
-    }
+  .relPos {
+    display: none;
+  }
 
-    .relPos {
-        display: none;
-    }
+  .AddCartButtonToggle {
+    display: block;
+  }
 
-    .AddCartButtonToggle {
-        display: block;
-    }
+  .OnmediaWidthSmall {
+    width: 50%;
+    margin: auto;
+  }
 
-    .OnmediaWidthSmall {
-        width: 50%;
-        margin: auto;
-    }
+  .counter {
+    margin: auto;
+    margin-top: 10px;
+  }
 
-    .counter {
-        margin: auto;
-        margin-top: 10px;
-    }
+  .onMediaCardCss {
+    text-align: center;
+  }
 
-    .onMediaCardCss {
-        text-align: center;
-    }
+  .onMediMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
-    .onMediMargin {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+  body {
+    background-color: lightblue;
+  }
 
-    body {
-        background-color: lightblue;
-    }
+  .centerMedia {
+    margin: auto;
+    margin-bottom: 7px;
+  }
 
-    .centerMedia {
-        margin: auto;
-        margin-bottom: 7px;
-    }
+  .mediaQueryImage {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 
-    .mediaQueryImage {
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
+  .madeRelative,
+  .YellowPartCenter {
+    text-align: center;
+  }
 
-    .madeRelative,
-    .YellowPartCenter {
-        text-align: center;
-    }
+  .helpinmedia {
+    font-size: 26px;
+    font-weight: 700;
+  }
 
-    .helpinmedia {
-        font-size: 26px;
-        font-weight: 700;
-    }
+  .innerBtnCss {
+    font-size: 13px;
+  }
 
-    .innerBtnCss {
-        font-size: 13px;
-    }
+  .centerStarmedia {
+    width: 100%;
+    margin: auto;
+  }
 
-    .centerStarmedia {
-        width: 100%;
-        margin: auto;
-    }
+  .onmediaBgChange {
+    background-color: lightblue;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    width: 100%;
+  }
 
-    .onmediaBgChange {
-        background-color: lightblue;
-        font-size: 25px;
-        color: black;
-        text-align: center;
-        width: 100%;
-    }
+  .forFlexColumndir {
+    text-align: center;
+  }
 
-    .forFlexColumndir {
-        text-align: center;
-    }
-
-    .onMediaWidthChange {
-        font-size: x-large;
-        font-weight: 700;
-    }
-
+  .onMediaWidthChange {
+    font-size: x-large;
+    font-weight: 700;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
+  .relPos {
+    display: none;
+  }
 
-   
-    .relPos {
-        display: none;
-    }
+  .AddCartButtonToggle {
+    display: block;
+  }
 
-    .AddCartButtonToggle {
-        display: block;
-    }
+  .onMediaPrice {
+    font-size: 15px;
+    margin: auto;
+  }
 
-    .onMediaPrice {
-        font-size: 15px;
-        margin: auto;
-    }
+  .SetFontsizeMedia {
+    font-size: 9px;
+  }
 
+  .OnmediaWidthSmall {
+    width: 30%;
+  }
 
-    .SetFontsizeMedia {
-        font-size: 9px;
-    }
+  .myData {
+    width: 40%;
+  }
 
-    .OnmediaWidthSmall {
-        width: 30%;
-    }
-
-
-    .myData {
-        width: 40%;
-    }
-
-    .mediaQueryImage {
-        border: 1px solid black;
-    }
+  .mediaQueryImage {
+    border: 1px solid black;
+  }
 }
-
 
 @media only screen and (min-width: 510px) and (max-width: 768px) {
-    .productFlexButton .linkWithCssMedia {
-        width: 100%;
-    }
+  .productFlexButton .linkWithCssMedia {
+    width: 100%;
+  }
 
-    .manageSpaceContainer{
-        height: 250px;
-    }
+  .manageSpaceContainer {
+    height: 250px;
+  }
 
-    .madeRelative .priceMedia {
-        font-size: 15px;
-    }
+  .madeRelative .priceMedia {
+    font-size: 15px;
+  }
 
-    .productFlexButton {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+  .productFlexButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-    .centerMedia {
-        font-size: 12px;
-    }
+  .centerMedia {
+    font-size: 12px;
+  }
 
-    .description {
-        font-size: 10px;
-    }
+  .description {
+    font-size: 10px;
+  }
 
-    .change-data{
-        margin: auto;
-    }
+  .change-data {
+    margin: auto;
+  }
 
-    .myData {
-        width: 70%;
-    }
+  .myData {
+    width: 70%;
+  }
 
-    .setWidthWithMedia {
-        width: 70%;
-    }
+  .setWidthWithMedia {
+    width: 70%;
+  }
 }
 
-
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-    .btnAround {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+  .btnAround {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-    .manageSpaceContainer{
-        height: 350px;
-    }
+  .manageSpaceContainer {
+    height: 350px;
+  }
 
-    body {
-        background-color: lightblue;
-    }
+  body {
+    background-color: lightblue;
+  }
 
-    .myChange {
-        width: 100%;
-        margin-top: 5px;
-    }
+  .myChange {
+    width: 100%;
+    margin-top: 5px;
+  }
 
-    .setWidthWithMedia {
-        width: 80%;
-    }
+  .setWidthWithMedia {
+    width: 80%;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
-    .centerStarmedia {
-        width: 100%;
-        margin: auto;
-    }
+  .centerStarmedia {
+    width: 100%;
+    margin: auto;
+  }
 }
 
-
 @media only screen and (max-width: 395px) {
+  th {
+    font-size: 10px;
+  }
+  td {
+    font-size: 8px;
+  }
 
-    th{
-        font-size: 10px;
-    }
-    td{
-        font-size: 8px;
-    }
+  .setWidthWithMedia {
+    width: 100%;
+  }
 
-    .setWidthWithMedia {
-        width: 100%;
-    }
+  .helpinmedia {
+    margin-bottom: 10px;
+  }
 
-    .helpinmedia {  
-        margin-bottom: 10px;
-    }
+  .z-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-    .z-media {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+  .thatsBrandName {
+    font-size: 15px;
+    font-weight: 700;
+  }
 
-    .thatsBrandName {
-        font-size: 15px;
-        font-weight: 700;
-    }
+  .clrWhites {
+    font-size: 10px;
+  }
 
-    .clrWhites {
-        font-size: 10px;
-    }
+  .setInMediaUpDown {
+    text-align: center;
+  }
 
-    .setInMediaUpDown {
-        text-align: center;
-    }
+  .onmediaBgChange {
+    background-color: lightblue;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    width: 100%;
+  }
 
-    .onmediaBgChange {
-        background-color: lightblue;
-        font-size: 25px;
-        color: black;
-        text-align: center;
-        width: 100%;
-    }
+  .forFlexColumndir {
+    text-align: center;
+  }
 
-    .forFlexColumndir {
-        text-align: center;
-    }
-
-    .helpinmedia {
-        font-size: 20px;
-        font-weight: 700;
-    }
+  .helpinmedia {
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
 ::selection {
-    color: white;
-    background: black;
+  color: white;
+  background: black;
 }
 
 @media only screen and (min-width: 290px) and (max-width: 368px) {
+  .tong h2 {
+    font-size: 15px;
+  }
 
-    .tong h2{
-        font-size: 15px;
-    }
+  .tong p {
+    font-size: 13px;
+  }
 
-    .tong p{
-        font-size: 13px;
-    }
+  .bodysecP {
+    font-size: 10px;
+  }
 
-    .bodysecP{
-        font-size: 10px;
-    }
+  .onMarginautoMedia {
+    font-size: 15px;
+    color: aqua;
+  }
 
-    .onMarginautoMedia{
-        font-size: 15px;
-        color:aqua ;
-    }
+  .mediaHomepageH4 {
+    font-size: larger;
+  }
+  .mediaHomepageH1 {
+    font-size: x-large;
+  }
+  .mediaHomepageH5 {
+    font-size: medium;
+  }
 
-    .mediaHomepageH4{
-        font-size: larger;
-    }
-    .mediaHomepageH1{
-        font-size: x-large;
-    }
-    .mediaHomepageH5{
-        font-size: medium;
-    }
+  .HeigthWidthClass {
+    height: 120px;
+  }
 
-    .HeigthWidthClass {
-        height: 120px;
-    }
+  .mediaQueryImage {
+    width: 250px;
+  }
 
-    .mediaQueryImage {
-        width: 250px;
-    }
+  .btnAround {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-    .btnAround {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+  .btnAround .myChange {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 
-    .btnAround .myChange {
-        width: 100%;
-        margin-bottom: 5px;
-    }
+  .OnmediaWidthSmall {
+    width: 70%;
+    margin: auto;
+  }
 
-    .OnmediaWidthSmall {
-        width: 70%;
-        margin: auto;
-    }
-
-    .manageSpaceContainer{
-        height: 150px;
-    }
-
+  .manageSpaceContainer {
+    height: 150px;
+  }
 }
 
 @media only screen and (min-width: 345px) and (max-width: 510px) {
+  .tong h2 {
+    font-size: 15px;
+  }
 
-    .tong h2{
-        font-size: 15px;
-    }
+  .tong p {
+    font-size: 13px;
+  }
 
-    .tong p{
-        font-size: 13px;
-    }
+  .bodysecP {
+    font-size: 10px;
+  }
 
-    .bodysecP{
-        font-size: 10px;
-    }
-    
-    .mediaHomepageH4{
-        font-size: larger;
-    }
-    .mediaHomepageH1{
-        font-size: x-large;
-    }
-    .mediaHomepageH5{
-        font-size: medium;
-    }
-    
-    .OnPaddingRight {
-        padding-left: 5px;
-    }
+  .mediaHomepageH4 {
+    font-size: larger;
+  }
+  .mediaHomepageH1 {
+    font-size: x-large;
+  }
+  .mediaHomepageH5 {
+    font-size: medium;
+  }
 
-    .myData {
-        width: 100%;
-    }
+  .OnPaddingRight {
+    padding-left: 5px;
+  }
 
-    .manageSpaceContainer{
-        height: 200px;
-    }
+  .myData {
+    width: 100%;
+  }
 
-    .setWidthWithMedia {
-        width: 100%;
-    }
+  .manageSpaceContainer {
+    height: 200px;
+  }
+
+  .setWidthWithMedia {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 290px) {
+  .bodysecP {
+    font-size: 10px;
+  }
 
-    .bodysecP{
-        font-size: 10px;
-    }
+  .tong h2 {
+    font-size: 11px;
+  }
 
-    .tong h2{
-        font-size: 11px;
-    }
+  .tong p {
+    font-size: 9px;
+  }
 
-    .tong p{
-        font-size: 9px;
-    }
+  th {
+    font-size: 8px;
+  }
+  td {
+    font-size: 8px;
+  }
 
-    th{
-        font-size: 8px;
-    }
-    td{
-        font-size: 8px;
-    }
+  .mediaHomepageH4 {
+    font-size: small;
+  }
+  .mediaHomepageH1 {
+    font-size: medium;
+    font-size: small;
+    color: #495057;
+  }
+  .mediaHomepageH5 {
+    font-size: 10px;
+  }
 
-    .mediaHomepageH4{
-        font-size: small;
-    }
-    .mediaHomepageH1{
-        font-size: medium;
-        font-size: small;
-        color: #495057;
-    }
-    .mediaHomepageH5{
-        font-size: 10px;
-    }
+  .manageSpaceContainer {
+    height: 150px;
+  }
 
-    .manageSpaceContainer{
-        height: 150px;
-    }
+  .HeigthWidthClass {
+    height: 100px;
+    width: 100px;
+  }
 
-    .HeigthWidthClass {
-        height: 100px;
-        width: 100px;
-    }
+  .btnAround {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-    .btnAround {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+  .myChange {
+    margin-top: 5px;
+    width: 100%;
+    font-size: 10px;
+  }
 
-    .myChange {
-        margin-top: 5px;
-        width: 100%;
-        font-size: 10px;
-    }
+  .categoryPrice {
+    font-size: 13px;
+  }
 
-    .categoryPrice {
-        font-size: 13px;
-    }
+  .MakeMediaCssUsingHeaderCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-    .MakeMediaCssUsingHeaderCart {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+  .makeMenuButtonWithMedia button {
+    height: 25px;
+    font-size: 7px;
+    display: flex;
+    align-items: center;
+    margin: 7px auto;
+  }
 
-    .makeMenuButtonWithMedia button {
-        height: 25px;
-        font-size: 7px;
-        display: flex;
-        align-items: center;
-        margin: 7px auto;
-    }
+  .UseCenter {
+    display: none;
+  }
 
-    .UseCenter {
-        display: none;
-    }
+  .productFlexButton .linkWithCssMedia {
+    width: 100%;
+  }
 
-    .productFlexButton .linkWithCssMedia {
-        width: 100%;
-    }
+  .productFlexButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-    .productFlexButton {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-    }
+  .centerStarmedia h4,
+  h6 {
+    font-size: 10px;
+  }
 
-    .centerStarmedia h4,
-    h6 {
-        font-size: 10px;
-    }
+  .madeRelative .centerMedia {
+    font-size: 12px;
+  }
 
-    .madeRelative .centerMedia {
-        font-size: 12px;
-    }
+  .madeRelative .description {
+    font-size: 12px;
+  }
 
-    .madeRelative .description {
-        font-size: 12px;
-    }
+  .mediaQueryImage {
+    width: 150px;
+  }
 
-    .mediaQueryImage {
-        width: 150px;
-    }
+  .thatsBrandName {
+    font-size: 10px;
+    font-weight: 700;
+  }
 
-    .thatsBrandName {
-        font-size: 10px;
-        font-weight: 700;
-    }
+  .OnmediaWidthSmall {
+    width: 100%;
+    margin: auto;
+  }
 
-    .OnmediaWidthSmall {
-        width: 100%;
-        margin: auto;
-    }
+  .onMediaWidthChange {
+    font-size: 15px;
+  }
 
-    .onMediaWidthChange {
-        font-size: 15px;
-    }
+  .onmediaBgChange {
+    font-size: 15px;
+  }
 
-    .onmediaBgChange {
-        font-size: 15px;
-    }
+  .acjustmedia .centerMedia {
+    font-size: 10px;
+  }
 
-    .acjustmedia .centerMedia {
-        font-size: 10px;
-    }
+  .thatsBrandName,
+  .nav-item {
+    margin: auto;
+  }
 
-    .thatsBrandName,
-    .nav-item {
-        margin: auto;
-    }
+  .navbar-toggler {
+    outline: 1px solid black;
+    margin: auto;
+  }
 
-    .navbar-toggler {
-        outline: 1px solid black;
-        margin: auto;
-    }
-
-    .headings{
-        font-size: 12px;
-    }
+  .headings {
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: 190px) {
+  .bodysecP {
+    font-size: 8px;
+  }
 
-    .bodysecP{
-        font-size: 8px;
-    }
+  .tong h2 {
+    font-size: 10px;
+  }
 
-    .tong h2{
-        font-size: 10px;
-    }
+  .tong p {
+    font-size: 8px;
+  }
 
-    .tong p{
-        font-size: 8px;
-    }
+  .manageSpaceContainer {
+    height: 150px;
+  }
 
+  .mediaHomepageH4 {
+    font-size: small;
+  }
+  .mediaHomepageH1 {
+    font-size: x-small;
+    color: #495057;
+  }
+  .mediaHomepageH5 {
+    font-size: 8px;
+  }
 
-    .manageSpaceContainer{
-        height: 150px;
-    }
+  .categoryPrice {
+    font-size: 10px;
+  }
 
-    .mediaHomepageH4{
-        font-size: small;
-    }
-    .mediaHomepageH1{
-        font-size:x-small;
-        color: #495057;
-    }
-    .mediaHomepageH5{
-        font-size: 8px;
-    }
+  .onmediaBgChange,
+  .centerStarmedia h4 h6 {
+    font-size: 8px;
+  }
 
-    .categoryPrice {
-        font-size: 10px;
-    }
+  .onMediaWidthChange {
+    font-size: 10px;
+  }
 
-    .onmediaBgChange,
-    .centerStarmedia h4 h6 {
-        font-size: 8px;
-    }
+  .setWidthWithMedia {
+    width: 100%;
+  }
 
-    .onMediaWidthChange {
-        font-size: 10px;
-    }
+  .mediaQueryImage {
+    width: 100px;
+  }
 
-    .setWidthWithMedia {
-        width: 100%;
-    }
+  .acjustmedia .centerMedia {
+    font-size: 7px;
+  }
 
-    .mediaQueryImage {
-        width: 100px;
-    }
+  .madeRelative .description {
+    font-size: 10px;
+  }
 
-    .acjustmedia .centerMedia {
-        font-size: 7px;
-    }
+  .clrCss {
+    width: 100px;
+  }
 
-    .madeRelative .description {
-        font-size: 10px;
-    }
-    
-    .clrCss {
-        width: 100px;
-    }
+  .priceMedia {
+    font-size: 10px;
+  }
 
-    .priceMedia {
-        font-size: 10px;
-    }
+  .z-media h1,
+  h4 {
+    font-size: 10px;
+  }
 
-    .z-media h1,
-    h4 {
-        font-size: 10px;
-    }
+  .thatsBrandName {
+    font-size: 10px;
+    font-weight: 700;
+    margin: auto;
+  }
 
-    .thatsBrandName {
-        font-size: 10px;
-        font-weight: 700;
-        margin: auto;
-    }
-
-    .navbar-toggler {
-        outline: 1px solid black;
-        margin: auto;
-    }
+  .navbar-toggler {
+    outline: 1px solid black;
+    margin: auto;
+  }
 }
-
-
 
 /* loaders */
 
@@ -1205,15 +1157,16 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
-  78%, 100% {
+  78%,
+  100% {
     opacity: 0;
   }
 }
 .item1-1:before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -1241,15 +1194,16 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
-  78%, 100% {
+  78%,
+  100% {
     opacity: 0;
   }
 }
 .item2-2:before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -1277,15 +1231,16 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
-  78%, 100% {
+  78%,
+  100% {
     opacity: 0;
   }
 }
 .item3-3:before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -1313,15 +1268,16 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
-  78%, 100% {
+  78%,
+  100% {
     opacity: 0;
   }
 }
 .item4-4:before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -1349,15 +1305,16 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
-  78%, 100% {
+  78%,
+  100% {
     opacity: 0;
   }
 }
 .item5-5:before {
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -1369,21 +1326,59 @@ input::-webkit-inner-spin-button {
   transform: scale(1);
 }
 
-
-
 /* button loader */
+.btnsloader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spinsss 2s linear infinite;
+}
 
-.btnsloader{
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    animation: spinsss 2s linear infinite;
+@keyframes spinsss {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spinsss {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg);
   }
+}
 
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 30px;
+  background: white;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 30px;
+  background: rgb(83, 191, 234);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: white;
+  cursor: pointer;
+}
+
+.makeRoundedButton {
+  background-color: white;
+  width: 50px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

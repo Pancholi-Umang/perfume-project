@@ -7,6 +7,7 @@ function AllProduct() {
   const [data, setData] = useState([]);
   const [Items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [priceRange, setPriceRange] = useState(0)
 
   useEffect(() => {
     setLoading(true);
@@ -15,7 +16,8 @@ function AllProduct() {
     }, 1500);
   }, []);
 
-  const baseURL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
+  const baseURL =
+    "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
   const GetData = () => {
     axios.get(baseURL).then((response) => {
       setData(response.data);
@@ -45,11 +47,41 @@ function AllProduct() {
     setData(myFilter);
   };
 
+  const RangingFilter = (e) => {
+    setPriceRange(e.target.value);
+    const FilterPriceRange = ITEMSarr.filter((es) => {
+      return priceRange >= es.price;
+    });
+    setData(FilterPriceRange);
+  };
+
   return (
     <div className="container OnPaddingRight ">
-      <div className="col-md-10 mb-3 container px-1">
-      <input type="email" className="form-control" id="floatingInput" placeholder="Search Here..." onChange={changeHandler}/>
- 
+      <div className="row d-flex align-items-center justify-content-center my-2">
+        <div className="col-md-4 container">
+          <input
+            type="text"
+            className="form-control"
+            id="floatingInput"
+            placeholder="Search Here..."
+            onChange={changeHandler}
+          />
+        </div>
+        <div className="col-md-4 col-sm-12 mt-1 container">
+          <div className="slidecontainer d-flex">
+          <span className="rounded-start makeRoundedButton">₹{priceRange}</span>
+          <input
+              type="range"
+              min="110"
+              max="1500"
+              onChange={RangingFilter}
+              value={priceRange}
+              className="slider rounded-end"
+              id="myRange"
+            />
+            
+          </div>
+        </div>
       </div>
 
       {loading ? (
@@ -64,7 +96,7 @@ function AllProduct() {
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
             {DATAarr?.map((value, index) => {
-              return <Card key={index} value={value} loading={loading} />
+              return <Card key={index} value={value} loading={loading} />;
             })}
           </div>
         </div>

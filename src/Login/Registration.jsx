@@ -21,26 +21,22 @@ function Registration() {
 
   const validateForm = (formValues) => {
     const errors = {};
-
     if (!formValues.firstName?.trim()) {
       errors.firstName = "First Name is required";
     }
-
     if (!formValues.lastName?.trim()) {
       errors.lastName = "Last Name is required";
     }
-
     if (!formValues.email?.trim()) {
       errors.email = "Email is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formValues.email.trim())
-    ) {
+    } 
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formValues.email.trim())) {
       errors.email = "Invalid email address";
     }
-
     if (!formValues.password?.trim()) {
       errors.password = "Password is required";
-    } else if (formValues.password.trim().length < 8) {
+    } 
+    else if (formValues.password.trim().length < 8) {
       errors.password = "Password must be at least 8 characters long";
     }
     return errors;
@@ -48,8 +44,6 @@ function Registration() {
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-
-  console.log(errors);
 
   const handleChange = (event) => {
     setFormValues((prevValues) => ({
