@@ -16,8 +16,7 @@ function AllProduct() {
     }, 1500);
   }, []);
 
-  const baseURL =
-    "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
+  const baseURL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
   const GetData = () => {
     axios.get(baseURL).then((response) => {
       setData(response.data);
@@ -48,9 +47,10 @@ function AllProduct() {
   };
 
   const RangingFilter = (e) => {
+    var price = e.target.value;
     setPriceRange(e.target.value);
     const FilterPriceRange = ITEMSarr.filter((es) => {
-      return priceRange >= es.price;
+      return price >= es.price;
     });
     setData(FilterPriceRange);
   };
@@ -70,16 +70,7 @@ function AllProduct() {
         <div className="col-md-4 col-sm-12 mt-1 container">
           <div className="slidecontainer d-flex">
           <span className="rounded-start makeRoundedButton">₹{priceRange}</span>
-          <input
-              type="range"
-              min="110"
-              max="1500"
-              onChange={RangingFilter}
-              value={priceRange}
-              className="slider rounded-end"
-              id="myRange"
-            />
-            
+          <input type="range" min="110" max="1500" onChange={RangingFilter} className="slider rounded-end" id="myRange" />
           </div>
         </div>
       </div>

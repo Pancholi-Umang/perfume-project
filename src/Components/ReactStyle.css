@@ -1304,15 +1304,14 @@ input::-webkit-inner-spin-button {
   0% {
     transform: scale(1);
   }
-  50%,
-  75% {
+  50%, 75% {
     transform: scale(2.5);
   }
-  78%,
-  100% {
+  78%, 100% {
     opacity: 0;
   }
 }
+
 .item5-5:before {
   content: "";
   width: 20px;
@@ -1326,10 +1325,9 @@ input::-webkit-inner-spin-button {
   transform: scale(1);
 }
 
-/* button loader */
 .btnsloader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db; 
   border-radius: 50%;
   width: 10px;
   height: 10px;
