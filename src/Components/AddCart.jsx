@@ -10,13 +10,13 @@ const AddCart = () => {
   const [buttonQuantity, setButtonQuantity] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }, []);
-  
+
   const [btnLoader, setButtonLoader] = useState(false);
   useEffect(() => {
     setButtonLoader(true);
@@ -24,21 +24,23 @@ const AddCart = () => {
       setButtonLoader(false);
     }, 1000);
   }, [buttonQuantity]);
-  
+
   const GiveData = (num) => {
     let Numbers = Number(num);
-    axios.patch(
-      `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
-      {
-        status: "false",
-      }
-      ).then(()=>dispatch(getAllPerfume()));
-    };
-    
-    const Cartdata = useSelector(state=> state.cartItem.cart)
+    axios
+      .patch(
+        `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
+        {
+          status: "false",
+        }
+      )
+      .then(() => dispatch(getAllPerfume()));
+  };
+
+  const Cartdata = useSelector((state) => state.cartItem.cart);
 
   useEffect(() => {
-    dispatch(FetchCartData())
+    dispatch(FetchCartData());
   }, []);
 
   var cartArray = [];
@@ -74,10 +76,12 @@ const AddCart = () => {
     }
   }
 
-
   const deleteItems = (value) => {
     let number = "";
-    axios.get(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}/id.json`)
+    axios
+      .get(
+        `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}/id.json`
+      )
       .then((response) => {
         number = response.data;
       });
@@ -85,15 +89,15 @@ const AddCart = () => {
       `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}.json`
     );
     DeleteCardData?.then(() => {
-      const cartGiveValue = cartArray?.filter((cartvalue)=>{
-        return cartvalue.id != value.id
-      })
+      const cartGiveValue = cartArray?.filter((cartvalue) => {
+        return cartvalue.id != value.id;
+      });
       GiveData(number);
-      dispatch(removeCartData(cartGiveValue))
-      dispatch(FetchCartData())
+      dispatch(removeCartData(cartGiveValue));
+      dispatch(FetchCartData());
     });
-    const NavigateManage = cartArray.length - Number(1)
-    if(NavigateManage == 0){
+    const NavigateManage = cartArray.length - Number(1);
+    if (NavigateManage == 0) {
       setTimeout(() => navigate("/"), 1000);
     }
   };
@@ -128,7 +132,16 @@ const AddCart = () => {
                     (<strong>{cartArray?.length}</strong> item in your cart)
                   </span>
                   <hr />
-
+                  <div className="">
+                    {
+                      cartArray.length == 0 ? (
+                        <>
+                        <p className="m-0">Your shopping cart is empty</p>
+                        <Link to="/allproduct" >continue to shopping</Link>
+                        </>
+                      ):(null)
+                    }
+                  </div>
                   {cartArray?.map((value, index) => {
                     const { id, imag, name, price, category, quantity } = value;
                     return (
@@ -214,17 +227,23 @@ const AddCart = () => {
 
           <hr />
           <div className="row">
-            <div className="col-md-6 text-center">
-              <h3>Total Amount :₹{cartTotal}</h3>
-            </div>
-            <div className="col-md-6 text-center">
-              <Link
-                className="btn btn-primary col-md-4"
-                to={`/cartgetway/${cartTotal}`}
-              >
-                Place order
-              </Link>
-            </div>
+            {cartArray.length == 0 ? (
+              <div className="col-md-12"></div>
+            ) : (
+              <>
+                <div className="col-md-6 text-center">
+                  <h3>Total Amount :₹{cartTotal}</h3>
+                </div>
+                <div className="col-md-6 text-center">
+                  <Link
+                    className="btn btn-primary col-md-4"
+                    to={`/cartgetway/${cartTotal}`}
+                  >
+                    Place order
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </>
       )}
