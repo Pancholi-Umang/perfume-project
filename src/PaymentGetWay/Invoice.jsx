@@ -1,54 +1,50 @@
 import React, { useEffect, useState } from "react";
 import "./PaymentStyle.css";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import html2canvas from "html2canvas";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllPerfume, getInvoiceDetails } from "../redux/action";
 
 const Invoice = () => {
   const { productname, totalprice } = useParams();
-  const [apiData, setApiData] = useState([]);
-  const [mapping, setMapping] = useState([]);
   const [dates, setDates] = useState("");
-  const [dataToggle, setDataToggle] = useState(false)
 
   let Prices = Number(0);
 
-  const URL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json";
-  useEffect(() => {
-    axios.get(URL).then((response) => {
-      setMapping(response.data);
-    });
-  }, []);
+  const dispatch = useDispatch();
+  const PerfumesData = useSelector((state) => state?.item?.products);
+  const invoiceData = useSelector((state) => state?.invoice?.invoice);
 
-  const baseURL = "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json";
-  useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setApiData(response.data);
-      setDataToggle(true)
-    });
-  }, [dataToggle]);
-
-  var arr = [];
-  for (let key in apiData) {
-    arr.push(Object.assign(apiData[key], { id: key }));
+  var invoiceMap = [];
+  for (let key in invoiceData) {
+    invoiceMap.push(Object.assign(invoiceData[key], { id: key }));
   }
-  let arraydata = arr[arr.length - 1];
 
-  mapping.map((values) => {
+  var mapdata = [];
+  for (let key in PerfumesData) {
+    mapdata.push(Object.assign(PerfumesData[key], { id: key }));
+  }
+  let arraydata = invoiceMap[invoiceMap.length - 1];
+
+  mapdata.map((values) => {
     if (values.name === productname) {
       Prices = values.price;
     }
   }, []);
 
-  
   const trackingNum = Math.floor(Math.random() * 122000000);
   const invoiceNum = Math.floor(Math.random() * 10000);
 
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    let date =
+      today.getDate() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getFullYear();
     setDates(date);
-  }, [apiData]);
-
+  }, []);
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -56,11 +52,27 @@ const Invoice = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, [apiData]);
+  }, []);
+
+  const canvas = document.getElementById("myCanvas");
+
+  const handleScreenshot = () => {
+    html2canvas(canvas).then(function (canvas) {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  };
+
+  useEffect(() => {
+    dispatch(getAllPerfume());
+    dispatch(getInvoiceDetails());
+  }, []);
 
   return (
     <div>
-      <div className="containers">
+      <div className="containers" id="myCanvas">
         <div className="brand-sections">
           <div className="row dataspace">
             <div className="col-md-6 col-sm-12 mb-3 sss">
@@ -78,15 +90,14 @@ const Invoice = () => {
 
         <div className="body-section">
           <div className="row dataspace ">
-            {
-              loading ? (
-                  <div className="d-flex justify-content-center">
-                  <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                  </div>
+            {loading ? (
+              <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
-              ) : (
-                <>
+              </div>
+            ) : (
+              <>
                 <div className="col-md-6 tong">
                   <h2 className="headings">Invoice No : {invoiceNum}</h2>
                   <p className="sub-headings">
@@ -114,8 +125,7 @@ const Invoice = () => {
                   </p>
                 </div>
               </>
-            )
-            }
+            )}
           </div>
         </div>
 
@@ -172,6 +182,14 @@ const Invoice = () => {
             &copy; Copyright 2023 - shineperfumes. All rights reserved.
           </p>
         </div>
+      </div>
+      <div className="w-100 d-flex justify-content-center">
+        <button
+          className="btn btn-sm mx-auto col-md-3 bg-info "
+          onClick={() => handleScreenshot()}
+        >
+          Print
+        </button>
       </div>
     </div>
   );

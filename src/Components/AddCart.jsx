@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./ReactStyle.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "./Footer2";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchCartData, removeCartData, getAllPerfume } from "../redux/action";
 
 const AddCart = () => {
-  const [addToCart, setAddToCart] = useState([]);
   const [buttonQuantity, setButtonQuantity] = useState(1);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }, []);
-
+  
   const [btnLoader, setButtonLoader] = useState(false);
   useEffect(() => {
     setButtonLoader(true);
@@ -21,58 +24,26 @@ const AddCart = () => {
       setButtonLoader(false);
     }, 1000);
   }, [buttonQuantity]);
-
-  const GiveData = (value, num) => {
+  
+  const GiveData = (num) => {
     let Numbers = Number(num);
-    axios.put(
+    axios.patch(
       `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
-        category: value.category,
-        description: value.description,
-        name: value.name,
-        imag: value.imag,
-        price: value.price,
-        id: Numbers,
-        quantity: Number(1),
-        is_wishlist: "false",
         status: "false",
       }
-    );
-  };
+      ).then(()=>dispatch(getAllPerfume()));
+    };
+    
+    const Cartdata = useSelector(state=> state.cartItem.cart)
 
-  function setDataFunction() {
-    const baseURL = `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`;
-    axios.get(baseURL).then((response) => {
-      setAddToCart(response.data);
-    });
-  }
   useEffect(() => {
-    setDataFunction();
-  }, [btnLoader]);
+    dispatch(FetchCartData())
+  }, []);
 
-  const deleteItems = (value) => {
-    let number = "";
-    axios
-      .get(
-        `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}/id.json`
-      )
-      .then((response) => {
-        console.log(response);
-        number = response.data;
-      });
-    const DeleteCardData = axios.delete(
-      `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}.json`
-    );
-    DeleteCardData?.then(() => {
-      GiveData(value, number);
-      setDataFunction();
-    });
-    setAddToCart(DeleteCardData);
-  };
-
-  var arr = [];
-  for (let key in addToCart) {
-    arr.push(Object.assign(addToCart[key], { id: key }));
+  var cartArray = [];
+  for (let key in Cartdata) {
+    cartArray.push(Object.assign(Cartdata[key], { id: key }));
   }
 
   function plusing(id, qty) {
@@ -103,6 +74,30 @@ const AddCart = () => {
     }
   }
 
+
+  const deleteItems = (value) => {
+    let number = "";
+    axios.get(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}/id.json`)
+      .then((response) => {
+        number = response.data;
+      });
+    const DeleteCardData = axios.delete(
+      `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart/${value.id}.json`
+    );
+    DeleteCardData?.then(() => {
+      const cartGiveValue = cartArray?.filter((cartvalue)=>{
+        return cartvalue.id != value.id
+      })
+      GiveData(number);
+      dispatch(removeCartData(cartGiveValue))
+      dispatch(FetchCartData())
+    });
+    const NavigateManage = cartArray.length - Number(1)
+    if(NavigateManage == 0){
+      setTimeout(() => navigate("/"), 1000);
+    }
+  };
+
   let cartTotal = 0;
   let prices = 0;
   let total = [];
@@ -130,11 +125,11 @@ const AddCart = () => {
                     </div>
                   </div>
                   <span className=" UseCenter">
-                    (<strong>{arr?.length}</strong> item in your cart)
+                    (<strong>{cartArray?.length}</strong> item in your cart)
                   </span>
                   <hr />
 
-                  {arr?.map((value, index) => {
+                  {cartArray?.map((value, index) => {
                     const { id, imag, name, price, category, quantity } = value;
                     return (
                       <div
@@ -211,7 +206,7 @@ const AddCart = () => {
             </div>
           </section>
 
-          {arr?.map((data) => {
+          {cartArray?.map((data) => {
             prices = Number(data.price * data.quantity);
             total.push(prices);
             cartTotal += prices;

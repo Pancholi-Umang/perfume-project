@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./wishlist.css";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchWishlistData, removeWishListData, getAllPerfume } from "../redux/action";
+import { useNavigate } from "react-router-dom";
 
 const Is_wishlist = () => {
-  const [wishList, setWishList] = useState([]);
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -11,58 +13,52 @@ const Is_wishlist = () => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  const GiveData = (value, num) => {
+  const dispatch = useDispatch()
+
+  const ShowWishlist = useSelector(state => state.wishlist.wishlist)
+  const GiveData = (num) => {
     let Numbers = Number(num);
-    axios.put(
+    axios.patch(
       `https://listofallperfumes-default-rtdb.firebaseio.com/items/${Numbers}.json`,
       {
-        category: value.category,
-        description: value.description,
-        name: value.name,
-        imag: value.imag,
-        price: value.price,
-        id: Numbers,
-        quantity: Number(1),
-        is_wishlist: "false",
-        status: "false",
+        is_wishlist: "false"
       }
-    );
+    ).then(()=>dispatch(getAllPerfume()))
   };
 
-  function setDataFunction() {
-    const baseURL = `https://wishlist-466aa-default-rtdb.firebaseio.com/wish.json`;
-    axios.get(baseURL).then((response) => {
-      setWishList(response.data);
-    });
+  var WishListArry = [];
+  for (let key in ShowWishlist) {
+    WishListArry?.push(Object.assign(ShowWishlist[key], { id: key }));
   }
+
   useEffect(() => {
-    setDataFunction();
-  }, []);
+    dispatch(FetchWishlistData());
+  }, [ShowWishlist]);
+  const navigate = useNavigate();
 
   const deleteItems = (value) => {
     let number = "";
-    axios
-      .get(
-        `https://wishlist-466aa-default-rtdb.firebaseio.com/wish/${value.id}/id.json`
-      )
+    axios.get(`https://wishlist-466aa-default-rtdb.firebaseio.com/wish/${value.id}/id.json`)
       .then((response) => {
-        console.log(response);
         number = response.data;
       });
-    const DeleteCardData = axios.delete(
+    const DeleteWishListData = axios.delete(
       `https://wishlist-466aa-default-rtdb.firebaseio.com/wish/${value.id}.json`
     );
-    DeleteCardData?.then(() => {
-      GiveData(value, number);
-      setDataFunction();
+    DeleteWishListData?.then(() => {
+      const wishListValue = WishListArry?.filter((wishVal)=>{
+        return wishVal.id != value.id
+      })
+      GiveData(number);
+      dispatch(removeWishListData(wishListValue))
+      dispatch(FetchWishlistData())
     });
-    setWishList(DeleteCardData);
+    const NavigateManage = WishListArry.length - Number(1)
+    if(NavigateManage == 0){
+      setTimeout(() => navigate("/"), 1000);
+    }
   };
 
-  var arr = [];
-  for (let key in wishList) {
-    arr.push(Object.assign(wishList[key], { id: key }));
-  }
 
   return (
     <div className="cart-wrap">
@@ -89,7 +85,7 @@ const Is_wishlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {arr.map((values, index) => {
+                    {WishListArry?.map((values, index) => {
                       const { name, imag, price } = values;
                       return (
                         <tr key={index}>

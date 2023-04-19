@@ -1,44 +1,39 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import html2canvas from "html2canvas";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchCartData, getInvoiceDetails } from "../redux/action";
 
 const CartInvoice = () => {
-  const [apiData, setApiData] = useState([]);
-  const [Data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const [dates, setDates] = useState("");
 
-  const baseURL = `https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json`;
-  useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setApiData(response.data);
-    });
-  }, []);
-
-  const URL = `https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`;
-  useEffect(() => {
-    axios.get(URL).then((response) => {
-      setData(response.data);
-    });
-  }, []);
+  // redux-script
+  const Cartdata = useSelector((state) => state?.cartItem?.cart);
+  const invoiceData = useSelector((state) => state?.invoice?.invoice);
 
   var arr = [];
-  for (let key in apiData) {
-    arr.push(Object.assign(apiData[key], { id: key }));
+  for (let key in invoiceData) {
+    arr.push(Object.assign(invoiceData[key], { id: key }));
   }
-  
+
   var arrData = [];
-  for (let key in Data) {
-    arrData.push(Object.assign(Data[key], { id: key }));
+  for (let key in Cartdata) {
+    arrData.push(Object.assign(Cartdata[key], { id: key }));
   }
 
   let arraydata = arr[arr.length - 1];
-  console.log(arraydata);
 
   const trackingNum = Math.floor(Math.random() * 122000000);
   const invoiceNum = Math.floor(Math.random() * 10000);
 
-  const [dates, setDates] = useState("");
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate()+"/"+(today.getMonth() + 1)+"/"+today.getFullYear();
+    let date =
+      today.getDate() +
+      "/" +
+      (today.getMonth() + 1) +
+      "/" +
+      today.getFullYear();
     setDates(date);
   }, []);
 
@@ -54,9 +49,25 @@ const CartInvoice = () => {
     }, 1500);
   }, []);
 
+  const canvas = document.getElementById("myCanvas");
+
+  const handleScreenshot = () => {
+    html2canvas(canvas).then(function (canvas) {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  };
+
+  useEffect(() => {
+    dispatch(FetchCartData());
+    dispatch(getInvoiceDetails());
+  }, []);
+
   return (
     <div>
-      <div className="containers">
+      <div className="containers" id="myCanvas">
         <div className="brand-sections">
           <div className="row dataspace">
             <div className="col-md-6 col-sm-12 mb-3 sss">
@@ -75,17 +86,17 @@ const CartInvoice = () => {
         <div className="body-section">
           <div className="row dataspace ">
             {loading ? (
-               <div className="d-flex justify-content-center">
-               <div className="spinner-border" role="status">
-                 <span className="sr-only">Loading...</span>
-               </div>
-               </div>
+              <div className="d-flex justify-content-center">
+                <div className="spinner-border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              </div>
             ) : (
               <>
                 <div className="col-md-6 tong">
                   <h2 className="headings">Invoice No : {invoiceNum}</h2>
                   <p className="sub-headings">
-                    Tracking No : SHINE{trackingNum}{" "}
+                    Tracking No : SHINE{trackingNum}
                   </p>
                   <p className="sub-headings">Order Date: {dates} </p>
                   <p className="sub-headings">
@@ -176,6 +187,14 @@ const CartInvoice = () => {
             &copy; Copyright 2023 - shineperfumes. All rights reserved.
           </p>
         </div>
+      </div>
+      <div className="w-100 d-flex justify-content-center">
+        <button
+          className="btn btn-sm mx-auto col-md-3 bg-info "
+          onClick={() => handleScreenshot()}
+        >
+          Print
+        </button>
       </div>
     </div>
   );

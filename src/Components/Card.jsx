@@ -1,73 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ReactStyle.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { savedataOnCart, savedataOnWishlist } from "../redux/action";
 
 function Card({ value }) {
   const { imag, name, category, price, id, status, is_wishlist } = value;
-  const [toggling, setToggling] = React.useState(status);
-  const [changelist, setChangeList] = React.useState(is_wishlist);
+  const [toggling, setToggling] = useState(status);
+  const [changelist, setChangeList] = useState(is_wishlist);
 
-  const SetCart = (val, id) => {
-    setToggling(true);
-    axios({
-      method: "post",
-      url: "https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json",
-      data: {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: id,
-        quantity: val.quantity,
-      },
+  const dispatch = useDispatch();
+  const SetCart = (val) => {
+    console.log(val)
+    axios.post(`https://addtocart-2eccb-default-rtdb.firebaseio.com/cart.json`, val)
+    .then(() => {
+      dispatch(savedataOnCart(val));
     });
-    axios.put(
-      `https://listofallperfumes-default-rtdb.firebaseio.com/items/${id}.json`,
-      {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: id,
-        quantity: val.quantity,
-        is_wishlist: "false",
-        status: "true",
-      }
-    );
+    setToggling(true);
   };
 
-  const addWishlist = (val, id) => {
+  const addWishlist = (val) => {
+    axios.post(`https://wishlist-466aa-default-rtdb.firebaseio.com/wish.json`, val)
+      .then(() => {
+        dispatch(savedataOnWishlist(val));
+      });
     setChangeList(true);
-    axios({
-      method: "post",
-      url: "https://wishlist-466aa-default-rtdb.firebaseio.com/wish.json",
-      data: {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: id,
-        quantity: val.quantity,
-      },
-    });
-    axios.put(
-      `https://listofallperfumes-default-rtdb.firebaseio.com/items/${id}.json`,
-      {
-        category: val.category,
-        description: val.description,
-        name: val.name,
-        imag: val.imag,
-        price: val.price,
-        id: id,
-        quantity: val.quantity,
-        is_wishlist: "true",
-        status: "false",
-      }
-    );
   };
 
   return (
@@ -80,7 +38,7 @@ function Card({ value }) {
               {changelist === "false" ? (
                 <button
                   className="bg-transparent border-0 mb-1"
-                  onClick={() => addWishlist(value, id)}
+                  onClick={() => addWishlist(value)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -107,10 +65,10 @@ function Card({ value }) {
                     viewBox="0 0 16 16"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                     />
-                  </svg>  
+                  </svg>
                 </Link>
               )}
             </div>
@@ -124,7 +82,7 @@ function Card({ value }) {
             {toggling === "false" ? (
               <button
                 className="btn clor myChange"
-                onClick={() => SetCart(value, id)}
+                onClick={() => SetCart(value)}
               >
                 ADD CART
               </button>

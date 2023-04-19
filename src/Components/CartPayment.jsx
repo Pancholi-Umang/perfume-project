@@ -12,7 +12,12 @@ const CartPayment = () => {
 
   useEffect(() => {
     var today = new Date();
-    let date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+    let date =
+      today.getDate() +
+      "/" +
+      (today.getMonth() + 1) +
+      "/" +
+      today.getFullYear();
     setDates(date);
   }, []);
 
@@ -35,8 +40,6 @@ const CartPayment = () => {
         setApiData(response.data);
       });
   }, []);
-
-  console.log(cardDetails);
 
   useEffect(() => {
     var arr = [];
@@ -82,7 +85,6 @@ const CartPayment = () => {
 
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
-    console.log(cardDetails);
 
     if (
       cardDetails.CardOnName.length > 5 &&
@@ -91,12 +93,14 @@ const CartPayment = () => {
       cardDetails.PinCode.length === 6 &&
       cardDetails.State.length > 3
     ) {
-      axios({
-        method: "post",
-        url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
-        data: cardDetails,
-      });
-      navigate(`/cart-invoice`);
+      axios
+        .post(
+          `https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json`,
+          cardDetails
+        )
+        .then(() => {
+          navigate(`/cart-invoice`);
+        });
     } else {
       navigate(`/cartgetway/${totalprice}`);
     }

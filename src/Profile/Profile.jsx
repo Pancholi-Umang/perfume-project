@@ -23,7 +23,7 @@ const Profile = () => {
     }, 1000);
   }, []);
 
-  console.log(LoginUser);
+
   const navigate = useNavigate();
 
   const emptyLogin = () => {

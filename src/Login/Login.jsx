@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
-import axios from "axios";
+import { getRegistration } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
-  const [Users, setUsers] = useState([]);
   const [valing, setValing] = useState({});
   const [showAlert, setShowAlert] = useState(false);
   const [eshowAlert, seteShowAlert] = useState(false);
   const [LoginUser, setLoginUser] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const UsersDetails = useSelector((state) => state.registration.register);
 
   useEffect(() => {
     setLoading(true);
@@ -75,21 +79,14 @@ function Login() {
     setInput({ ...inputs, [name]: value });
   };
 
-  const GetUser = () => {
-    axios
-      .get(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`)
-      .then((response) => {
-        setUsers(response.data);
-      });
-  };
 
   useEffect(() => {
-    GetUser();
+    dispatch(getRegistration());
   }, []);
 
   var allUser = [];
-  for (let key in Users) {
-    allUser.push(Object.assign(Users[key], { id: key }));
+  for (let key in UsersDetails) {
+    allUser.push(Object.assign(UsersDetails[key], { id: key }));
   }
 
   const handleSubmit = (event) => {
@@ -191,6 +188,7 @@ function Login() {
                     onChange={handleChange}
                     name="password"
                     value={inputs.password}
+                    autoComplete="off"
                   />
                 </div>
                 {errors?.password && (

@@ -34,7 +34,6 @@ const Pricepage = () => {
     Date: dates,
     deliveryStatus: "proceed",
   });
-  console.log(cardDetails);
 
   const handleChange = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
@@ -61,7 +60,6 @@ const Pricepage = () => {
 
   const PricePageNuForm = (e) => {
     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
-    console.log(cardDetails);
 
     if (
       cardDetails.CardOnName.length > 5 &&
@@ -70,12 +68,13 @@ const Pricepage = () => {
       cardDetails.PinCode.length === 6 &&
       cardDetails.State.length > 3
     ) {
-      axios({
-        method: "post",
-        url: "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
-        data: cardDetails,
-      });
-      navigate(`/invoice/${productname}/${totalprice}`);
+      axios?.post(
+          "https://order-invoice-c8bed-default-rtdb.firebaseio.com/invoice.json",
+          cardDetails
+        )
+        ?.then(() => {
+          navigate(`/invoice/${productname}/${totalprice}`);
+        });
     } else {
       navigate(`/paymentgetway/${productname}/${totalprice}`);
     }

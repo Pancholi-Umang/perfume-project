@@ -20,11 +20,13 @@ import Profile from "./Profile/Profile";
 import CartPayment from "./Components/CartPayment";
 import CartInvoice from "./Components/CartInvoice";
 import Is_wishlist from "./Components/Is_wishlist";
+import { useDispatch } from "react-redux";
+import { FetchCartData, FetchWishlistData, getAllPerfume } from "./redux/action";
 
-// product details page it do not lost data after refresh ====>
 function App() {
 
   const [showButton, setShowButton] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleScrollButtonVisisblity = () => {
@@ -41,6 +43,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    dispatch(FetchCartData())
+    dispatch(getAllPerfume())
+    dispatch(FetchWishlistData())
+  }, []);
 
   return (
     <div className="container mt-2 mb-2">
@@ -48,7 +55,7 @@ function App() {
         <Header/>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/category" element={<Category />} />
+          <Route exact path="/category" element={<Category />} />
           <Route exact path="/allproduct" element={<AllProduct />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/reg" element={<Registration />} />
@@ -70,10 +77,7 @@ function App() {
       {/* scroll button */}
       {showButton && (
         <div className={`scrollToTop`}>
-          <button
-            className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1"
-            onClick={handleClickToScroll}
-          >
+          <button className="position-fixed bottom-0 end-0 z-50 border-0 curser-pointer p-1" onClick={handleClickToScroll}>
             <img src={scrollTopButton} alt="updownArrow" />
           </button>
         </div>

@@ -1,59 +1,63 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Footer2 from "./Footer2";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllPerfume, filterData } from "../redux/action";
+// ====> (useSelector)  state.store.reducer
 
 function AllProduct() {
-  const [data, setData] = useState([]);
-  const [Items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [priceRange, setPriceRange] = useState(0)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 2000);
   }, []);
 
-  const baseURL = "https://listofallperfumes-default-rtdb.firebaseio.com/items.json/";
-  const GetData = () => {
-    axios.get(baseURL).then((response) => {
-      setData(response.data);
-      setItems(response.data);
-    });
-  };
 
-  useEffect(() => {
-    GetData();
-  }, [loading]);
-
-  var DATAarr = [];
-  for (let key in data) {
-    DATAarr.push(Object.assign(data[key], { id: key }));
+  
+  const PerfumesData = useSelector((state) => state?.item?.products);
+  const filterItem = useSelector((state)=>state?.item?.filter)
+ 
+ 
+  
+  var FILTERING = [];
+  for (let key in filterItem) {
+    FILTERING?.push(Object?.assign(filterItem[key], { id: key }));
   }
 
-  var ITEMSarr = [];
-  for (let key in Items) {
-    ITEMSarr.push(Object.assign(Items[key], { id: key }));
+  var AllPerfumeItem = [];
+  for (let key in PerfumesData) {
+    AllPerfumeItem?.push(Object?.assign(PerfumesData[key], { id: key }));
   }
 
   const changeHandler = (e) => {
-    var search = e.target.value;
-    const myFilter = ITEMSarr.filter((es) => {
-      return es.name.toLowerCase().includes(search.toLowerCase());
+    var search = e?.target?.value;
+    const myFilter = AllPerfumeItem?.filter((es) => {
+      return es?.name?.toLowerCase()?.includes(search?.toLowerCase());
     });
-    setData(myFilter);
+    dispatch(filterData(myFilter))
   };
-
+  
   const RangingFilter = (e) => {
-    var price = e.target.value;
-    setPriceRange(e.target.value);
-    const FilterPriceRange = ITEMSarr.filter((es) => {
-      return price >= es.price;
+    var price = e?.target?.value;
+    setPriceRange(e?.target?.value);
+    const FilterPriceRange = AllPerfumeItem?.filter((es) => {
+      return price >= es?.price;
     });
-    setData(FilterPriceRange);
+    dispatch(filterData(FilterPriceRange))
   };
+  
+  useEffect(() => {
+    if (AllPerfumeItem.length === 0) {
+      dispatch(getAllPerfume())
+    }
+    dispatch(filterData(AllPerfumeItem));
+  }, [PerfumesData]);
+
 
   return (
     <div className="container OnPaddingRight ">
@@ -86,13 +90,12 @@ function AllProduct() {
       ) : (
         <div className="container">
           <div className="row d-flex justify-content-around change-data ">
-            {DATAarr?.map((value, index) => {
-              return <Card key={index} value={value} loading={loading} />;
+            {FILTERING?.map((value, index) => {
+              return <Card key={index} value={value} />;
             })}
           </div>
         </div>
       )}
-
       <hr />
       <Footer2 />
     </div>

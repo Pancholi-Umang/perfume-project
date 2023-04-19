@@ -60,7 +60,6 @@ function Registration() {
     if (Object.keys(validationErrors).length === 0) {
       axios.post(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`, formValues)
       .then(function (response) {
-        console.log(response.data);
       });
       handleLogin()
       setTimeout(() => {
