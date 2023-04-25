@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./ReactStyle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchCartData, getRegistration } from "../redux/action";
 
-const LocalStorageLogin = () => {
-  let list = localStorage.getItem("LoginDetails");
-  if (list) {
-    return JSON.parse(localStorage.getItem("LoginDetails"));
-  } else {
-    return [];
-  }
-};
-
 function Header() {
-  const [toggleLogin, setToggleLogin] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const Cartdata = useSelector((state) => state?.cartItem?.cart);
@@ -30,13 +20,10 @@ function Header() {
   }, []);
 
   const myFunction = () => {
-    if (
-      window?.getComputedStyle(document?.getElementById("myCheck"))?.display !==
-      "none"
-    ) {
+    if (window?.getComputedStyle(document?.getElementById("myCheck"))?.display !=="none") {
       document?.getElementById("myCheck").click();
     }
-  };
+  }
 
   // <----- this method use to toggle the login and profile in header ----->
             // console.log(localStorage?.LoginDetails.length)
@@ -96,7 +83,7 @@ function Header() {
                   All Product
                 </Link>
               </li>
-              {localStorage?.LoginDetails.length == 2 ? (
+              {localStorage?.LoginDetails?.length == 2 ? (
                 <li className="nav-item">
                   <Link
                     className="nav-link navbar-dark"

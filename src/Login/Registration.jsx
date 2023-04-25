@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Registration.css";
 import { Link, useNavigate } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
 import axios from "axios";
+import { getRegistration } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 function Registration() {
   const [formValues, setFormValues] = useState({
@@ -11,6 +13,8 @@ function Registration() {
     email: "",
     password: "",
   });
+
+  const dispatch = useDispatch();
   const [showAlert, setShowAlert] = useState(false);
   const handleLogin = () => {
     setShowAlert(true);
@@ -18,6 +22,17 @@ function Registration() {
       setShowAlert(false);
     }, 2000);
   };
+
+  const UsersDetails = useSelector((state) => state.registration.register);
+
+  useEffect(() => {
+    dispatch(getRegistration());
+  }, []);
+
+  var allUser = [];
+  for (let key in UsersDetails) {
+    allUser.push(Object.assign(UsersDetails[key], { id: key }));
+  }
 
   const validateForm = (formValues) => {
     const errors = {};
@@ -29,14 +44,16 @@ function Registration() {
     }
     if (!formValues.email?.trim()) {
       errors.email = "Email is required";
-    } 
-    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formValues.email.trim())) {
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+        formValues?.email?.trim()
+      )
+    ) {
       errors.email = "Invalid email address";
     }
     if (!formValues.password?.trim()) {
       errors.password = "Password is required";
-    } 
-    else if (formValues.password.trim().length < 8) {
+    } else if (formValues.password.trim().length < 8) {
       errors.password = "Password must be at least 8 characters long";
     }
     return errors;
@@ -46,9 +63,12 @@ function Registration() {
   const [errors, setErrors] = useState([]);
 
   const handleChange = (event) => {
+    if (event.target.name == "email") {
+      console.log(event.target.value);
+    }
     setFormValues((prevValues) => ({
       ...prevValues,
-      [event.target.name]: event.target.value,
+      [event?.target?.name]: event?.target?.value,
     }));
   };
 
@@ -57,22 +77,25 @@ function Registration() {
     const validationErrors = validateForm(formValues);
     setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length === 0) {
-      axios.post(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`, formValues)
-      .then(function (response) {
-      });
-      handleLogin()
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+    if (Object?.keys(validationErrors)?.length === 0) {
+      axios.post(`https://registration-login-23503-default-rtdb.firebaseio.com/login.json`,formValues)
+        .then(function (response) {
+          handleLogin();
+          setTimeout(() => {
+            navigate("/login");
+          }, 1000);
+        });
     }
   };
+
   return (
     <>
-    {showAlert && (
+      {showAlert && (
         <div className="container">
-          <div className="alert alert-success alert-dismissible fade show" role="alert">
-            <span className="text-dark "> <strong>  Registration Successfull... </strong> </span>
+          <div className="alert alert-success alert-dismissible fade show" role="alert" >
+            <span className="text-dark ">
+              <strong> Registration Successfull..... </strong>
+            </span>
             <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
           </div>
         </div>

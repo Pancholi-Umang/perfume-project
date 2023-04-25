@@ -121,7 +121,7 @@ const AddCart = () => {
             <div className="container py-5 h-100">
               <div className="row justify-content-center align-items-center h-100">
                 <div className="col-md-10">
-                  <div className="d-flex MakeMediaCssUsingHeaderCart justify-content-between align-items-center mb-1">
+                  <div className="d-flex MakeMediaCssUsingHeaderCart justify-content-between align-items-center">
                     <h3 className="fw-normal mb-0 text-black">Shopping Cart</h3>
 
                     <div className="makeMenuButtonWithMedia">
@@ -133,14 +133,12 @@ const AddCart = () => {
                   </span>
                   <hr />
                   <div className="">
-                    {
-                      cartArray.length == 0 ? (
-                        <>
+                    {cartArray.length == 0 ? (
+                      <>
                         <p className="m-0">Your shopping cart is empty</p>
-                        <Link to="/allproduct" >continue to shopping</Link>
-                        </>
-                      ):(null)
-                    }
+                        <Link to="/allproduct">continue to shopping</Link>
+                      </>
+                    ) : null}
                   </div>
                   {cartArray?.map((value, index) => {
                     const { id, imag, name, price, category, quantity } = value;

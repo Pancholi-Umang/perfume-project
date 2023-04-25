@@ -49,7 +49,7 @@ const Footer2 = () => {
               </div>
             </div>
 
-            <div className="col-lg-2 col-sm-6">
+            <div className="col-lg-3 col-sm-6">
               <div className="">
                 <h6 className="footer-heading text-uppercase text-white">
                   Help
@@ -58,9 +58,16 @@ const Footer2 = () => {
                   <li>
                     <Link to="/reg">Sign Up </Link>
                   </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
+                  {localStorage?.LoginDetails.length == 2 ? (
+                    <li>
+                      <Link to="/login">Login</Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to="/profile">Profile</Link>
+                    </li>
+                  )}
+
                   <li>
                     <Link to="/terms">Terms of Services</Link>
                   </li>
@@ -71,7 +78,7 @@ const Footer2 = () => {
               </div>
             </div>
 
-            <div className="col-lg-4 col-sm-6 ">
+            <div className="col-lg-3 col-sm-6 ">
               <div className="">
                 <h6 className="footer-heading text-uppercase text-white">
                   Contact Us

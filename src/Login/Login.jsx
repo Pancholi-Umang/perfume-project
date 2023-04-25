@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Footer2 from "../Components/Footer2";
 import { getRegistration } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +12,18 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  const UsersDetails = useSelector((state) => state.registration.register);
+  const UsersDetails = useSelector((state) => state?.registration?.register);
+
+  useEffect(() => {
+    dispatch(getRegistration());
+  }, []);
+
+  var allUser = [];
+  for (let key in UsersDetails) {
+    allUser.push(Object.assign(UsersDetails[key], { id: key }));
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -44,7 +54,7 @@ function Login() {
 
     if (!inputs.password.trim()) {
       errors.password = "Password is required";
-    } else if (inputs.password.trim().length < 8) {
+    } else if (inputs?.password?.trim()?.length < 8) {
       errors.password = "Password must be at least 8 characters long";
     }
 
@@ -80,14 +90,7 @@ function Login() {
   };
 
 
-  useEffect(() => {
-    dispatch(getRegistration());
-  }, []);
 
-  var allUser = [];
-  for (let key in UsersDetails) {
-    allUser.push(Object.assign(UsersDetails[key], { id: key }));
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -118,7 +121,7 @@ function Login() {
             className="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            welcome
+            welcome &nbsp;
             <span className="text-dark ">
               <strong>
                 {valing?.firstName} {valing?.lastName} !
